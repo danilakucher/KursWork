@@ -1,5 +1,23 @@
 \newpage
 \section{Осцилляции нейтрино}
+
+На начальном этапе следует рассмотреть осцилляции нейтрино в вакууме. В этом случае массовые состояния нейтрино являются собственными состояниями Гамильтониана
+\begin{equation}
+	H|\nu_{i}(t)\rangle=\imath\frac{\dd}{\dd t}|\nu_{i}(t)\rangle=E_{k}|\nu_{i}(t)\rangle 
+\end{equation}
+с собственными значениями 
+\begin{equation}
+	E_{k}=\sqrt{\vec{p}^{2}+m_{k}^{2}}
+\end{equation}
+Решив уравнение Шреденгера, получаем соотношение для эволюции массовых состояний нейтрино
+\begin{equation}\label{eq:4}
+	|\nu_{i}(t)\rangle=\exp^{-\imath E_{k}t}|\nu_{i}(0)\rangle.
+\end{equation}
+В предположении, что в момент \(t=0\), нейтрино имело флэйвор \(\alpha\), учитывая \eqref{eq:3} и \eqref{eq:4}, находим эволюцию флэйвора во времени
+\begin{equation}
+	|\nu_{\alpha}(t)\rangle=\sum_{i}U_{\alpha i}^{*}\exp^{-\imath E_{k}t}|\nu_{i}\rangle. 
+\end{equation}
+
 Выражение для вероятности перехода флейвора нейтрино от \(\alpha\) к \(\beta\) запишется так:
 \begin{equation}\label{eq:0}
 P_{\alpha \beta}(r)=|\psi_{\beta}(r)|^{2}.
@@ -10,7 +28,7 @@ P_{\alpha \beta}(r)=|\psi_{\beta}(r)|^{2}.
 \end{equation} 
 и обозначив амплитуду вероятности нахождения j массового  состояния нейтрино на краю среды как \(A_{j}=\phi_{j}(r_{*})\), для \(r \geq r_{*}\) можно написать 
 \begin{equation}\label{eq:1}
-\Psi_{\beta}(r)=\sum_{j=1}^{3}U_{\beta j}A_{j}e^{-\imath E_{j}L}, \quad E_{j}=\sqrt{|\vec{p}|^{2}+m_{j}^{2}}, \qquad L=r-r_{*}.
+\psi_{\beta}(r)=\sum_{j=1}^{3}U_{\beta j}A_{j}e^{-\imath E_{j}L}, \quad E_{j}=\sqrt{|\vec{p}|^{2}+m_{j}^{2}}, \qquad L=r-r_{*}.
 \end{equation}
 Подставляя выражение \eqref{eq:1} в \eqref{eq:0} получаем
 \begin{equation}\label{eq:2}
