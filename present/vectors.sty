@@ -1,0 +1,80 @@
+\ProvidesPackage{vectors}%
+[2022/12/29 v0.1i Macros to define and change style for vector-like commands.]
+
+%%% NB (2020-03-12): this isn't tested with lualatex (OTF fonts) and doesn't
+%%%                  adapted to work with it either!
+
+\newif\ifusepscyr
+\newif\ifboldgreek
+\usepscyrfalse
+\boldgreekfalse
+
+\RequirePackage{amsmath}
+
+%% new: 2020-03-12
+% serif, bold italic.
+%%% Why OML? In fontmath.ltx they use OT1
+\DeclareMathAlphabet{\sr@bi}{OML}{cmm}{b}{it}
+% sans serif, italic and bold italic.
+\DeclareMathAlphabet{\ss@it}{OML}{cmss}{m}{sl}
+\DeclareMathAlphabet{\ss@bi}{OML}{cmss}{bx}{sl}
+
+\DeclareOption{boldgreek}{%
+  \boldgreektrue
+}
+\DeclareOption{pscyr}{%
+  \usepscyrtrue
+}
+\ProcessOptions\relax
+
+\(\ifboldgreek
+  % \RequirePackage{mathug2}
+  \RequirePackage{mathug3}
+\fi
+
+\ifusepscyr
+  \RequirePackage[math]{pscyr}
+  \DeclareMathAlphabet{\sr@bi}{OML}{faq}{bx}{it}
+\fi
+\)
+% new: 2020-12-08: added \relax and removed space before %, otherwise it causes
+%      spurious space in output after \setupvector command.
+\def\definevector#1{%
+  \expandafter\def\csname #1@style\endcsname##1{##1}\relax%
+  \expandafter\def\csname #1\expandafter\endcsname\expandafter{\csname #1@style\endcsname}\relax%
+}
+
+% NB: gobble space: find how to prevent undesired space after this command
+\def\setupvector[#1]#2{%
+  \expandafter\def\csname #2@style\expandafter\endcsname\expandafter{\csname vect@#1\endcsname}\relax%
+}%
+
+\newcommand{\vect@b}[1]{\sr@bi{#1}}
+\newcommand{\vect@rb}[1]{\mathbf{#1}}
+\newcommand{\vect@a}[1]{\Vec{#1}}
+\newcommand{\vect@n}[1]{\vec{#1}}
+\newcommand{\vect@w}[1]{\overrightarrow{#1}}
+\newcommand{\vect@ab}[1]{\boldsymbol{#1}}
+\newcommand{\vect@H}[1]{\mbox{\boldmath{\ensuremath{#1}}\unboldmath}}
+%% new: 2020-03-12
+\newcommand{\vect@ssb}[1]{{\boldmath{\mathsf{#1}}\unboldmath}}
+\newcommand{\vect@ssit}[1]{\ss@it{#1}}
+\newcommand{\vect@ssbi}[1]{\ss@bi{#1}}
+
+\definevector{vect}
+\setupvector[w]{vect}
+
+%%% Not sure if this command is defined by some package, so use
+%%% '\providecommand' instead of '\newcommand'.
+% NB: as there is no "scalar" nabla operator, it is useless to use bold face
+% only to match "bold" notation for vectors.
+% \providecommand{\Nabla}{\boldsymbol{\nabla}}
+
+%%% NB: H: yields wrong size in super/sub scripts due to use of \mbox.
+
+\endinput
+%%% Local Variables:
+%%% mode: latex
+%%% fill-column: 80
+%%% End:
+%%% vim: syn=tex ft=tex tw=80 ts=2 sw=2 et:
