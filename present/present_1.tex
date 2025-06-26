@@ -8,6 +8,7 @@
 \renewcommand{\Im}{\operatorname{Im}}
 \renewcommand{\exp}{\operatorname{e}}
 \renewcommand{\imath}{\mathrm{i}}
+\newcommand\Vect[1]{{\boldsymbol{#1}}}
 
 % \input{present.daf}
 
@@ -69,15 +70,15 @@
   \onslide<3->%
   Флейворные нейтрино можно считать линейной комбинацией массивных, справедливо и 
   обратное. Данная линейная комбинация может быть выражена с помощью унитарной
-  матрицы смешивания \(U\) (для случая трёх флейворов --- PMNS-матрица)
+  матрицы смешивания \(U\)
   \begin{equation}
-  	|\nu_{\alpha}\rangle=\sum_{i}U_{\alpha i}^{*}|\nu_{i}\rangle
+  	|\nu_{\alpha}\rangle=\sum_{i}U_{\alpha i}^{*}|\nu_{i}\rangle.
   \end{equation}
 
 \end{frame}
 
 \begin{frame}
-	\frametitle{Нейтринных осцилляций}%
+	\frametitle{Нейтринные осцилляции}%
 	Самая необычная черта нейтрино — это их осцилляции.
 
   \onslide<2->%
@@ -94,7 +95,7 @@
   Массивные нейтрино подчиняются уравнению
 	\begin{equation}
 		H|\nu_{i}(t)\rangle=\imath\frac{\dd}{\dd t}|\nu_{i}(t)\rangle=
-		E_{i}|\nu_{i}(t)\rangle 
+		E_{i}|\nu_{i}(t)\rangle, \qquad E_{i}=\sqrt{\Vect{p}^{2}+m_{i}^{2}}.
 	\end{equation}
 
   \onslide<2->%
@@ -104,12 +105,10 @@
 	\end{equation}
 
   \onslide<3->%
-	Далее, полагая, что в момент времени \(t=0\) нейтрино имело флейвор
-  \(\alpha\), подставим полученное решение в выражение с матрицей
-  смешивания. Тогда получим выражение, описывающее эволюцию флейвора нейтрино во
-  времени
+	Положив, что в начальный момент времени нейтрино имело флейвор
+  \(\alpha\), получим, что в момент времени \(t\) это состояние имеет вид
 	\begin{equation}
-		|\nu_{\alpha}(t)\rangle=\sum_{i}U_{\alpha i}^{*}\exp^{-\imath E_{i}t}|\nu_{i}\rangle. 
+		|\nu_{\alpha}(t)\rangle=\sum_{i}U_{\alpha i}^{*}\exp^{-\imath E_{i}t}|\nu_{i}\rangle.
 	\end{equation}
 \end{frame}
 
@@ -122,31 +121,13 @@
   	\nu_{l}(\overline{\nu}_{l})+N\xrightarrow[\text{CC}]{}l^{-}(l^{+})+\text{адроны}\\[2ex]
   	\nu_{l}(\overline{\nu}_{l})+N\xrightarrow[\text{NC}]{}\nu_{l}(\overline{\nu}_{l})+\text{адроны}.
   \end{align*}
-
   \onslide<2->%
-  Состояние системы \(|\psi(t)\rangle\) во время \(t \geqslant t_{0}\) может быть выражено как
-  \begin{equation}
-  	|\psi(t)\rangle=\sum_{\beta}\psi_{\beta}(t)|\nu_{\beta}\rangle
-  \end{equation}
-  с условием \(\psi_{\beta}(t_{0})=\delta_{\alpha \beta}\).
-\end{frame}
-
-\begin{frame}
-	\frametitle{Осцилляции в веществе}
-	Вероятность перехода флейвора нейтрино от \(\alpha\) к \(\beta\) запишется
-	\begin{equation}
-		P_{\alpha \beta}=|\psi_{\beta}(r)|^{2}
-	\end{equation}
-	\onslide<2->%
-	Амплитуда вероятности обнаружения состояния флейвора частицы \(\nu_{j}\) запишется
-	\begin{equation}
-		\psi_{\beta}(r)=\sum_{j=1}^{3}U_{\beta j}A_{j}\exp^{-\imath E_{j}L}, \qquad L=r-r_{*}
-	\end{equation}
 	Влияние среды можно описать в терминах потенциалов, в которых
 	распространяются нейтрино. Учитывая данные обстоятельства, было выведено
 	уравнение для амплитуд массовых состояний:
+	\onslide<3->%
 	\begin{equation}\label{eq:2}
-		\imath\frac{\dd\psi}{\dd\xi}=[H_{0}+\nu(\xi)W], 
+		\imath\frac{\dd\psi}{\dd\xi}=[H_{0}+\nu(\xi)W]\psi, 
 		\qquad
 		 W=
 		\begin{pmatrix}
@@ -174,17 +155,32 @@
 
 \begin{frame}
 	\frametitle{Генерирование и обработка данных}%
-	Задача состоит в том, чтобы решить числено уравнение нейтринных осцилляции варьируя 
-	значения углов смешивания, затем провести анализ полученных данных, и сделать вывод 
-	о характере зависимости вероятности выживания электронного нейтрино от этих самых 
-	углов.
-	
-	Для решения задачи был использован алгоритм M4, а также для автоматизации процесса 
-	генерации и обработки данных были написаны сценарии в bash-оболочке.
+	Нас интересует
+	\begin{itemize}
+		\item<2-> Характер зависимости вероятности выживания электронного нейтрино от 
+		углов смешивания
+	\end{itemize}
+	\onslide<3->%
+	Для этого мы
+	\begin{itemize}
+		\item<4-> Интегрируем уравнение нейтринных осцилляций варьируя отдельно значения 
+		каждого угла, используя алгоритм М4 и сценарий bash-оболочки.
+		\item<5-> Обрабатываем полученные данные, используя сценарий bash-оболочки.
+	\end{itemize}
+	\onslide<6->%
+	Современные значения углов смешивания
+	\begin{align*}
+		\sin^{2}{\theta_{12}}=0,307_{-0,012}^{+0,013}\\
+		\sin^{2}{\theta_{23}}=0,417_{-0,028}^{+0,025}\\
+		\sin^{2}{\theta_{13}}=0,0212\pm 0,0008
+	\end{align*}
+  \onslide<7->%
+  В сценариях для генерации и обработки данных в основу легли следующие формулы
+  \begin{align*}
+  		\sin{\theta_{f}}=f\cdot\sin{\theta}\\
+  		\eta_{f}=\frac{\Prob_{f}-\Prob_{0}}{\Prob_{0}}
+  \end{align*}
   
-  Начальное значение каждого угла смешивания принимаем за точку отсчёта и
-  отклоняемся от неё на \(10\%\) в обе стороны. Решаем уравнение для каждого
-  значения, затем обрабатываем их и строим графики.
 \end{frame}
 
 \begin{frame}
@@ -222,7 +218,7 @@
   \item<1-> Провести анализ для других типов нейтрино.
   \item<2-> Провести анализ с вариацией параметров профиля плотности.
   \item<3-> Рассмотреть случай прохождения нейтрино сквозь вещество. 
-  \item<3-> Разработать формулы для анализа корреляций в вариациях.
+  \item<4-> Разработать формулы для анализа корреляций в вариациях.
 	\end{itemize}
 \end{frame}
 
@@ -239,6 +235,21 @@
     \nu_{l}(\overline{\nu}_{l})+N\xrightarrow[\text{CC}]{}l^{-}(l^{+})+\text{адроны}\\[2ex]
     \nu_{l}(\overline{\nu}_{l})+N\xrightarrow[\text{NC}]{}\nu_{l}(\overline{\nu}_{l})+\text{адроны}.
   \end{align*}
+  	Вероятность перехода флейвора нейтрино от \(\alpha\) к \(\beta\) запишется
+  \begin{equation}
+  	P_{\alpha \beta}=|\psi_{\beta}(r)|^{2}
+  \end{equation}
+  \onslide<2->%
+  Амплитуда вероятности обнаружения состояния флейвора частицы \(\nu_{j}\) запишется
+  \begin{equation}
+  	\psi_{\beta}(r)=\sum_{j=1}^{3}U_{\beta j}A_{j}\exp^{-\imath E_{j}L}, \qquad L=r-r_{*}
+  \end{equation}
+    \onslide<2->%
+  Состояние системы \(|\psi(t)\rangle\) во время \(t \geqslant t_{0}\) может быть выражено как
+  \begin{equation}
+  	|\psi(t)\rangle=\sum_{\beta}\psi_{\beta}(t)|\nu_{\beta}\rangle
+  \end{equation}
+  с условием \(\psi_{\beta}(t_{0})=\delta_{\alpha \beta}\).
 \end{frame}
 
 \end{document}
