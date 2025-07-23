@@ -1,0 +1,32 @@
+\section{Приложение}
+\newpage
+\subsection{Численное интегрирование по методу Магнуса}
+
+Для численного интегрирования по методу Магнуса использовался
+код\footnote{Использовалась версия с номером коммита
+	\texttt{d3f0634b63a848aa36b4854464ae083c0f97dfcf}.} из проекта magexp
+(\url{https://git.sr.ht/~vp1981/magexp}). Программа
+запускалась как
+\begin{minted}[fontsize=\footnotesize]{bash}
+	(\
+	export LC_NUMERIC=en_US.UTF-8; \
+	for b in $(seq 0.101 1e-3 1); \
+	do \
+	./m4-tol -c "b=${b}" >> data_10.dat;\
+	done\
+	)
+	sed -i '/^#/d' data_10.dat
+\end{minted}
+с конфигурацией
+\begin{minted}[linenos,fontsize=\footnotesize]{lua}
+	tol = 1e-3
+	model = "sun"
+	E = 1e0
+	a = 0.1
+	b = 1.0
+	s12 = math.sqrt(0.308)
+	c12 = math.sqrt(1 - s12*s12)
+	s13 = math.sqrt(0.0234)
+	c13 = math.sqrt(1 - s13*s13)
+	psi0 = { {c12*c13,0}, {s12*c13,0}, {s13,0} }
+\end{minted}
