@@ -1,4 +1,5 @@
-% !TeX TXS-program:compile = txs:///compile -shell-escape
+% !TeX document-id = {166191eb-9f9f-48ce-8ee9-140cb64c9ed5}
+% !TeX TXS-program:compile = txs:///latexmk -shell-escape
 
 \documentclass[a4paper,12pt,fleqn]{article}
 
@@ -16,6 +17,7 @@
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
+\usepackage{minted}
 
 \usepackage[bibstyle=gost-numeric,citestyle=numeric-comp]{biblatex}
 
@@ -165,6 +167,9 @@
 \input{sec3.ltx}
 \input{sec4.ltx}
 \input{sec5.ltx}
+\newpage
+\appendix
+\input{sec6.ltx}
 \end{document}
 %%% Local Variables:
 %%% mode: LaTeX
