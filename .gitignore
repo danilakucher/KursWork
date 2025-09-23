@@ -3,3 +3,14 @@ report/*.pdf
 *.aux
 *.log
 *.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.pdf
+*.bbl
+*.blg
+*.bcf
+*.out
+*.run.xml
+*.toc
