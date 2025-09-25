@@ -16,6 +16,7 @@
 \usepackage{icomma}
 \usepackage{graphicx}
 \usepackage{setspace}
+\usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{minted}
@@ -108,71 +109,90 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \allowdisplaybreaks[4]
 \begin{document}
-	\onehalfspacing
-	\pagestyle{plain}
 
-	\begin{titlepage}
-		\begin{center}
-			{%
-				\scshape
-				Министерство высшего образования и науки Российской Федерации\\
-			}
-			федеральное государственное бюджетное образовательное \\
-			учреждение высшего образования \\
-			«Иркутский государственный университет»
-			(ФГБОУ ВО «ИГУ»)\\
-			Физический факультет
-		\end{center}
-		\vspace*{3em}
+\onehalfspacing
+\pagestyle{plain}
 
-		\begin{flushright}
-			\begin{minipage}{60mm}
-				Кафедра теоретической физики\\
-				И.о. зав. кафедрой\\
-				Доцент, к.ф.-м.н., \underline{\hspace{20mm}} Ловцов С.В.
-			\end{minipage}
-		\end{flushright}
-		\vspace*{4em}
+\begin{titlepage}
+  \begin{center} {%
+      \scshape
+      Министерство высшего образования и науки Российской Федерации\\
+    }
+    федеральное государственное бюджетное образовательное \\
+    учреждение высшего образования \\
+    «Иркутский государственный университет»
+    (ФГБОУ ВО «ИГУ»)\\
+    Физический факультет
+  \end{center}
+  \vspace*{3em}
 
-		\begin{center}
-			\large%
-			Курсовая работа\\[2ex]\
-			\Large\bfseries%
-			Зависимость вероятности выживания электронного нейтрино от углов смешивания
-		\end{center}
+  \begin{flushright}
+    \begin{minipage}{60mm}
+      Кафедра теоретической физики\\
+      И.о. зав. кафедрой\\
+      Доцент, к.ф.-м.н., \underline{\hspace{20mm}} Ловцов С.В.
+    \end{minipage}
+  \end{flushright}
+  \vspace*{4em}
 
-		\vspace*{3em}
+  \begin{center}
+    \large%
+    Курсовая работа\\[2ex]\ \Large\bfseries%
+    Зависимость вероятности выживания электронного нейтрино от углов смешивания
+  \end{center}
 
-		\begin{flushright}
-			\begin{minipage}{70mm}
-				Работы выполнил: \underline{\hspace{30mm}}
-				\\[2ex]
-				Руководитель: \underline{\hspace{30mm}}\\[2ex]
-				Нормоконтроль: \underline{\hspace{30mm}}
-			\end{minipage}
-		\end{flushright}
+  \vspace*{3em}
 
-		\vfill
-		\begin{center}
-			Иркутск 2025
-		\end{center}
-	\end{titlepage}
+  \begin{flushright}
+    \begin{minipage}{70mm}
+      Работы выполнил: \underline{\hspace{30mm}}
+      \\[2ex]
+      Руководитель: \underline{\hspace{30mm}}\\[2ex]
+      Нормоконтроль: \underline{\hspace{30mm}}
+    \end{minipage}
+  \end{flushright}
 
-	\setcounter{page}{2}
+  \vfill
+  \begin{center}
+    Иркутск 2025
+  \end{center}
+\end{titlepage}
 
-	\thispagestyle{empty}
-	\tableofcontents
+\setcounter{page}{2}
 
+\thispagestyle{empty}
+\tableofcontents
+
+%
 \input{sec1.ltx}
+%
 \input{sec2.ltx}
+%
 \input{sec3.ltx}
+%
 \input{sec4.ltx}
+%
 \input{sec5.ltx}
+
 \newpage
+
+\printbibliography
+
+\newpage
+
 \appendix
 \input{sec6.ltx}
+
+\newpage
+\input{sec7.ltx}
+
+\newpage
+\input{sec8.ltx}
+
 \end{document}
+
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-master: t
+%%% TeX-command-extra-options: "-shell-escape"
 %%% End:
