@@ -24,22 +24,25 @@
 
 \inputminted[linenos,breaklines,fontsize=\footnotesize]{bash}{../run-ang_sun-in.sh}
 
-\texttt{TODO}: вставить путь к реально испольхованным файлам lua.
 
 Управляющие файлы для программы счёта:
 \begin{itemize}
 \item модель
-  \inputminted[linenos,breaklines,fontsize=\footnotesize]{bash}{../run-ang_sun-in.sh}
+  \inputminted[linenos,breaklines,fontsize=\footnotesize]{lua}{../magexp/bin/sun.lua}
 \item вычисление вероятности выживания
-  \inputminted[linenos,breaklines,fontsize=\footnotesize]{bash}{../run-ang_sun-in.sh}
+  \inputminted[linenos,breaklines,fontsize=\footnotesize]{lua}{../magexp/bin/survprob.lua}
   Эту настройку нужно подключать последней, т.к. расчёт вероятности зависит от
-  углов смешивания, которые задаются рвнее в командной строке.
+  углов смешивания, которые задаются ранее в командной строке.
 \end{itemize}
 
 \textattachfile{../run-ang_sun-in.sh}{Код сценария в виде файла (только для
   электронной версии документа).}
 
-TODO: вставить код для внедрения кода lua.
+\textattachfile{../magexp/bin/sun.lua}{Код управляющий моделью в виде файла
+(только для электронной версии документа).}
+
+\textattachfile{../magexp/bin/survprob.lua}{Код управляющий вероятностью в виде
+файла (только для электронной версии документа).}
 
 %%% Local Variables:
 %%% mode: LaTeX
