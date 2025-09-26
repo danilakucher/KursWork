@@ -14,3 +14,8 @@ report/*.pdf
 *.out
 *.run.xml
 *.toc
+auto/
+_minted/
+*.atfi
+*.rej
+*.orig
