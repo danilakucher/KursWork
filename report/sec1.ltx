@@ -59,8 +59,26 @@
 		s_{23}s_{12}-s_{13}c_{12}c_{23}\exp^{\imath\delta_{CP}}&-s_{23}c_{12}-s_{13}c_{23}s_{12}\exp^{\imath\delta_{CP}}&c_{13}c_{23}
 	\end{pmatrix},
 \end{equation}
-в дальнейшем будем полагать. что \(\delta_{CP}=0\).
+в дальнейшем будем полагать, что \(\delta_{CP}=0\).
 
+Далее, для определения вероятности выживания понадобится также выражение для 
+амплитуд массивных состояний выраженных через флейворные состояния. Для 
+PMNS-матрицы справедливо в следствии унитарности следующее соотношение
+\begin{equation}\label{eq:12}
+	(UU^{\dagger})_{\alpha\beta}=\sum_{i}U_{\alpha i}U_{\beta i}^{*}=\delta_{\alpha\beta}.
+\end{equation}
+Теперь в выражении \eqref{eq:3} умножаем обе части слева на \(U_{\alpha j}\) и суммируем по 
+\(\alpha\)
+\begin{equation}
+	\sum_{\alpha}U_{\alpha j}|\nu_{\alpha}\rangle=\sum_{\alpha}\sum_{i}U_{\alpha j}U_{\alpha 
+	i}^{*}|\nu_{i}\rangle,
+\end{equation}
+справа меняем порядок суммирования, сумма по \(\alpha\) справа по формуле \eqref{eq:12} 
+дает \(\delta_{ij}\), которая снимает сумму по \(i\). Это приводит к выражению
+\begin{equation}
+	|\nu_{j}\rangle=\sum_{\alpha}U_{\alpha 
+	j}|\nu_{\alpha}\rangle=\sum_{\alpha}(U^{\trp})_{j\alpha}|\nu_{\alpha}\rangle.
+\end{equation} 
 В предположении, что в момент \(t=0\), нейтрино имело флэйвор \(\alpha\),
 учитывая \eqref{eq:4} и \eqref{eq:3}, находим эволюцию флэйвора во времени
 \begin{equation}
