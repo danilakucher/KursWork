@@ -5,11 +5,21 @@
 языке программирования python. В коде использовались пакеты numpy и matplotlib,
 сам код представлен ниже.
 
+При обработке запуске сценария нужно перейти в каталог с сохранёнными данными и
+запустить сценарий как
+\begin{minted}{bash}
+  ./PATH/TO/THE/SCRIPT/plot-varang-flat.py *.dat
+\end{minted}
+Предполагается, что все входные данные имеют одинаковый формат:
+\begin{verbatim}
+END ENERGY PROBABILITY MIXING_ANGLE FACTOR
+\end{verbatim}
+Необходимыми являются второй, третий и пятый столбцы.
+
 \inputminted[linenos,breaklines,fontsize=\footnotesize]{python}{../magexp/playground/plot/plot-varang-flat.py}
 
 \textattachfile{../magexp/playground/plot/plot-varang-flat.py}{Код сценария в
-виде файла (только для
-  электронной версии документа).}
+  виде файла (только для электронной версии документа).}
 
 %%% Local Variables:
 %%% mode: LaTeX

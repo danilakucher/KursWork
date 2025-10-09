@@ -51,61 +51,61 @@
 \titlespacing{\section}{\parindent}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 \fancypagestyle{plain}{%
-	\fancyhf{}%
-	\fancyfoot[R]{\thepage}%
-	\renewcommand{\headrulewidth}{0pt}%
-	\renewcommand{\footrulewidth}{0pt}%
+  \fancyhf{}%
+  \fancyfoot[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\makeatletter
+\makeatletter%
 \def\@sect[#1]#2{%
-	\refstepcounter{app@section}
-	\setcounter{equation}{0}
-	\addcontentsline{toc}{section}{Приложение~\theapp@section}
-	{%
-		{
-			\raggedleft%
-			\normalfont%
-			Приложение~\theapp@section\par%
-		}%
-		\Large\bfseries%
-		#2%
-		\par%
-	}
-	\vskip 3ex
+  \refstepcounter{app@section}%
+  \setcounter{equation}{0}%
+  \addcontentsline{toc}{section}{Приложение~\theapp@section}
+  {%
+    {
+      \raggedleft%
+      \normalfont%
+      Приложение~\theapp@section\par%
+    }%
+    \Large\bfseries%
+    #2%
+    \par%
+  }
+  \vskip 3ex
 }
 % This is supposed to be "starred" version, but it doesn't have sense in the
 % appendix, so we simply repeat above definition.
 \def\@ssect#1{%
-	\refstepcounter{app@section}
-	\addcontentsline{toc}{section}{Приложение~\theapp@section}%
-	{%
-		{%
-			\raggedleft%
-			\normalfont%
-			Приложение~\theapp@section\par%
-		}%
-		\Large\bfseries%
-		#1%
-		\par%
-	}%
-	\vskip 3ex
+  \refstepcounter{app@section}%
+  \addcontentsline{toc}{section}{Приложение~\theapp@section}%
+  {%
+    {%
+      \raggedleft%
+      \normalfont%
+      Приложение~\theapp@section\par%
+    }%
+    \Large\bfseries%
+    #1%
+    \par%
+  }%
+  \vskip 3ex
 }
 
 \renewcommand\appendix{%
-	\newpage%
-	\newcounter{app@section}
-	\setcounter{app@section}{0}
-	%\setcounter{equation}{0}%
-	\renewcommand\theapp@section{\Asbuk{app@section}}
-	\renewcommand\theequation{\theapp@section\arabic{equation}}
-	%%% We need to redefine \section command here...
-	%%% NB: this is messy, VERY messy (see GOST for autoreferat!)
-	\renewcommand{\section}{%
-		\secdef\@sect\@ssect
-	}
+  \newpage%
+  \newcounter{app@section}
+  \setcounter{app@section}{0}
+  %\setcounter{equation}{0}%
+  \renewcommand\theapp@section{\Asbuk{app@section}}
+  \renewcommand\theequation{\theapp@section\arabic{equation}}
+  %%% We need to redefine \section command here...
+  %%% NB: this is messy, VERY messy (see GOST for autoreferat!)
+  \renewcommand{\section}{%
+    \secdef\@sect\@ssect
+  }
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,7 +116,8 @@
 \pagestyle{plain}
 
 \begin{titlepage}
-  \begin{center} {%
+  \begin{center}%
+    {%
       \scshape
       Министерство высшего образования и науки Российской Федерации\\
     }
@@ -168,6 +169,7 @@
 %
 \input{intro.ltx}
 %
+\newpage
 \input{sec1.ltx}
 %
 \input{sec2.ltx}
