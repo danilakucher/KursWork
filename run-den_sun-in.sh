@@ -2,7 +2,6 @@
 
 export LC_NUMERIC=en_US.UTF-8
 
-fk=(0.9 0.95 1.0 1.05 1.1)
 fa=0.9
 fb=1.1
 
@@ -12,7 +11,8 @@ datadir="$PWD/data"
 bindir="$PWD/magexp/bin"
 prog=m4-tol
 model_data=${model}.lua
-probablt=prob-e-mu.lua
+# probablt=prob-e-mu.lua
+probablt=survprob.lua
 
 mod="in"
 par="par1"
@@ -36,17 +36,23 @@ if [ ! -e "${bindir}/${prog}" ]; then
   exit 5
 fi
 
-[[ ! -e "${bindir}/${prob_file}" ]] &&
+[[ ! -e "${bindir}/${model_data}" ]] &&
 {
-  echo "ОШИБКА: программе '${prog} нужны данные модели, которые хранятся в файле '${prob_file}'"
+  echo "ОШИБКА: программе '${prog} нужны данные модели, которые хранятся в файле '${model_data}'"
+  exit 6
+}
+
+[[ ! -e "${bindir}/${probablt}" ]] &&
+{
+  echo "ОШИБКА: программе '${prog} нужны данные по вероятности, которые хранятся в файле '${probablt}'"
   exit 7
 }
 
 (( $# != 3 )) && 
 {
-  echo "ОШИБКА: сценарий требует 3 аргумента: маркер угла, количество шагов по энергии, количество шагов фактора угла"
+  echo "ОШИБКА: сценарий требует 3 аргумента: маркер параметра, количество шагов по энергии, количество шагов параметра"
   echo "Пример: "
-  echo "  $0 s12|s13 50 5"
+  echo "  $0 A|eta 50 5"
   exit 2
 }
 
@@ -68,7 +74,7 @@ Nf="$3"
 
 (( Nf/2 != (Nf-1)/2 )) &&
 {
-  echo "ОШИБКА: количество шагов для фактора угла должно быть нечетным, Nf=${Nf}"
+  echo "ОШИБКА: количество шагов для параметра профиля должно быть нечетным, Nf=${Nf}"
   exit 4
 }
 
@@ -86,10 +92,10 @@ do
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=${Ep1};Ep2=${Ep2};d=(Ep2-Ep1)/(${N}-1);E=math.exp((${Ep1}+${i}*d)*math.log(10));${par1}=${ex}*${par1}" ${probablt} > "${fdata}"
+    ./${prog} ${model_data} -c "Ep1=${Ep1};Ep2=${Ep2};d=(Ep2-Ep1)/(${N}-1);E=math.exp((${Ep1}+${i}*d)*math.log(10));${par}=${ex}*${par}" ${probablt} > "${fdata}"
     dat=($(grep -v '^#' "${fdata}"))
-    ang=$(grep "#*ex.*${mang}" "${fdata}" | sed -e 's@.*=@@')
-    echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
+    pr=$(echo "$(grep "${par}\s*=" sun.lua); ${par}=0.9*${par}; print(${par})" | lua)
+    echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${pr} ${ex}" >> "${datf}"
   done
   ((cnt++))
 done
