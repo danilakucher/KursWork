@@ -86,7 +86,7 @@ do
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=${Ep1};Ep2=${Ep2};d=(Ep2-Ep1)/(${N}-1);E=math.exp((${Ep1}+${i}*d)*math.log(10));${mang}=${ex}*${mang}" ${probablt} > "${fdata}"
+    ./${prog} ${model_data} -c "Ep1=${Ep1};Ep2=${Ep2};d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((${Ep1}+${i}*d)*math.log(10));${mang}=${ex}*${mang}" ${probablt} > "${fdata}"
     dat=($(grep -v '^#' "${fdata}"))
     ang=$(grep "#*ex.*${mang}" "${fdata}" | sed -e 's@.*=@@')
     echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
