@@ -19,7 +19,6 @@ par="par1"
 
 Ep1=-3
 Ep2=7
-N=50
 
 if [ ! -d "${datadir}" ]; then
   mkdir "${datadir}"
@@ -62,6 +61,8 @@ case $1 in
     ;;
   "eta")
     par="par2"
+    fa=0.95
+    fb=1.05
     ;;
   *)
     echo "ОШИБКА: нераспознанный маркер: $1"
@@ -70,15 +71,17 @@ case $1 in
 esac
 
 Ne="$2"
-Nf="$3"
+Np="$3"
 
-(( Nf/2 != (Nf-1)/2 )) &&
+(( Np/2 != (Np-1)/2 )) &&
 {
-  echo "ОШИБКА: количество шагов для параметра профиля должно быть нечетным, Nf=${Nf}"
+  echo "ОШИБКА: количество шагов для параметра профиля должно быть нечетным, Np=${Np}"
   exit 4
 }
 
-tdir=${datadir}/${model}_${mod}_${par}/"NexNf=${Ne}x${Nf}"
+E1="$(echo "E1=math.exp(${Ep1}*math.log(10)); print(string.format('%3.2e',E1))" | lua)"
+E2="$(echo "E1=math.exp(${Ep2}*math.log(10)); print(string.format('%3.2e',E1))" | lua)"
+tdir=${datadir}/${model}_${mod}_${par}/"NexNp=${Ne}x${Np}/E${E1}_${E2}"
 mkdir -p "${tdir}"
 
 # (fa=0.9; fb=1.1; Nf=191; python -c "import numpy; [print(el) for el in numpy.linspace(${fa}, ${fb}, ${Nf})]")
@@ -86,7 +89,7 @@ mkdir -p "${tdir}"
 
 cd "${bindir}"
 cnt=0
-for ex in $(seq ${fa} $(echo "scale=20 ; fa=${fa} ; fb=${fb} ; nf=${Nf} ; print((fb-fa)/(nf-1))" | bc) ${fb})
+for ex in $(seq ${fa} $(echo "scale=20 ; fa=${fa} ; fb=${fb} ; nf=${Np} ; print((fb-fa)/(nf-1))" | bc) ${fb})
 do
   printf -v datf "%s/${model}_${mod}_${par}_id%03d.dat" "${tdir}" ${cnt}
   echo -n "" > "${datf}"
