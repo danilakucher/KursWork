@@ -35,6 +35,7 @@ E1="1.00e-3"
 E2="1.00e7"
 fa=0.9
 fb=1.1
+xtheta=0.5
 
 [[ -n $1 ]] &&
 {
@@ -50,7 +51,7 @@ datadir="$PWD/data"
 bindir="$PWD/magexp/bin"
 prog=m4-tol
 prb=${Pr["${prob}"]}
-model_data=${model}.lua
+model_data=${model}-${born}.lua
 Ne="${NEparts}"
 Nf="${Nfparts}"
 
@@ -114,6 +115,7 @@ E1="${E1}"
 E2="${E2}"
 fa=${fa}
 fb=${fb}
+xtheta=${xtheta}
 # ######################################################################################################################
 # internal parameters:
 prb="${prb}"
@@ -127,13 +129,15 @@ EOC
 cat >> "${tdir}/${runConf}" << 'EOR'
 # RUN:
 cnt=0
+angFrac=""
+[[ ${born} == "out" ]] && angFrac="_${xtheta}"
 for ex in $(seq ${fa} "$(echo "scale=20 ; fa=${fa} ; fb=${fb} ; nf=${Nf} ; print((fb-fa)/(nf-1))" | bc)" ${fb})
 do
-  printf -v datf "%s/${model}_${born}_${mixAng}_id%03d.dat" "${tdir}" ${cnt}
+  printf -v datf "%s/${model}_${born}${angFrac}_${mixAng}_id%03d.dat" "${tdir}" ${cnt}
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng}" "${prb}" > "${fdata}"
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng};xtheta=${xtheta}" "${prb}" > "${fdata}"
     # dat=($(grep -v '^#' "${fdata}"))
     IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
     ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
@@ -145,13 +149,15 @@ done
 EOR
 
 cnt=0
+angFrac=""
+[[ ${born} == "out" ]] && angFrac="_${xtheta}"
 for ex in $(seq ${fa} "$(echo "scale=20 ; fa=${fa} ; fb=${fb} ; nf=${Nf} ; print((fb-fa)/(nf-1))" | bc)" ${fb})
 do
-  printf -v datf "%s/${model}_${born}_${mixAng}_id%03d.dat" "${tdir}" ${cnt}
+  printf -v datf "%s/${model}_${born}${angFrac}_${mixAng}_id%03d.dat" "${tdir}" ${cnt}
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng}" "${prb}" > "${fdata}"
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng};xtheta=${xtheta}" "${prb}" > "${fdata}"
     # dat=($(grep -v '^#' "${fdata}"))
     IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
     ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
