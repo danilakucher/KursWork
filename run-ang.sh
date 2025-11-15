@@ -13,6 +13,7 @@
 # - mixAng :: mixing angle: s12|s13|s23
 # - fa, fb :: the variation factors, fraction from orinigal, eg 0.9 and 1.1 (default).
 
+# REQ: seq to get '.' as fractional part separator.
 export LC_NUMERIC=en_US.UTF-8
 
 declare -A Pr
@@ -137,7 +138,10 @@ do
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng};xtheta=${xtheta}" "${prb}" > "${fdata}"
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng};xtheta=${xtheta}" "${prb}" > "${fdata}" || {
+      echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${runConf}'"
+      exit 11
+    }
     # dat=($(grep -v '^#' "${fdata}"))
     IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
     ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
@@ -157,7 +161,10 @@ do
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng};xtheta=${xtheta}" "${prb}" > "${fdata}"
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng};xtheta=${xtheta}" "${prb}" > "${fdata}" || {
+      echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${runConf}'"
+      exit 11
+    }
     # dat=($(grep -v '^#' "${fdata}"))
     IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
     ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
