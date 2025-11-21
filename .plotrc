@@ -1,0 +1,26 @@
+alias ls='ls --color=auto'
+
+command -v dircolors > /dev/null && eval $(dircolors -b)
+
+# 24-bit colors
+FG="38;2;"
+BG="48;2;"
+# 256 colors
+FC1="226"
+# FC2="159"
+FC3="82"
+BC1="20"
+FG="38;5;"
+BG="48;5;"
+
+PS1='[PLOT ENV :: \[\e[${FG}${FC1}m\]\u@\h:\[\e[0m\] \[\e[${BG}${BC1}m\e[${FG}${FC3}m\]\w\[\e[0m\]] \[\e[${FG}${FC1}m\]\$\[\e[0m\] '
+
+shopt -s histappend autocd cdspell checkhash dirspell histreedit lithist checkwinsize extglob progcomp_alias
+
+export EDITOR=vim
+
+# aliases...
+alias ll='ls -lA'
+alias ee='eza --icons=always -g -lA'
+alias e='eza -Gl --icons=always'
+# vim: syn=bash tw=120 ts=2 sw=2 et

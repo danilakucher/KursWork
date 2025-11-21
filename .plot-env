@@ -1,0 +1,14 @@
+# NB: run it in TOP level directory
+# NB: it will spawn new shell, after work just exit session (exit, ^D, ctrl-d).
+
+[[ ! -e .plotrc ]] &&
+{
+  echo "We need '.plotrc' file!"
+  exit 1
+}
+
+export PATH=${PWD}/magexp/playground/plot:$PATH
+echo "Entering session with updated PATH... (to exit, run 'exit' or press ctrl-d)"
+/usr/bin/bash --rcfile .plotrc -i
+
+# vim: syn=sh tw=80 ts=2 sw=2 et
