@@ -101,12 +101,6 @@ cd "${bindir}" ||
   exit 5
 }
 
-[[ -e ${frun} ]] &&
-{
-  echo "ОШИБКА: сценарий уже запущен!"
-  exit 6
-}
-
 if ! command -v b3sum >/dev/null 2>&1; then
   echo "ОШИБКА: для работы сценария нужно программа b3sum!"
   exit 7
@@ -123,7 +117,7 @@ fi
 mkdir -p "${tdir}"
 
 # write run job file.
-cat > "${tdir}/${instance}.run" << EOC
+cat > "/tmp/${instance}.run" << EOC
 # ######################################################################################################################
 # configurable parameters:
 model="${model}"
@@ -139,12 +133,19 @@ fb=${fb}
 xtheta=${xtheta}
 EOC
 
-IF=' ' read -ra hs <<< "$(b3sum "${tdir}/${instance}.run")"
+IFS=' ' read -ra hs <<< "$(b3sum "/tmp/${instance}.run")"
 frun="/tmp/${hs[0]}"
+
+[[ -e ${frun} ]] &&
+{
+  echo "ОШИБКА: сценарий уже запущен!"
+  exit 6
+}
 
 # ### About a bit weird '/../../' part below. The code above cd'ed into bindir, so when the script is run, the PWD =
 # ### bindir. The code below assumes that bindir is strictly inside 'magexp' and it is only one level deeper.
-cat >> "${tdir}/${instance}.run" <<EOC
+cat >> "/tmp/${instance}.run" <<EOC
+# INSTANCE: ${instance}
 # ######################################################################################################################
 # internal parameters:
 prog="${prog}"
@@ -154,19 +155,20 @@ datadir="\${PWD}/../../data"
 Ne="${NEparts}"
 Nf="${Nfparts}"
 instance="${instance}"
+hash="${hs[0]}"
 fdata="/tmp/data-${hs[0]}.tmp"
 frun="${frun}"
 tdir="\${datadir}/${model}_${born}_${mixAng}/NexNf=${Ne}x${Nf}/E${E1}_${E2}/${prob}"
 EOC
 
-cat >> "${tdir}/${instance}.run" << 'EOR'
+cat >> "/tmp/${instance}.run" << 'EOR'
 # ######################################################################################################################
 # RUN:
 cnt=0
 
 [[ -e ${frun} ]] &&
 {
-  echo "ОШИБКА: возможно сценарий уже запущен с заданными параметрами (см. '${tdir}/instance-*.run'), т.к. есть файл контроля запуска: '${frun}'"
+  echo "ОШИБКА: возможно сценарий уже запущен с заданными параметрами (см. '${tdir}/HASH.run'), т.к. есть файл контроля запуска: '${frun}'"
   exit 11
 }
 
@@ -199,10 +201,11 @@ do
 done
 rm "${fdata}"
 rm "${frun}"
-# vim: syn=sh tw=120 ts=2 et 
+# vim: syn=sh tw=120 ts=2 et
 EOR
 
-chmod +x "${tdir}/${instance}.run"
-"${tdir}/${instance}.run"
+chmod +x "/tmp/${instance}.run"
+mv "/tmp/${instance}.run" "${tdir}/${hs[0]}.run"
+"${tdir}/${hs[0]}.run"
 
 # vim: ts=2 et tw=120
