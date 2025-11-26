@@ -10,7 +10,7 @@
 # - Nfparts :: number of factor parts, must be ODD number!
 # - E1,E2 :: low and high energy: in MeV, use scientific format, eg 1.03e4
 # - born :: where be born: in|out
-# - mixAng :: mixing angle: s12|s13|s23
+# - par :: density profile parameters: par1|par2
 # - fa, fb :: the variation factors, fraction from orinigal, eg 0.9 and 1.1 (default).
 
 declare -A Pr
@@ -193,7 +193,6 @@ do
     }
     # dat=($(grep -v '^#' "${fdata}"))
     IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
-    par=$(grep "#*ex.*${par}" "${fdata}" | sed -e 's@.*=@@')
     echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
   done
   ((cnt++))
