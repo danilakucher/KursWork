@@ -28,7 +28,7 @@ prob="e-mu"
 NEparts=101
 Nfparts=101
 born="in"
-mixAng="s12"
+par="par1"
 E1="1.00e-3"
 E2="1.00e7"
 fa=0.9
@@ -60,7 +60,7 @@ Nf="${Nfparts}"
 }
 
 instance="instance-$(date +'%Y-%m-%dT%H:%M:%S%z')"
-tdir="${datadir}/${model}_${born}_${mixAng}/NexNf=${Ne}x${Nf}/E${E1}_${E2}/${prob}"
+tdir="${datadir}/${model}_${born}_${par}/NexNf=${Ne}x${Nf}/E${E1}_${E2}/${prob}"
 
 if [ ! -d "${datadir}" ]; then
   mkdir "${datadir}"
@@ -91,7 +91,7 @@ fi
 
 (( Nf/2 != (Nf-1)/2 )) &&
 {
-  echo "ОШИБКА: количество шагов для фактора угла должно быть нечетным, Nf=${Nf}"
+  echo "ОШИБКА: количество шагов для параметра профиля плотности должно быть нечетным, Nf=${Nf}"
   exit 4
 }
 
@@ -122,7 +122,7 @@ cat > "/tmp/${instance}.run" << EOC
 # configurable parameters:
 model="${model}"
 born="${born}"
-mixAng="${mixAng}"
+par="${par}"
 prob="${prob}"
 NEparts=${NEparts}
 Nfparts=${Nfparts}
@@ -158,7 +158,7 @@ instance="${instance}"
 hash="${hs[0]}"
 fdata="/tmp/data-${hs[0]}.tmp"
 frun="${frun}"
-tdir="\${datadir}/${model}_${born}_${mixAng}/NexNf=${Ne}x${Nf}/E${E1}_${E2}/${prob}"
+tdir="\${datadir}/${model}_${born}_${par}/NexNf=${Ne}x${Nf}/E${E1}_${E2}/${prob}"
 EOC
 
 cat >> "/tmp/${instance}.run" << 'EOR'
@@ -183,17 +183,17 @@ echo "${cnt}" > "${frun}"
 
 for ex in $(seq ${fa} "$(echo "scale=20 ; fa=${fa} ; fb=${fb} ; nf=${Nf} ; print((fb-fa)/(nf-1))" | bc)" ${fb})
 do
-  printf -v datf "%s/${model}_${born}_${mixAng}_id%03d.dat" "${tdir}" ${cnt}
+  printf -v datf "%s/${model}_${born}_${par}_id%03d.dat" "${tdir}" ${cnt}
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng};xtheta=${xtheta}" "${prb}" > "${fdata}" || {
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${par}=${ex}*${par};xtheta=${xtheta}" "${prb}" > "${fdata}" || {
       echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
       exit 12
     }
     # dat=($(grep -v '^#' "${fdata}"))
     IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
-    ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
+    par=$(grep "#*ex.*${par}" "${fdata}" | sed -e 's@.*=@@')
     echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
   done
   ((cnt++))
