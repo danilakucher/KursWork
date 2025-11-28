@@ -192,8 +192,9 @@ do
       exit 12
     }
     # dat=($(grep -v '^#' "${fdata}"))
-    IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
-    echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
+    IFS=' 	' read -r -a dat <<< "$(grep -v '^#' ${fdata})"
+    pr=$(echo "$(grep "${par}\s*=" sun.lua); ${par}=${ex}*${par}; print(${par})" | lua)
+    echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${pr} ${ex}" >> "${datf}"
   done
   ((cnt++))
   echo "${cnt}" > "${frun}"
