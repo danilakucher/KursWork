@@ -191,8 +191,7 @@ do
       echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
       exit 12
     }
-    # dat=($(grep -v '^#' "${fdata}"))
-    IFS=' 	' read -r -a dat <<< "$(grep -v '^#' ${fdata})"
+    read -r -a dat <<< "$(grep -v '^#' ${fdata})"
     pr=$(echo "$(grep "${par}\s*=" sun.lua); ${par}=${ex}*${par}; print(${par})" | lua)
     echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${pr} ${ex}" >> "${datf}"
   done

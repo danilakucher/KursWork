@@ -191,8 +191,7 @@ do
       echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
       exit 12
     }
-    # dat=($(grep -v '^#' "${fdata}"))
-    IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
+    read -ra dat <<< "$(grep -v '^#' ${fdata})"
     ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
     echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
   done
