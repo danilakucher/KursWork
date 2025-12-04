@@ -11,6 +11,7 @@ E2="1.00e7"
 fa=0.9
 fb=1.1
 xtheta=0.5
+# INSTANCE: instance-2025-12-03T11:52:56+0800
 # ######################################################################################################################
 # internal parameters:
 prog="m4-tol"
@@ -19,7 +20,8 @@ model_data="sun-out.lua"
 datadir="${PWD}/../../data"
 Ne="501"
 Nf="201"
-instance="instance-2025-11-20T09:07:13+0800"
+instance="instance-2025-12-03T11:52:56+0800"
+hash="5da1942d561e3e4ebd8f9cd79e9e2d31138d9275ebe04b5d6e88e1bf21a75227"
 fdata="/tmp/data-5da1942d561e3e4ebd8f9cd79e9e2d31138d9275ebe04b5d6e88e1bf21a75227.tmp"
 frun="/tmp/5da1942d561e3e4ebd8f9cd79e9e2d31138d9275ebe04b5d6e88e1bf21a75227"
 tdir="${datadir}/sun_out_s12/NexNf=501x201/E1.00e-3_1.00e7/e-e"
@@ -29,7 +31,7 @@ cnt=0
 
 [[ -e ${frun} ]] &&
 {
-  echo "ОШИБКА: возможно сценарий уже запущен с заданными параметрами (см. '${tdir}/instance-*.run'), т.к. есть файл контроля запуска: '${frun}'"
+  echo "ОШИБКА: возможно сценарий уже запущен с заданными параметрами (см. '${tdir}/HASH.run'), т.к. есть файл контроля запуска: '${frun}'"
   exit 11
 }
 
@@ -52,8 +54,7 @@ do
       echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
       exit 12
     }
-    # dat=($(grep -v '^#' "${fdata}"))
-    IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
+    read -ra dat <<< "$(grep -v '^#' ${fdata})"
     ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
     echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
   done
@@ -62,4 +63,4 @@ do
 done
 rm "${fdata}"
 rm "${frun}"
-# vim: syn=sh tw=120 ts=2 et 
+# vim: syn=sh tw=120 ts=2 et
