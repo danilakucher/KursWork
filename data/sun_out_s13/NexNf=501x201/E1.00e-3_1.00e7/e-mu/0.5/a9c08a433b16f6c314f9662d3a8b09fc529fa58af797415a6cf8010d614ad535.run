@@ -3,7 +3,7 @@
 model="sun"
 born="out"
 mixAng="s13"
-prob="e-e"
+prob="e-mu"
 NEparts=501
 Nfparts=201
 E1="1.00e-3"
@@ -11,25 +11,27 @@ E2="1.00e7"
 fa=0.9
 fb=1.1
 xtheta=0.5
+# INSTANCE: instance-2025-12-03T17:50:16+0800
 # ######################################################################################################################
 # internal parameters:
 prog="m4-tol"
-prb="prob-e-e.lua"
+prb="prob-e-mu.lua"
 model_data="sun-out.lua"
 datadir="${PWD}/../../data"
 Ne="501"
 Nf="201"
-instance="instance-2025-11-18T10:42:55+0800"
-fdata="/tmp/data-e931d5e1038a579caa7feadb60aa1308747aebaff9aefc0bd3cd01c49577e8e1.tmp"
-frun="/tmp/e931d5e1038a579caa7feadb60aa1308747aebaff9aefc0bd3cd01c49577e8e1"
-tdir="${datadir}/sun_out_s13/NexNf=501x201/E1.00e-3_1.00e7/e-e"
+instance="instance-2025-12-03T17:50:16+0800"
+hash="a9c08a433b16f6c314f9662d3a8b09fc529fa58af797415a6cf8010d614ad535"
+fdata="/tmp/data-a9c08a433b16f6c314f9662d3a8b09fc529fa58af797415a6cf8010d614ad535.tmp"
+frun="/tmp/a9c08a433b16f6c314f9662d3a8b09fc529fa58af797415a6cf8010d614ad535"
+tdir="${datadir}/sun_out_s13/NexNf=501x201/E1.00e-3_1.00e7/e-mu"
 # ######################################################################################################################
 # RUN:
 cnt=0
 
 [[ -e ${frun} ]] &&
 {
-  echo "ОШИБКА: возможно сценарий уже запущен с заданными параметрами (см. '${tdir}/instance-*.run'), т.к. есть файл контроля запуска: '${frun}'"
+  echo "ОШИБКА: возможно сценарий уже запущен с заданными параметрами (см. '${tdir}/HASH.run'), т.к. есть файл контроля запуска: '${frun}'"
   exit 11
 }
 
@@ -52,8 +54,7 @@ do
       echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
       exit 12
     }
-    # dat=($(grep -v '^#' "${fdata}"))
-    IFS=' ' read -ra dat <<< "$(grep -v '^#' ${fdata})"
+    read -ra dat <<< "$(grep -v '^#' ${fdata})"
     ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
     echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
   done
@@ -62,4 +63,4 @@ do
 done
 rm "${fdata}"
 rm "${frun}"
-# vim: syn=sh tw=120 ts=2 et 
+# vim: syn=sh tw=120 ts=2 et
