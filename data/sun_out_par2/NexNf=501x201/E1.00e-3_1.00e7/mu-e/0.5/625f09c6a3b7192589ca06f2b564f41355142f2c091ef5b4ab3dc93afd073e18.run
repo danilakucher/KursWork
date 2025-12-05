@@ -1,0 +1,66 @@
+# ######################################################################################################################
+# configurable parameters:
+model="sun"
+born="out"
+par="par2"
+prob="mu-e"
+NEparts=501
+Nfparts=201
+E1="1.00e-3"
+E2="1.00e7"
+fa=0.9
+fb=1.1
+xtheta=0.5
+# INSTANCE: instance-2025-12-05T00:02:15+0800
+# ######################################################################################################################
+# internal parameters:
+prog="m4-tol"
+prb="prob-mu-e.lua"
+model_data="sun-out.lua"
+datadir="${PWD}/../../data"
+Ne="501"
+Nf="201"
+instance="instance-2025-12-05T00:02:15+0800"
+hash="625f09c6a3b7192589ca06f2b564f41355142f2c091ef5b4ab3dc93afd073e18"
+fdata="/tmp/data-625f09c6a3b7192589ca06f2b564f41355142f2c091ef5b4ab3dc93afd073e18.tmp"
+frun="/tmp/625f09c6a3b7192589ca06f2b564f41355142f2c091ef5b4ab3dc93afd073e18"
+tdir="${datadir}/sun_out_par2/NexNf=501x201/E1.00e-3_1.00e7/mu-e"
+# ######################################################################################################################
+# RUN:
+cnt=0
+
+[[ -e ${frun} ]] &&
+{
+  echo "ОШИБКА: возможно сценарий уже запущен с заданными параметрами (см. '${tdir}/HASH.run'), т.к. есть файл контроля запуска: '${frun}'"
+  exit 11
+}
+
+[[ ${born} == "out" ]] &&
+{
+  tdir="${tdir}/${xtheta}"
+}
+
+export LC_NUMERIC=en_US.UTF-8
+
+echo "${cnt}" > "${frun}"
+
+for ex in $(seq ${fa} "$(echo "scale=20 ; fa=${fa} ; fb=${fb} ; nf=${Nf} ; print((fb-fa)/(nf-1))" | bc)" ${fb})
+do
+  printf -v datf "%s/${model}_${born}_${par}_id%03d.dat" "${tdir}" ${cnt}
+  echo -n "" > "${datf}"
+  for i in $(seq 0 1 $((Ne-1)))
+  do
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${par}=${ex}*${par};xtheta=${xtheta}" "${prb}" > "${fdata}" || {
+      echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
+      exit 12
+    }
+    read -r -a dat <<< "$(grep -v '^#' ${fdata})"
+    pr=$(echo "$(grep "${par}\s*=" sun.lua); ${par}=${ex}*${par}; print(${par})" | lua)
+    echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${pr} ${ex}" >> "${datf}"
+  done
+  ((cnt++))
+  echo "${cnt}" > "${frun}"
+done
+rm "${fdata}"
+rm "${frun}"
+# vim: syn=sh tw=120 ts=2 et
