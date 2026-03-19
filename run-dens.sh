@@ -20,6 +20,8 @@ Pr=(
   ["e-mu"]="prob-e-mu.lua"
   ["mu-e"]="prob-mu-e.lua"
   ["mu-mu"]="prob-mu-mu.lua"
+  ["e-tau"]="prob-e-tau.lua"
+  ["mu-tau"]="prob-mu-tau.lua"
 )
 
 # configurable parameters:
