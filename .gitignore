@@ -19,3 +19,5 @@ _minted/
 *.atfi
 *.rej
 *.orig
+*.bcf-SAVE-ERROR
+*.bbl-SAVE-ERROR
