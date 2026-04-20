@@ -43,10 +43,10 @@
 
 \newcommand{\mintedlabel}[1]{\phantomsection\label{\detokenize{#1}}}
 
-% \DeclarePairedDelimeter\bra{\langle}{|}
-\DeclarePairedDelimiter\ket{|}{\rangle}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}
-\DeclarePairedDelimiterX\commut[2]{[}{]}{#1,#2}
+\DeclarePairedDelimiter{\bra}{\langle}{|}
+\DeclarePairedDelimiter{\ket}{|}{\rangle}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiterX{\commut}[2]{[}{]}{#1,#2}
 
 \titlespacing{\section}{\parindent}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
@@ -120,3 +120,7 @@
 
 	
 \end{document}
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
