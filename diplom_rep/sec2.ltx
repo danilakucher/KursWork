@@ -96,6 +96,7 @@
   замечания выше, равен \(\exp^{\imath E(t-L)}\).} представляется следующим
 соотношением
 \begin{equation}
+	\label{eq:5}
 	\ket{\nu_{i}(L)} = \exp^{-\imath \frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
 \end{equation}
 Это соотношение можно рассматривать как решение уравнения шрёдингеровского типа
@@ -107,7 +108,7 @@
   \begin{pmatrix}
     \ket{\nu_{1}(\xi)}\\
     \ket{\nu_{2}(\xi)}\\
-    \ket{\nu_{3}}(\xi)
+    \ket{\nu_{3}(\xi)}
   \end{pmatrix},
 \end{equation}
 где \(H_{\text{eff}}\) — эффективный гамильтониан
@@ -120,6 +121,189 @@
   M=\diag\!{(m_{1},m_{2},m_{3})}.
 \end{equation}
 
+Далее, для вычисления вероятности перехода нейтрино от одного флейвора к другому 
+нужно получившееся выражение для эволюции массивного состояния \eqref{eq:5} 
+переписать в флейворном представлении. Для этого воспользуемся выражением 
+\eqref{eq:1}. Тогда получим 
+\begin{equation}
+	\label{eq:7}
+	\ket{\nu_{\alpha}(L)}=\sum_{i}U^{*}_{\alpha i}\ket{\nu_{i}(L)}=\sum_{i}U^{*}_{\alpha 
+	i}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
+\end{equation} 
+
+Вычислять вероятность перехода будем через амплитуду перехода. Она определяется 
+следующим 
+образом
+\begin{equation}
+	A(\nu_{\alpha} \rightarrow \nu_{\beta})=\langle\nu_{\beta}\ket{\nu_{\alpha}(L)},
+\end{equation}
+в этом определении воспользуемся выражением \eqref{eq:7}, тогда
+\begin{equation}
+	A(\nu_{\alpha} \rightarrow \nu_{\beta})=\sum_{i}\bra{\nu_{\beta}}U_{\alpha 
+	i}^{*}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)},
+\end{equation} 
+теперь, если учесть, что \(m_{i}\) — собственное значение оператора массы,а \(\ket{\nu_{i}(0)}\) 
+— его собственный вектор, то в выражении вместо собственного значения можно написать 
+сам 
+оператор массы и пронести его через матричный элемент PMNS-матрицы так как это число, 
+тогда мы получим
+\begin{equation}
+	A(\nu_{\alpha} \rightarrow 
+	\nu_{\beta})=\bra{\nu_{\beta}}\exp^{-\imath\frac{M^{2}}{2E}L}\sum_{i}U_{\alpha 
+		i}^{*}\ket{\nu_{i}(0)}=\bra{\nu_{\beta}}\exp^{-\imath\frac{M^{2}}{2E}L}\ket{\nu_{\alpha}(0)},
+\end{equation}
+далее, между обкладками после оператора эволюции мы вставим единичную матрицу, а 
+затем используем соотношение полноты, которое формулируется так
+\begin{equation}
+	I=\sum_{i}\ket{\nu_{i}(0)}\bra{\nu_{i}(0)},
+\end{equation}
+тогда мы получим следующее выражение
+\begin{equation}
+		A(\nu_{\alpha} \rightarrow 
+	\nu_{\beta})=\sum_{i}\bra{\nu_{\beta}}\exp^{-\imath\frac{M^{2}}{2E}L}\ket{\nu_{i}(0)}
+	\langle\nu_{i}(0)\ket{\nu_{\alpha}(0)} 
+	=\sum_{i}\bra{\nu_{\beta}}\nu_{i}(L)\rangle\langle\nu_{i}(0)\ket{\nu_{\alpha}(0)}.
+\end{equation}
+Теперь осталось вычислить чему равны множители в определении амплитуды.
+Рассмотрим первый множитель. Сначала, распишем \(\bra{\nu_{\beta}}\) с помощью 
+соотношения \eqref{eq:1}, которое вдобавок ещё эрмитово сопрягли, затем по определению 
+\eqref{eq:5} перепишем \(\ket{\nu_{i}(L)}\), тогда получим
+\begin{equation}
+	\bra{\nu_{\beta}}\nu_{i}(L)\rangle=\sum_{k}\bra{\nu_{k}}U_{\beta 
+	k}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}
+	 \ket{\nu_{i}}=\sum_{k}U_{\beta 
+	 k}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}\bra{\nu_{k}}\nu_{i}\rangle=
+	 \sum_{k}U_{\beta k}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}\delta_{ik}=U_{\beta 
+	 i}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}.
+\end{equation}
+Перейдём ко второму множителю. Распишем \(\ket{\nu_{\alpha}}\) также через соотношение 
+\eqref{eq:1}, тогда получим
+\begin{equation}
+	\langle\nu_{i}(0)\ket{\nu_{\alpha}(0)}=\sum_{k}\bra{\nu_{i}}U^{*}_{\alpha k}\ket{\nu_{k}}=
+	\sum_{k}U^{*}_{\alpha k}\langle\nu_{i}\ket{\nu_{k}}=\sum_{k}U^{*}_{\alpha k}\delta_{ik}=
+	U^{*}_{\alpha i}.
+\end{equation}
+Теперь можно записать итоговое выражение для амплитуды
+\begin{equation}
+	\label{eq:8}
+		A(\nu_{\alpha} \rightarrow 
+	\nu_{\beta})=\sum_{i}U_{\beta i}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}U^{*}_{\alpha i}.
+\end{equation}
+
+По определению вероятность перехода выражается через амплитуду следующим 
+образом
+\begin{equation}
+	P(\nu_{\alpha} \rightarrow 
+	\nu_{\beta})=|A(\nu_{\alpha} \rightarrow 
+	\nu_{\beta})|^{2}.
+\end{equation} 
+Подставим в это определение соотношение для амплитуды \eqref{eq:8}, получим
+\begin{equation}
+	P(\nu_{\alpha} \rightarrow 
+	\nu_{\beta})=\sum_{ij}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+	j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}.
+\end{equation}
+Приведём полученное соотношение к более удобному виду. Во-первых, пусть 
+\(m_{i}^{2}-m_{j}^{2}=\Delta 
+m_{ij}^{2}\).
+Во-вторых, разделим сумму на три части
+\begin{multline}
+		P(\nu_{\alpha} \rightarrow 
+	\nu_{\beta})=\sum_{i=j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\\
+		+\sum_{i>j}U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L},
+\end{multline}
+рассмотрим каждую отдельно.
+Сначала, посмотрим на первую сумму (\(i=j\)), видно, что экспонента обращается в единицу, а 
+матричные элементы можно собрать в квадрат модуля
+\begin{equation}
+	\sum_{i=j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=\sum_{i}|U_{\alpha i}|^{2}|U_{\beta i}|^{2},
+\end{equation}
+Посмотрим две оставшиеся суммы. Можно заметить если в третьей сумме переставить 
+индексы местами, то мы получим вторую сумму только комплексно сопряжённую
+\begin{equation}
+	\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{\imath\frac{m_{j}^{2}-m_{i}^{2}}{2E}L}\rightarrow\sum_{i>j}U_{\beta j}U^{*}_{\alpha 
+		j}U^{*}_{\beta i}U_{\alpha 
+		i}\exp^{\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}.
+\end{equation}
+Далее, если сложим вторую и преобразованную третью сумму и воспользуемся формулой 
+для вычисления реальной части комплексного числа, то получим следующее 
+\begin{equation}
+	\sum_{i>j}U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\sum_{i>j}U_{\beta j}U^{*}_{\alpha 
+		j}U^{*}_{\beta i}U_{\alpha 
+		i}\exp^{\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=2\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L})},
+\end{equation}
+теперь, распишем множители в реальной части следующим образом
+\begin{align}
+	U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j}=\Re{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}+\imath\Im{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})},
+		\\
+		\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=\cos{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}-\imath\sin{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L},
+\end{align}
+теперь, перемножим их и извлечём реальную часть, получим следующее
+\begin{multline}
+	2\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L})}=2\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}\cos{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\\
+		+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}\sin{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L},
+\end{multline}
+наконец, преобразуем косинус в первой сумме так
+\begin{equation}
+	\cos{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=1-2\sin^{2}{\frac{m_{i}^{2}-m_{j}^{2}}{4E}L}.
+\end{equation}
+В итоге вторая и третья сумма преобразуются в следующее выражение
+\begin{multline}
+	\sum_{i>j}U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}\rightarrow\\
+		\rightarrow2\sum_{i>j}\Re{(U_{\beta 
+		i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}-4\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}\sin^{2}{\frac{m_{i}^{2}-m_{j}^{2}}{4E}L}+\\
+		+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}\sin{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}
+\end{multline}
+(Прототип) Тогда вероятность перехода будет иметь следующий вид
+\begin{multline}
+	P(\nu_{\alpha} \rightarrow 
+	\nu_{\beta})=\sum_{i}|U_{\alpha i}|^{2}|U_{\beta i}|^{2}+\\
+	+2\sum_{i>j}\Re{(U_{\beta 
+			i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}-4\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}\sin^{2}{\frac{m_{i}^{2}-m_{j}^{2}}{4E}L}+\\
+	+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}\sin{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}
+\end{multline}
 \subsection{Осцилляции в веществе}
 
 %%% Local Variables:
