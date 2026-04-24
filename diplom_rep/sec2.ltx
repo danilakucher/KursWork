@@ -210,41 +210,43 @@ m_{ij}^{2}\).
 \begin{multline}
 		P(\nu_{\alpha} \rightarrow 
 	\nu_{\beta})=\sum_{i=j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\\
+		j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L}+\\
 		+\sum_{i>j}U_{\beta i}U^{*}_{\alpha 
 		i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
+		j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L}+\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
 		i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L},
+		j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L},
 \end{multline}
 рассмотрим каждую отдельно.
-Сначала, посмотрим на первую сумму (\(i=j\)), видно, что экспонента обращается в единицу, а 
-матричные элементы можно собрать в квадрат модуля
+Сначала, посмотрим на первую сумму (\(i=j\)), видно, что экспонента обращается в единицу
 \begin{equation}
 	\sum_{i=j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=\sum_{i}|U_{\alpha i}|^{2}|U_{\beta i}|^{2},
+		j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L}=\sum_{i=j}U_{\beta i}U^{*}_{\alpha 
+		i}U^{*}_{\beta j}U_{\alpha 
+		j},
 \end{equation}
+оставим ее в таком виде.
 Посмотрим две оставшиеся суммы. Можно заметить если в третьей сумме переставить 
 индексы местами, то мы получим вторую сумму только комплексно сопряжённую
 \begin{equation}
 	\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
 		i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
+		j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L}=\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
 		i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{\imath\frac{m_{j}^{2}-m_{i}^{2}}{2E}L}\rightarrow\sum_{i>j}U_{\beta j}U^{*}_{\alpha 
+		j}\exp^{\imath\frac{\Delta m_{ji}^{2}}{2E}L}\rightarrow\sum_{i>j}U_{\beta j}U^{*}_{\alpha 
 		j}U^{*}_{\beta i}U_{\alpha 
-		i}\exp^{\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}.
+		i}\exp^{\imath\frac{\Delta m_{ij}^{2}}{2E}L}.
 \end{equation}
 Далее, если сложим вторую и преобразованную третью сумму и воспользуемся формулой 
 для вычисления реальной части комплексного числа, то получим следующее 
 \begin{equation}
 	\sum_{i>j}U_{\beta i}U^{*}_{\alpha 
 		i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\sum_{i>j}U_{\beta j}U^{*}_{\alpha 
+		j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L}+\sum_{i>j}U_{\beta j}U^{*}_{\alpha 
 		j}U^{*}_{\beta i}U_{\alpha 
-		i}\exp^{\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=2\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+		i}\exp^{\imath\frac{\Delta m_{ij}^{2}}{2E}L}=2\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
-			j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L})},
+			j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L})},
 \end{equation}
 теперь, распишем множители в реальной части следующим образом
 \begin{align}
@@ -256,54 +258,101 @@ m_{ij}^{2}\).
 			i}U^{*}_{\beta j}U_{\alpha 
 			j})},
 		\\
-		\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=\cos{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}-\imath\sin{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L},
+		\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L}=\cos{\frac{\Delta 
+		m_{ij}^{2}}{2E}L}-\imath\sin{\frac{\Delta m_{ij}^{2}}{2E}L},
 \end{align}
 теперь, перемножим их и извлечём реальную часть, получим следующее
 \begin{multline}
 	2\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
-			j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L})}=2\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+			j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L})}=2\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
-			j})}\cos{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\\
+			j})}\cos{\frac{\Delta m_{ij}^{2}}{2E}L}+\\
 		+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
-			j})}\sin{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L},
+			j})}\sin{\frac{\Delta m_{ij}^{2}}{2E}L},
 \end{multline}
-наконец, преобразуем косинус в первой сумме так
+теперь, преобразуем косинус в первой сумме так
 \begin{equation}
-	\cos{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}=1-2\sin^{2}{\frac{m_{i}^{2}-m_{j}^{2}}{4E}L}.
+	\cos{\frac{\Delta m_{ij}^{2}}{2E}L}=1-2\sin^{2}{\frac{\Delta m_{ij}^{2}}{4E}L}.
 \end{equation}
 В итоге вторая и третья сумма преобразуются в следующее выражение
 \begin{multline}
 	\sum_{i>j}U_{\beta i}U^{*}_{\alpha 
 		i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}+\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
+		j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L}+\sum_{i<j}U_{\beta i}U^{*}_{\alpha 
 		i}U^{*}_{\beta j}U_{\alpha 
-		j}\exp^{-\imath\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}\rightarrow\\
+		j}\exp^{-\imath\frac{\Delta m_{ij}^{2}}{2E}L}\rightarrow\\
 		\rightarrow2\sum_{i>j}\Re{(U_{\beta 
 		i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
 			j})}-4\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
-			j})}\sin^{2}{\frac{m_{i}^{2}-m_{j}^{2}}{4E}L}+\\
+			j})}\sin^{2}{\frac{\Delta m_{ij}^{2}}{4E}L}+\\
 		+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
-			j})}\sin{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}
+			j})}\sin{\frac{\Delta m_{ij}^{2}}{2E}L}.
 \end{multline}
-(Прототип) Тогда вероятность перехода будет иметь следующий вид
+ Если подставим получившееся выражения в определение вероятности перехода, то 
+ получим следующее
 \begin{multline}
 	P(\nu_{\alpha} \rightarrow 
-	\nu_{\beta})=\sum_{i}|U_{\alpha i}|^{2}|U_{\beta i}|^{2}+\\
+	\nu_{\beta})=\sum_{i=j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+		j}+\\
 	+2\sum_{i>j}\Re{(U_{\beta 
 			i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
 			j})}-4\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
-			j})}\sin^{2}{\frac{m_{i}^{2}-m_{j}^{2}}{4E}L}+\\
+			j})}\sin^{2}{\frac{\Delta m_{ij}^{2}}{4E}L}+\\
 	+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
 			i}U^{*}_{\beta j}U_{\alpha 
-			j})}\sin{\frac{m_{i}^{2}-m_{j}^{2}}{2E}L}
+			j})}\sin{\frac{\Delta m_{ij}^{2}}{2E}L},
 \end{multline}
+теперь, рассмотрим в этой формуле первые две суммы, их также можно преобразовать.
+Если вторую сумму расписать по формуле реальной части и поменять местами индексы в 
+сопряжённой части, а затем прибавить первую сумму, то получим следующее
+\begin{multline}
+	\sum_{i=j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+		j}+2\sum_{i>j}\Re{(U_{\beta 
+			i}U^{*}_{\alpha 
+			i}U^{*}_{\beta j}U_{\alpha 
+			j})}=\\
+		=\sum_{i=j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+			j}+\sum_{i>j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+			j}+\\
+			+\sum_{i<j}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+			j}=\sum_{ij}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+				j},
+\end{multline}
+получившуюся сумму можно расписать на произведение двух 
+\begin{equation}
+	\sum_{ij}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+		j}=\sum_{i}U_{\beta i}U^{*}_{\alpha i}\sum_{j}U^{*}_{\beta j}U_{\alpha 
+		j},
+\end{equation}
+теперь, вспомним, что по определению PMNS-матрица является унитарной, для неё можно 
+записать следующее соотношение унитарности
+\begin{equation}\label{eq:9}
+	(UU^{\dagger})_{\alpha\beta}=\sum_{i}U_{\alpha i}U_{\beta i}^{*}=\delta_{\alpha\beta},
+\end{equation}
+если его использовать, то произведение сумм запишутся так
+ \begin{equation}
+ 	\sum_{ij}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
+ 		j}=\sum_{i}U_{\beta i}U^{*}_{\alpha i}\sum_{j}U^{*}_{\beta j}U_{\alpha 
+ 		j}=\delta_{\alpha\beta}\delta_{\alpha\beta}=\delta_{\alpha\beta}.
+ \end{equation}
+ В итоге, вероятность перехода будет иметь следующий конечный вид
+ \begin{multline}
+ 	P(\nu_{\alpha} \rightarrow 
+ 	\nu_{\beta})=\delta_{\alpha\beta}-4\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+ 			i}U^{*}_{\beta j}U_{\alpha 
+ 			j})}\sin^{2}{\frac{\Delta m_{ij}^{2}}{4E}L}+\\
+ 	+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
+ 			i}U^{*}_{\beta j}U_{\alpha 
+ 			j})}\sin{\frac{\Delta m_{ij}^{2}}{2E}L}.
+ \end{multline}
+ 
 \subsection{Осцилляции в веществе}
 
 %%% Local Variables:
