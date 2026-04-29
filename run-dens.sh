@@ -18,10 +18,13 @@ declare -A Pr
 Pr=(
   ["e-e"]="prob-e-e.lua"
   ["e-mu"]="prob-e-mu.lua"
+  ["e-tau"]="prob-e-tau.lua"
   ["mu-e"]="prob-mu-e.lua"
   ["mu-mu"]="prob-mu-mu.lua"
-  ["e-tau"]="prob-e-tau.lua"
   ["mu-tau"]="prob-mu-tau.lua"
+  ["tau-e"]="prob-tau-e.lua"
+  ["tau-mu"]="prob-tau-mu.lua"
+  ["tau-tau"]="prob-tau-tau.lua"
 )
 
 # configurable parameters:
@@ -51,14 +54,15 @@ datadir="$PWD/data"
 bindir="$PWD/magexp/bin"
 prog=m4-tol
 prb=${Pr["${prob}"]}
-model_data=${model}-${born}.lua
+model_data="${model}-${born}.lua"
+ic_data="${prob//-*}-ic.lua"
 Ne="${NEparts}"
 Nf="${Nfparts}"
 
 [[ -z ${prb} ]] &&
 {
   echo "ОШИБКА: указан неверный переход: '${prob}'."
-  exit 7
+  exit 1
 }
 
 instance="instance-$(date +'%Y-%m-%dT%H:%M:%S%z')"
@@ -70,42 +74,48 @@ fi
 
 if [ ! -d "${bindir}" ]; then
   echo "ОШИБКА: нет каталога '${bindir}'"
-  exit 1
+  exit 2
 fi
 
 
 if [ ! -e "${bindir}/${prog}" ]; then
   echo "ОШИБКА: нет расчетной программы ${prog}"
-  exit 2
+  exit 3
 fi
 
 [[ ! -e "${bindir}/${model_data}" ]] &&
 {
   echo "ОШИБКА: программе '${prog} нужны данные модели, которые хранятся в файле '${model_data}'"
-  exit 3
+  exit 4
+}
+
+[[ ! -e "${bindir}/${ic_data}" ]] &&
+{
+  echo "ОШИБКА: программе '${prog} нужны начальные данные, которые хранятся в файле '${ic_data}'"
+  exit 5
 }
 
 [[ ! -e "${bindir}/${prb}" ]] &&
 {
   echo "ОШИБКА: программе '${prog} нужны данные по расчёту вероятности, которые хранятся в файле '${prb}'"
-  exit 4
+  exit 6
 }
 
 (( Nf/2 != (Nf-1)/2 )) &&
 {
   echo "ОШИБКА: количество шагов для параметра профиля плотности должно быть нечетным, Nf=${Nf}"
-  exit 4
+  exit 7
 }
 
 cd "${bindir}" ||
 {
   echo "ОШИБКА: невозможно перейти в каталог '${bindir}'"
-  exit 5
+  exit 8
 }
 
 if ! command -v b3sum >/dev/null 2>&1; then
   echo "ОШИБКА: для работы сценария нужно программа b3sum!"
-  exit 7
+  exit 9
 fi
 
 # (fa=0.9; fb=1.1; Nf=191; python -c "import numpy; [print(el) for el in numpy.linspace(${fa}, ${fb}, ${Nf})]")
@@ -141,7 +151,7 @@ frun="/tmp/${hs[0]}"
 [[ -e ${frun} ]] &&
 {
   echo "ОШИБКА: сценарий уже запущен!"
-  exit 6
+  exit 10
 }
 
 # ### About a bit weird '/../../' part below. The code above cd'ed into bindir, so when the script is run, the PWD =
@@ -153,6 +163,7 @@ cat >> "/tmp/${instance}.run" <<EOC
 prog="${prog}"
 prb="${prb}"
 model_data="${model_data}"
+ic_data="${ic_data}"
 datadir="\${PWD}/../../data"
 Ne="${NEparts}"
 Nf="${Nfparts}"
@@ -189,7 +200,7 @@ do
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${par}=${ex}*${par};xtheta=${xtheta}" "${prb}" > "${fdata}" || {
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${par}=${ex}*${par};xtheta=${xtheta}" "${ic_data}" "${prb}" > "${fdata}" || {
       echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
       exit 12
     }
