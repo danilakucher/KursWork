@@ -11,7 +11,7 @@ E2="1.00e7"
 fa=0.9
 fb=1.1
 xtheta=0.2
-# INSTANCE: instance-2026-03-11T20:50:45+0800
+# INSTANCE: instance-2026-04-21T14:21:21+0800
 # ######################################################################################################################
 # internal parameters:
 prog="m4-tol"
@@ -20,7 +20,7 @@ model_data="sun-out.lua"
 datadir="${PWD}/../../data"
 Ne="501"
 Nf="201"
-instance="instance-2026-03-11T20:50:45+0800"
+instance="instance-2026-04-21T14:21:21+0800"
 hash="4a804ab52a12da68d91f31a688889c3e8ff7e9c9925a164bfaef6b9457a64c8a"
 fdata="/tmp/data-4a804ab52a12da68d91f31a688889c3e8ff7e9c9925a164bfaef6b9457a64c8a.tmp"
 frun="/tmp/4a804ab52a12da68d91f31a688889c3e8ff7e9c9925a164bfaef6b9457a64c8a"
