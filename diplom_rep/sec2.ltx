@@ -369,9 +369,9 @@ m_{ij}^{2}\).
 	\begin{feynman}
 		\diagram[vertical'=a to b]{
 			i1 [particle=\(e^{-}\)]
-			-- [fermion] a
+			-- [fermion] a [dot]
 			-- [fermion] f1 [particle=\(e^{-}\)],
-			a -- [photon, edge label=\(Z^{0}\)] b,
+			a -- [boson, edge label=\(Z^{0}\)] b [dot],
 			i2 [particle=\(\nu_{\alpha}\)] 
 			-- [fermion]  b 
 			-- [fermion] f2 [particle=\(\nu_{\alpha}\)]};
@@ -381,9 +381,9 @@ m_{ij}^{2}\).
 	\begin{feynman}
 		\diagram[vertical'=a to b]{
 			i1 [particle=\(e^{-}\)]
-			-- [fermion] a
+			-- [fermion] a [dot]
 			-- [fermion] f1 [particle=\(\nu_{e}\)],
-			a -- [anti charged boson, edge label=\(W_{+}\)] b,
+			a -- [charged boson, edge label=\(W_{-}\)] b [dot],
 			i2 [particle=\(\nu_{e}\)] 
 			-- [fermion]  b 
 			-- [fermion] f2 [particle=\(e^{-}\)]};
@@ -399,10 +399,10 @@ m_{ij}^{2}\).
 \begin{tikzpicture}
 	\begin{feynman}
 		\diagram[vertical'=a to b]{
-			i1 [particle=\(q_{i}\)]
-			-- [fermion] a
-			-- [fermion] f1 [particle=\(q_{i}\)],
-			a -- [photon, edge label=\(Z^{0}\)] b,
+			i1 [particle=\(\psi_{i}\)]
+			-- [fermion] a [dot]
+			-- [fermion] f1 [particle=\(\bar{\psi_{i}}\)],
+			a -- [boson, edge label=\(Z^{0}\)] b [dot],
 			i2 [particle=\(\nu_{\alpha}\)] 
 			-- [fermion]  b 
 			-- [fermion] f2 [particle=\(\nu_{\alpha}\)]};
@@ -411,13 +411,37 @@ m_{ij}^{2}\).
 \begin{tikzpicture}
 	\begin{feynman}
 		\diagram[vertical'=a to b]{
-			i1 [particle=\(q_{i}\)]
-			-- [fermion] a
-			-- [fermion] f1 [particle=\(\nu_{\alpha}\)],
-			a -- [anti charged boson, edge label=\(W_{+}\)] b,
-			i2 [particle=\(\nu_{e}\)] 
+			i1 [particle=\(\psi_{i}\)]
+			-- [fermion] a [dot]
+			-- [fermion] f1 [particle=\(\bar{\psi_{I}}\)],
+			a -- [charged boson, edge label=\(W_{-}\)] b [dot],
+			i2 [particle=\(\nu_{\alpha}\)] 
 			-- [fermion]  b 
-			-- [fermion] f2 [particle=\(Q_{i}\)]};
+			-- [fermion] f2 [particle=\(l^{-}_{\alpha}\)]};
+	\end{feynman}
+\end{tikzpicture}
+\begin{tikzpicture}
+	\begin{feynman}
+		\diagram[vertical'=a to b]{
+			i1 [particle=\(\psi_{I}\)]
+			-- [fermion] a [dot]
+			-- [fermion] f1 [particle=\(\bar{\psi_{I}}\)],
+			a -- [boson, edge label=\(Z^{0}\)] b [dot],
+			i2 [particle=\(\nu_{\alpha}\)] 
+			-- [fermion]  b 
+			-- [fermion] f2 [particle=\(\nu_{\alpha}\)]};
+	\end{feynman}
+\end{tikzpicture}
+\begin{tikzpicture}
+	\begin{feynman}
+		\diagram[vertical'=a to b]{
+			i1 [particle=\(\psi_{I}\)]
+			-- [fermion] a [dot]
+			-- [fermion] f1 [particle=\(\bar{\psi_{i}}\)],
+			a -- [charged boson, edge label=\(W_{+}\)] b [dot],
+			i2 [particle=\(\nu_{\alpha}\)] 
+			-- [fermion]  b 
+			-- [fermion] f2 [particle=\(l_{\alpha}^{+}\)]};
 	\end{feynman}
 \end{tikzpicture}
 
@@ -425,8 +449,55 @@ m_{ij}^{2}\).
 каждого из вкладов. Для этого пусть интенсивность взаимодействия нейтрино с электроном 
 через реакцию нейтрального тока равна 1. Далее, вычисляем нормированные на эту 
 единицу интенсивности для каждого из оставшихся случаев. Рассмотрим их отдельно. 
+Для начала понадобятся значения для каждой из вершин, входящих во все имеющиеся 
+диаграммы. Для \(W^{\pm}\)-бозонной вершины с лептонами имеем
+\begin{equation}
+	\frac{g}{2\sqrt{2}}\gamma^{\alpha}(1-\gamma^{5}).
+\end{equation}
+Для \(Z^{0}\)-бозонной вершины с нейтрино
+\begin{equation}
+	\frac{g}{4\cos\theta_{W}}\gamma^{\alpha}(1-\gamma^{5}).
+\end{equation}
+Для \(Z^{0}\)-бозонной вершины с заряженным лептоном
+\begin{equation}
+	\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}(\frac{1}{2}(1-\gamma^{5})+2\sin^{2}\theta_{W}),
+\end{equation}
+где \(g_{v}\) и \(g_{a}\) это коэффициенты векторной и аксиальной аномалии. Их для простоты 
+возьмём равными 1. 
+Для \(W^{+}\) и \(W^{-}\)-бозонных вершин с кварками (\(\bar{\psi_{I}}\psi_{i}W^{+}\) и 
+\(\bar{\psi_{i}}\psi_{I}W^{-}\)) имеем соответственно 
+\begin{equation}
+	\frac{g}{2\sqrt{2}}V_{Ii}\gamma^{\alpha}(1-\gamma^{5}), \qquad 
+	\frac{g}{2\sqrt{2}}V_{iI}^{\dagger}\gamma^{\alpha}(1-\gamma^{5}).
+\end{equation}
+Теперь, выписав выражения для всех вершин, вычисляем интенсивности как произведение 
+всех вершин входящих в данную диаграмму и делим на интенсивность взаимодействия с 
+электроном через нейтральный ток. Тогда для каждой диаграммы можно записать 
+следующие оценки интенсивности
 
-
+\begin{align}
+	I(e-Z^{0})=1,\\
+	I(e-W^{\pm})\approx 0,77,\\
+	I(\psi_{i}-Z^{0})\approx 0,31,\\
+	I(\psi_{I}-Z^{0})\approx 0,16,\\
+	I(\psi_{i}-W^{-})\approx\begin{cases}
+																			0,77, & \text{если}\qquad \bar{\psi_{I}}\psi_{i}=ud, cs, 
+																			tb\\
+																			0,16, & \text{если}\qquad \bar{\psi_{I}}\psi_{i}=us, cd\\
+																			0,008, & \text{если}\qquad \bar{\psi_{I}}\psi_{i}=ts, cb\\
+																			0,0008, & \text{если}\qquad \bar{\psi_{I}}\psi_{i}=td, ub
+																		\end{cases},\\
+	I(\psi_{I}-W^{+})\approx\begin{cases}
+		0,77, & \text{если}\qquad \psi_{I}\bar{\psi_{i}}=ud, cs, 
+		tb\\
+		0,16, & \text{если}\qquad \psi_{I}\bar{\psi_{i}}=us, cd\\
+		0,008, & \text{если}\qquad \psi_{I}\bar{\psi_{i}}=ts, cb\\
+		0,0008, & \text{если}\qquad \psi_{I}\bar{\psi_{i}}=td, ub
+	\end{cases}.
+\end{align}
+Из полученных значений можно увидеть, что большинство вкладов от взаимодействия с 
+кварками достаточно малы, по сравнению с вкладами от взаимодействия с электронами. 
+Помимо это, если учесть, что для солнечной модели 
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-master: "diplom.ltx"
