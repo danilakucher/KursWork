@@ -1,0 +1,67 @@
+# ######################################################################################################################
+# configurable parameters:
+model="sun"
+born="out"
+mixAng="s13"
+prob="mu-tau"
+NEparts=501
+Nfparts=201
+E1="1.00e-3"
+E2="1.00e7"
+fa=0.9
+fb=1.1
+xtheta=0.5
+# INSTANCE: instance-2026-05-04T08:32:51+0800
+# ######################################################################################################################
+# internal parameters:
+prog="m4-tol"
+prb="prob-mu-tau.lua"
+model_data="sun-out.lua"
+ic_data="mu-ic.lua"
+datadir="${PWD}/../../data"
+Ne="501"
+Nf="201"
+instance="instance-2026-05-04T08:32:51+0800"
+hash="e99cfeb1edb0835566fd8454b997eb7e44b0840700b5b3a906b2f1740726e0c1"
+fdata="/tmp/data-e99cfeb1edb0835566fd8454b997eb7e44b0840700b5b3a906b2f1740726e0c1.tmp"
+frun="/tmp/e99cfeb1edb0835566fd8454b997eb7e44b0840700b5b3a906b2f1740726e0c1"
+tdir="${datadir}/sun_out_s13/NexNf=501x201/E1.00e-3_1.00e7/mu-tau"
+# ######################################################################################################################
+# RUN:
+cnt=0
+
+[[ -e ${frun} ]] &&
+{
+  echo "ОШИБКА: возможно сценарий уже запущен с заданными параметрами (см. '${tdir}/HASH.run'), т.к. есть файл контроля запуска: '${frun}'"
+  exit 11
+}
+
+[[ ${born} == "out" ]] &&
+{
+  tdir="${tdir}/${xtheta}"
+}
+
+export LC_NUMERIC=en_US.UTF-8
+
+echo "${cnt}" > "${frun}"
+
+for ex in $(seq ${fa} "$(echo "scale=20 ; fa=${fa} ; fb=${fb} ; nf=${Nf} ; print((fb-fa)/(nf-1))" | bc)" ${fb})
+do
+  printf -v datf "%s/${model}_${born}_${mixAng}_id%03d.dat" "${tdir}" ${cnt}
+  echo -n "" > "${datf}"
+  for i in $(seq 0 1 $((Ne-1)))
+  do
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${mixAng}=${ex}*${mixAng};xtheta=${xtheta}" "${ic_data}" "${prb}" > "${fdata}" || {
+      echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
+      exit 12
+    }
+    read -ra dat <<< "$(grep -v '^#' ${fdata})"
+    ang=$(grep "#*ex.*${mixAng}" "${fdata}" | sed -e 's@.*=@@')
+    echo "${dat[0]}  ${dat[1]}  ${dat[2]} ${ang} ${ex}" >> "${datf}"
+  done
+  ((cnt++))
+  echo "${cnt}" > "${frun}"
+done
+rm "${fdata}"
+rm "${frun}"
+# vim: syn=sh tw=120 ts=2 et

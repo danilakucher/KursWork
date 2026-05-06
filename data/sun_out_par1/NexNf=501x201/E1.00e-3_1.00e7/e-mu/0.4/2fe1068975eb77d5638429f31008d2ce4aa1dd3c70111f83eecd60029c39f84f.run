@@ -11,16 +11,17 @@ E2="1.00e7"
 fa=0.9
 fb=1.1
 xtheta=0.4
-# INSTANCE: instance-2025-12-19T21:54:00+0800
+# INSTANCE: instance-2026-05-05T20:30:06+0800
 # ######################################################################################################################
 # internal parameters:
 prog="m4-tol"
 prb="prob-e-mu.lua"
 model_data="sun-out.lua"
+ic_data="e-ic.lua"
 datadir="${PWD}/../../data"
 Ne="501"
 Nf="201"
-instance="instance-2025-12-19T21:54:00+0800"
+instance="instance-2026-05-05T20:30:06+0800"
 hash="2fe1068975eb77d5638429f31008d2ce4aa1dd3c70111f83eecd60029c39f84f"
 fdata="/tmp/data-2fe1068975eb77d5638429f31008d2ce4aa1dd3c70111f83eecd60029c39f84f.tmp"
 frun="/tmp/2fe1068975eb77d5638429f31008d2ce4aa1dd3c70111f83eecd60029c39f84f"
@@ -50,7 +51,7 @@ do
   echo -n "" > "${datf}"
   for i in $(seq 0 1 $((Ne-1)))
   do
-    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${par}=${ex}*${par};xtheta=${xtheta}" "${prb}" > "${fdata}" || {
+    ./${prog} ${model_data} -c "Ep1=math.log(${E1})/math.log(10);Ep2=math.log(${E2})/math.log(10);d=(Ep2-Ep1)/(${Ne}-1);E=math.exp((Ep1+${i}*d)*math.log(10));${par}=${ex}*${par};xtheta=${xtheta}" "${ic_data}" "${prb}" > "${fdata}" || {
       echo "ОШИБКА: выполнение '${prog}' завершилось с ошибкой, параметры запуска в файле '${tdir}/${instance}.run'"
       exit 12
     }
