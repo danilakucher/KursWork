@@ -1,0 +1,179 @@
+\documentclass[a4paper]{article}
+% \usepackage{tikz}
+\usepackage[conf=note]{isu-th3}
+\usepackage{tikz-feynman}
+
+\newcommand{\particle}[1]{\mathrm{#1}}
+\newcommand{\Particle}[1]{\mgrm{#1}}
+
+\begin{document}
+\pagestyle{empty}
+
+\feynmandiagram[vertical=a to b]{%
+  i1 [particle=\(\particle{e}^{-}\)]
+    -- [fermion] a [dot]
+    -- [fermion] f1 [particle=\(\particle{e}^{-}\)],%
+  a -- [boson, edge label=\(\,\particle{Z}^{0}\)] b [dot],%
+  i2 [particle=\(\nu_{\alpha}\)]
+    -- [anti fermion] b
+    -- [anti fermion] f2 [particle=\(\nu_{\alpha}\)]%
+};
+
+\newpage
+
+\feynmandiagram[vertical=a to b]{%
+  i1 [particle=\(d_{i}\)]
+    -- [fermion] a [dot]
+    -- [fermion] f1 [particle=\(d_{i}\)],%
+  a -- [boson, edge label=\(\,\particle{Z}^{0}\)] b [dot],%
+  i2 [particle=\(\nu_{\alpha}\)]
+    -- [anti fermion] b
+    -- [anti fermion] f2 [particle=\(\nu_{\alpha}\)]%
+};
+
+\newpage
+
+\feynmandiagram[vertical=a to b]{%
+  i1 [particle=\(u_{i}\)]
+    -- [fermion] a [dot]
+    -- [fermion] f1 [particle=\(u_{i}\)],%
+  a -- [boson, edge label=\(\,\particle{Z}^{0}\)] b [dot],%
+  i2 [particle=\(\nu_{\alpha}\)]
+    -- [anti fermion] b
+    -- [anti fermion] f2 [particle=\(\nu_{\alpha}\)]%
+};
+
+\newpage
+
+\feynmandiagram[vertical=a to b]{%
+  i1 [particle=\(\particle{e}^{-}\)]
+    -- [fermion] a [dot]
+    -- [fermion] f1 [particle=\(\nu_{\particle{e}}\)],%
+  a -- [charged boson, edge label=\(\,\particle{W}^{-}\)] b [dot],%
+  i2 [particle=\(\particle{e}^{-}\)]
+    -- [anti fermion] b
+    -- [anti fermion] f2 [particle=\(\nu_{\particle{e}}\)]%
+};
+
+\newpage
+
+\feynmandiagram[vertical=a to b]{%
+  i1 [particle=\(\particle{e}^{-}\)]
+    -- [fermion] a [dot]
+    -- [fermion] f1 [particle=\(\nu_{\particle{e}}\)],%
+  a -- [charged boson, edge label=\(\,\particle{W}^{-}\)] b [dot],%
+  i2 [particle=\(l^{-}_{\alpha}\)]
+    -- [anti fermion] b
+    -- [anti fermion] f2 [particle=\(\nu_{\alpha}\)]%
+};
+
+\newpage
+
+\feynmandiagram[vertical=a to b]{%
+  i1 [particle=\(d_{i}\)]
+    -- [fermion] a [dot]
+    -- [fermion] f1 [particle=\(u_{k}\)],%
+  a -- [charged boson, edge label=\(\,\particle{W}^{-}\)] b [dot],%
+  i2 [particle=\(l^{-}_{\alpha}\)]
+    -- [anti fermion] b
+    -- [anti fermion] f2 [particle=\(\nu_{\alpha}\)]%
+};
+
+\newpage
+
+\feynmandiagram[vertical=a to b]{%
+  i1 [particle=\(u_{i}\)]
+    -- [fermion] a [dot]
+    -- [fermion] f1 [particle=\(d_{k}\)],%
+  a -- [charged boson, edge label=\(\,\particle{W}^{+}\)] b [dot],%
+  i2 [particle=\(l_{\alpha}^{+}\)]
+    -- [anti fermion] b
+    -- [anti fermion] f2 [particle=\(\nu_{\alpha}\)]%
+};
+
+\newpage
+
+\feynmandiagram[layered layout, horizontal=a to b]{%
+% Draw the top and bottom lines
+  i1 [particle=\(u_{i}\)]
+    -- [fermion] a
+    -- [fermion, edge label=\(d_{k}\)] b
+    -- [fermion] f1 [particle=\(u_{i}\)],%
+  i2 [particle=\(\nu_{\alpha}\)]
+    -- [fermion] c
+    -- [fermion, edge label'=\(l^{+}_{\alpha}\)] d
+    -- [fermion] f2 [particle=\(\nu_{\alpha}\)],%
+  % Draw the two internal fermion lines
+  { [same layer] a -- [charged boson, edge label'=\(\particle{W}^{+}\)] c },%
+  { [same layer] b -- [anti charged boson, edge label=\(\particle{W}^{+}\)] d},
+};
+
+\newpage
+
+\feynmandiagram[layered layout, horizontal=a to b]{%
+% Draw the top and bottom lines
+  i1 [particle=\(d_{i}\)]
+    -- [fermion] a
+    -- [fermion, edge label=\(u_{k}\)] b
+    -- [fermion] f1 [particle=\(d_{i}\)],%
+  i2 [particle=\(\nu_{\alpha}\)]
+    -- [fermion] c
+    -- [fermion, edge label'=\(l^{-}_{\alpha}\)] d
+    -- [fermion] f2 [particle=\(\nu_{\alpha}\)],%
+  % Draw the two internal fermion lines
+  { [same layer] a -- [charged boson, edge label'=\(\particle{W}^{-}\)] c },%
+  { [same layer] b -- [anti charged boson, edge label=\(\particle{W}^{-}\)] d},
+};
+
+% \feynmandiagram[vertical=a to b]{%
+%   i1 [particle=\(\particle{e}^{-}\)] -- [fermion] a [dot] -- [fermion] f1 [particle=\(\particle{e}^{-}\)],%
+% 	a -- [boson, edge label=\(\particle{Z}^{0}\)] b [dot],%
+% 	i2 [particle=\(\nu_{\alpha}\)] -- [anti fermion] b -- [anti fermion] f2
+%   [particle=\(\nu_{\alpha}\)]%
+% };
+% \qquad\qquad\qquad
+% \feynmandiagram[vertical=a to b]{%
+%   i1 [particle=\(\particle{e}^{-}\)] -- [fermion] a [dot] -- [fermion] f1 [particle=\(\nu_{\particle{e}}\)],%
+% 	a -- [charged boson, edge label=\(\particle{W}^{-}\)] b [dot],%
+% 	i2 [particle=\(\particle{e}^{-}\)] -- [anti fermion]  b -- [anti fermion] f2 [particle=\(\nu_{\particle{e}}\)]%
+% };
+% \qquad \qquad \qquad
+% \feynmandiagram[vertical=a to b]{%
+%   i1 [particle=\(\particle{e}^{-}\)] -- [fermion] a [dot] -- [fermion] f1 [particle=\(\nu_{\particle{e}}\)],%
+% 	a -- [charged boson, edge label=\(\particle{W}^{-}\)] b [dot],%
+% 	i2 [particle=\(f^{-}_{\alpha}\)] -- [anti fermion]  b -- [anti fermion] f2 [particle=\(\nu_{\alpha}\)]%
+% };
+
+% \begin{tikzpicture}
+% 	\begin{feynman}
+% 		\diagram[vertical'=a to b]{%
+% 			i1 [particle=\(e^{-}\)] -- [fermion] a [dot] -- [fermion] f1 [particle=\(e^{-}\)],%
+% 			a -- [boson, edge label=\(Z^{0}\)] b [dot],%
+% 			i2 [particle=\(\nu_{\alpha}\)] -- [fermion] b -- [fermion] f2
+%       [particle=\(\nu_{\alpha}\)]%
+%     };
+%  		\diagram[large, vertical'=a to b]{%
+% 			i1 [particle=\(e^{-}\)] -- [fermion] a [dot] -- [fermion] f1 [particle=\(\nu_{e}\)],%
+% 			a -- [charged boson, edge label=\(W_{-}\)] b [dot],%
+% 			i2 [particle=\(\nu_{e}\)] -- [fermion]  b -- [fermion] f2 [particle=\(e^{-}\)]%
+%     };
+% 	\end{feynman}
+% \end{tikzpicture}
+
+% \begin{tikzpicture}
+% 	\begin{feynman}
+% 		\diagram[vertical'=a to b]{%
+% 			i1 [particle=\(e^{-}\)] -- [fermion] a [dot] -- [fermion] f1 [particle=\(\nu_{e}\)],%
+% 			a -- [charged boson, edge label=\(W_{-}\)] b [dot],%
+% 			i2 [particle=\(\nu_{e}\)] -- [fermion]  b -- [fermion] f2 [particle=\(e^{-}\)]%
+%     };
+% 	\end{feynman}
+% \end{tikzpicture}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% TeX-engine: luatex
+%%% End:
