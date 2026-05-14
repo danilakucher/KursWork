@@ -54,11 +54,33 @@
 \end{equation}
 в дальнейшем будем полагать, что \(\delta_{CP}=0\).
 
+Не лишним будет также получить выражение для
+амплитуд массивных состояний выраженных через флейворные состояния. Для
+PMNS-матрицы справедливо в следствии унитарности следующее соотношение
+%\cite{Rubakov:2017xzr}
+\begin{equation}\label{eq:14}
+	(UU^{\dagger})_{\alpha\beta}=\sum_{i}U_{\alpha i}U_{\beta i}^{*}=\delta_{\alpha\beta}.
+\end{equation}
+Теперь в выражении \eqref{eq:1} умножаем обе части слева на \(U_{\alpha j}\) и
+суммируем по \(\alpha\)
+\begin{equation}
+	\sum_{\alpha}U_{\alpha j}|\nu_{\alpha}\rangle=
+	\sum_{\alpha}\sum_{i}U_{\alpha j}U_{\alpha i}^{*}|\nu_{i}\rangle,
+\end{equation}
+справа меняем порядок суммирования, сумма по \(\alpha\) справа по формуле
+\eqref{eq:14} даёт \(\delta_{ij}\), которая снимает сумму по \(i\). Это приводит
+к выражению
+\begin{equation}\label{eq:15}
+	|\nu_{j}\rangle=\sum_{\alpha}U_{\alpha j}
+	|\nu_{\alpha}\rangle=\sum_{\alpha}(U^{\trp})_{j\alpha}|\nu_{\alpha}\rangle.
+\end{equation}
+
 Теперь определим как эволюционирует флейворное нейтрино со временем в вакууме.
 В феноменологии нейтринного смешивания на первых порах игнорируют возможный тип
 нейтрино: дираковский или майороновские они, поэтому уравнение движения для них
 — это уравнение Шрёдингера в дираковском подходе
 \begin{equation}
+	\label{eq:13}
 	\imath\frac{\dd}{\dd t}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)}=
 	E_{i}\ket{\nu_{i}(t)},
 \end{equation}
@@ -113,6 +135,7 @@
 \end{equation}
 где \(H_{\text{eff}}\) — эффективный гамильтониан
 \begin{equation}
+	\label{eq:10}
 	H_{\text{eff}}=\frac{M^{2}}{2E}, 
 \end{equation} 
 с диагональной массовой матрицей \(M\)
@@ -331,12 +354,8 @@ m_{ij}^{2}\).
 		j}=\sum_{i}U_{\beta i}U^{*}_{\alpha i}\sum_{j}U^{*}_{\beta j}U_{\alpha 
 		j},
 \end{equation}
-теперь вспомним, что по определению PMNS-матрица является унитарной, для неё можно 
-записать следующее соотношение унитарности
-\begin{equation}\label{eq:9}
-	(UU^{\dagger})_{\alpha\beta}=\sum_{i}U_{\alpha i}U_{\beta i}^{*}=\delta_{\alpha\beta},
-\end{equation}
-если его использовать, то произведение сумм запишутся так
+теперь, если использовать соотношение унитарности для PMNS-матрицы (см. \eqref{eq:14}) , 
+то произведение сумм можно записать так
  \begin{equation}
  	\sum_{ij}U_{\beta i}U^{*}_{\alpha i}U^{*}_{\beta j}U_{\alpha 
  		j}=\sum_{i}U_{\beta i}U^{*}_{\alpha i}\sum_{j}U^{*}_{\beta j}U_{\alpha 
@@ -394,9 +413,19 @@ m_{ij}^{2}\).
   \label{fig:2}
 \end{figure}
 
+\begin{figure}[htb]
+	\centering%
+	\includegraphics{fig-8}
+	\qquad
+	\includegraphics{fig-9}
+	\caption{Упругое рассеяние во втором порядке.}
+	\label{fig:3}
+\end{figure}
 Хотя взаимодействие нейтрино с кварками посредством заряженного тока в первом
-порядке это неупругий процесс, двойной обмен заряженным током даёт вклад в
-упругое рассение, но второго порядка, чем можно пренебречь в первом приближении.
+порядке это неупругий процесс, см. рис.\eqref{fig:2}, двойной обмен заряженным током даёт 
+вклад в
+упругое рассеяние, но второго порядка, чем можно пренебречь в первом приближении, см. 
+рис.\eqref{fig:3}.
 
 % \begin{tikzpicture}
 % 	\begin{feynman}
@@ -493,15 +522,24 @@ m_{ij}^{2}\).
 \end{equation}
 Для \(Z^{0}\)-бозонной вершины с заряженным лептоном
 \begin{equation}
-	\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}(\frac{1}{2}(1-\gamma^{5})+2\sin^{2}\theta_{W}),
+	\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+	\frac{1}{2}(1-\gamma^{5})+2\sin^{2}\theta_{W}\right) ,
 \end{equation}
 где \(g_{v}\) и \(g_{a}\) это коэффициенты векторной и аксиальной аномалии. Их для простоты 
 возьмём равными 1. 
-Для \(W^{+}\) и \(W^{-}\)-бозонных вершин с кварками (\(\bar{\psi_{I}}\psi_{i}W^{+}\) и 
-\(\bar{\psi_{i}}\psi_{I}W^{-}\)) имеем соответственно 
+Для \(W^{+}\) и \(W^{-}\)-бозонных вершин с кварками (\(u_{i}-W^{+}-d_{k}\)) и 
+(\(d_{i}-W^{-}-u_{k}\)) имеем соответственно 
 \begin{equation}
 	\frac{g}{2\sqrt{2}}V_{Ii}\gamma^{\alpha}(1-\gamma^{5}), \qquad 
 	\frac{g}{2\sqrt{2}}V_{iI}^{\dagger}\gamma^{\alpha}(1-\gamma^{5}).
+\end{equation}
+Для \(Z^{0}\)-бозонной вершины с кварками (\(u_{i}-Z^{0}-u_{i}\)) и (\(d_{i}-Z^{0}-d_{i}\)) имеем 
+соответственно
+\begin{equation}
+	\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+	\frac{1}{2}(1-\gamma^{5})-\frac{4}{3}\sin^{2}\theta_{W}\right) ,\qquad
+	\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+	-\frac{1}{2}(1-\gamma^{5})+\frac{2}{3}\sin^{2}\theta_{W}\right)
 \end{equation}
 Теперь, выписав выражения для всех вершин, вычисляем интенсивности как произведение 
 всех вершин входящих в данную диаграмму и делим на интенсивность взаимодействия с 
@@ -511,21 +549,21 @@ m_{ij}^{2}\).
 \begin{align}
 	I(e-Z^{0})=1,\\
 	I(e-W^{\pm})\approx 0,77,\\
-	I(\psi_{i}-Z^{0})\approx 0,31,\\
-	I(\psi_{I}-Z^{0})\approx 0,16,\\
-	I(\psi_{i}-W^{-})\approx\begin{cases}
-																			0,77, & \text{если}\qquad \bar{\psi_{I}}\psi_{i}=ud, cs, 
+	I(d_{i}-Z^{0})\approx 0,31,\\
+	I(u_{i}-Z^{0})\approx 0,16,\\
+	I(d_{i}-W^{-})\approx\begin{cases}
+																			0,77, & \text{если}\qquad u_{k}d_{i}=ud, cs, 
 																			tb\\
-																			0,16, & \text{если}\qquad \bar{\psi_{I}}\psi_{i}=us, cd\\
-																			0,008, & \text{если}\qquad \bar{\psi_{I}}\psi_{i}=ts, cb\\
-																			0,0008, & \text{если}\qquad \bar{\psi_{I}}\psi_{i}=td, ub
+																			0,16, & \text{если}\qquad u_{k}d_{i}=us, cd\\
+																			0,008, & \text{если}\qquad u_{k}d_{i}=ts, cb\\
+																			0,0008, & \text{если}\qquad u_{k}d_{i}=td, ub
 																		\end{cases},\\
-	I(\psi_{I}-W^{+})\approx\begin{cases}
-		0,77, & \text{если}\qquad \psi_{I}\bar{\psi_{i}}=ud, cs, 
+	I(u_{i}-W^{+})\approx\begin{cases}
+		0,77, & \text{если}\qquad u_{i}d_{k}=ud, cs, 
 		tb\\
-		0,16, & \text{если}\qquad \psi_{I}\bar{\psi_{i}}=us, cd\\
-		0,008, & \text{если}\qquad \psi_{I}\bar{\psi_{i}}=ts, cb\\
-		0,0008, & \text{если}\qquad \psi_{I}\bar{\psi_{i}}=td, ub
+		0,16, & \text{если}\qquad u_{i}d_{k}=us, cd\\
+		0,008, & \text{если}\qquad u_{i}d_{k}=ts, cb\\
+		0,0008, & \text{если}\qquad u_{i}d_{k}=td, ub
 	\end{cases}.
 \end{align}
 При этом, если рассматривать солнечную модель, то видно, что нейтрино в основном 
@@ -583,23 +621,33 @@ m_{ij}^{2}\).
 \begin{equation}
 	g_{a}=-\frac{1}{2}, \qquad g_{v}=-\frac{1}{2}+2q_{e}\sin^{2}\theta_{W}.
 \end{equation} 
-Добавку к эффективному гамильтониану удобно записать в терминах эффективного 
-потенциала. Для этого сначала нужно перейти от лагранжиана к гамильтониану. Так как мы 
+Теперь нужно перейти от лагранжиана к гамильтониану. Так как мы 
 работаем в рамках теории поля, и лагранжиан записан в представлении взаимодействия, то 
 связь лагранжиана к гамильтониану выглядит так
 \begin{equation}
-	\mathscr{H}=-\mathscr{L}.
+	\mathscr{H}=-\mathscr{L},
 \end{equation}
-Для начала получим эффективный потенциал взаимодействия по каналу заряженного тока.
-Гамильтониан запишется так
+тогда получим следующие выражения для гамильтонианов
+\begin{align}
+	\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})e\cdot\bar{e}\gamma_{\rho}(1-\gamma^{5})\nu_{e},\\
+	\mathscr{H}_{NC}=\frac{G_{F}}{\sqrt{2}}\sum_{\alpha=e, \mu, 
+		\tau}[\bar{\nu}_{\alpha}\gamma^{\rho}(1-\gamma^{5})\nu_{\alpha}]\cdot 
+	\bar{e}\gamma_{\rho}(g_{v}-g_{a}\gamma^{5})e.
+\end{align}
+Удобнее всего будет получить добавки к эффективному гамильтониану в терминах 
+эффективного потенциала, для этого требуется усреднить полученные гамильтонианы по 
+состоянию среды.
+Для начала проведём данную процедуру для случая заряженного тока.
+Если посмотреть на вид гамильтониана
 \begin{equation}
-	\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})e\cdot\bar{e}\gamma_{\rho}(1-\gamma^{5})\nu_{e}.
+	\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})e\cdot\bar{e}\gamma_{\rho}(1-\gamma^{5})\nu_{e},
 \end{equation}
-Теперь разделим вклад нейтрино от электронов с помощью тождества Фирца
+то можно заметить, что вклады нейтрино и электронов перемешаны, что не очень хорошо.
+Чтобы решить эту проблему, воспользуемся тождеством Фирца. Тогда получим следующее
 \begin{equation}
 	\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})\nu_{e}\cdot\bar{e}\gamma_{\rho}(1-\gamma^{5})e.
 \end{equation}
-Далее нужно усреднить гамильтониан по состоянию среды (по импульсу электронов и по их 
+Теперь усредним гамильтониан по состоянию среды (по импульсу электронов и по их 
 спиральности)
 \begin{equation}
 	\overline{\mathscr{H}}_{CC}= 
@@ -629,7 +677,7 @@ m_{ij}^{2}\).
 \end{multline} 
 Подставим получившееся значение в интеграл, тогда получим
 \begin{equation}
-	\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\frac{1}{V}\int\dd^{3} 
+	\overline{\mathscr{H}}_{CC}=\frac{G_{F}}{\sqrt{2}}\frac{1}{V}\int\dd^{3} 
 	p_{e}f(E_{e},T)\bar{\nu_{e}}\frac{\not{p}_{e}}{E_{e}}(1-\gamma^{5})\nu_{e}.
 \end{equation}
 Теперь, если взять интеграл, то получим
@@ -640,7 +688,8 @@ m_{ij}^{2}\).
 \end{equation}
 Наконец, итоговое выражение для усреднённого гамильтониана будет иметь следующий вид
 \begin{equation}
-	\mathscr{H}_{CC}=V_{CC}\bar{\nu}_{e}\gamma^{0}\nu_{e},
+	\label{eq:11}
+	\overline{\mathscr{H}}_{CC}=V_{CC}\bar{\nu}_{e}\gamma^{0}\nu_{e},
 \end{equation} 
 где \(V_{CC}\) является эффективным потенциалом взаимодействия нейтрино с электронами 
 через заряженный ток
@@ -649,12 +698,237 @@ m_{ij}^{2}\).
 \end{equation}
 Как видно этот вклад идёт только для электронного нейтрино, так как считается, что в среде 
 нет мюонов и тау-лептонов.
+
 В случае нейтрального тока, если провести все те же процедуры, что и для заряженного тока, 
 то можно заметить, что вклад по форме не будет отличатся от того, что получили для 
-заряженного тока, но он уже будет идти во все типы нейтрино одинаково, этот факт в итоге 
-отразится только на появлении общей фазы, которая не даёт вклад в итоговую вероятность 
-перехода.  
+заряженного тока, только он уже идёт во все типы нейтрино. Этот вклад будет иметь 
+следующий вид
+\begin{equation}
+	\overline{\mathscr{H}}_{NC}=\sum_{\alpha=e, \mu, 
+	\tau}V_{NC}\bar{\nu}_{\alpha}\gamma^{0}\nu_{\alpha},
+\end{equation} 
+где эффективный потенциал взаимодействия по нейтральному току запишется так
+\begin{equation}
+	V_{NC}=-\frac{1}{2}\sqrt{2}G_{F}N_{e}.
+\end{equation}
+Наконец, общий вклад от взаимодействия нейтрино с веществом будет иметь следующий 
+вид
+\begin{equation}
+	\overline{\mathscr{H}}_{eff}=\overline{\mathscr{H}}_{CC}+\overline{\mathscr{H}}_{NC}=\sum_{\alpha=e,
+	 \mu, 
+		\tau}V_{\alpha}\bar{\nu}_{\alpha}\gamma^{0}\nu_{\alpha},
+\end{equation}
+где потенциал \(V_{\alpha}\) имеет вид
+\begin{equation}
+	V_{\alpha}=V_{CC}\delta_{e\alpha}+V_{NC}.
+\end{equation}
 
+Теперь, запишем уравнение для эволюции нейтрино в флейворном представлении, если в 
+нем учесть полученную добавку от 
+МСВ-эффекта, то получим следующее
+\begin{equation}
+	\label{eq:12}
+	\imath\frac{\dd}{\dd t}\ket{\nu_{\alpha}(t)}=H\ket{\nu_{\alpha}(t)},\qquad \text{где}\quad 
+	H=H_{0}+H_{1}, \quad H_{0}\ket{\nu_{i}}=E_{i}\ket{\nu_{i}}, \quad 
+	H_{1}\ket{\nu_{\alpha}}=V_{\alpha}\ket{\nu_{\alpha}},
+\end{equation}
+то есть \(H_{0}\) --- это эффективный гамильтониан распространения в вакууме, а 
+соответственно \(H_{1}\) --- это добавка от взаимодействия со средой. Работать с этим 
+уравнением в такой форме очень неудобно, поэтому 
+преобразуем его. Во-первых, от векторов состояния лучше перейти к амплитудам перехода 
+флейворных состояний, которые задаются так
+\begin{equation}
+	\psi_{\beta\alpha}(t)=\bra{\nu_{\beta}}\nu_{\alpha}(t)\rangle.
+\end{equation}
+ Тогда, если исходное уравнение \eqref{eq:12} умножим обе части слева на 
+ \(\bra{\nu_{\beta}}\), получим
+\begin{equation}
+	\imath\frac{\dd}{\dd 
+	t}\psi_{\beta\alpha}(t)=\bra{\nu_{\beta}}H\ket{\nu_{\alpha}(t)}=\bra{\nu_{\beta}}H_{0}+H_{1}\ket{\nu_{\alpha}(t)}=
+	\bra{\nu_{\beta}}H_{0}\ket{\nu_{\alpha}(t)}+\bra{\nu_{\beta}}H_{1}\ket{\nu_{\alpha}(t)}.
+\end{equation}
+Сначала рассмотрим первое слагаемое в правой части. Здесь лучше левую обкладку сначала 
+записать в массивном представлении с помощью соотношения \eqref{eq:1}, затем \(H_{0}\) 
+действует на левую обкладку, и наконец обратно переводим левую обкладку в флейворное 
+представление, тогда получим
+\begin{equation}
+	\bra{\nu_{\beta}}H_{0}\ket{\nu_{\alpha}(t)}=\sum_{\rho}\sum_{k}U_{\beta k}E_{k}U^{*}_{\rho 
+	k}\psi_{\rho\alpha}(t).
+\end{equation} 
+Учтём также ультрарелятивийское приближение, которое использовали для случая 
+вакуумных осцилляций, тогда первое слагаемое запишется так
+\begin{multline}
+	\bra{\nu_{\beta}}H_{0}\ket{\nu_{\alpha}(t)}=\sum_{\rho}\sum_{k}U_{\beta k}\left( 
+	p+\frac{m^{2}_{k}}{2E}\right) U^{*}_{\rho 
+		k}\psi_{\rho\alpha}(t)=\left( p+\frac{m_{1}^{2}}{2E}\right) 
+		\psi_{\beta\alpha}(t)+\\
+		+\sum_{\rho}\sum_{k}U_{\beta k}\frac{\Delta m^{2}_{k1}}{2E} U^{*}_{\rho 
+		k}\psi_{\rho\alpha}(t).
+\end{multline}
+Теперь рассмотрим второе слагаемое. Здесь действуем \(H_{1}\) на левую обкладку, тогда 
+получим
+\begin{equation}
+	\bra{\nu_{\beta}}H_{1}\ket{\nu_{\alpha}(t)}=V_{\beta}\psi_{\beta\alpha}(t)=\left( 
+	V_{CC}\delta_{\beta e}+V_{NC}\right) \psi_{\beta\alpha}(t).
+\end{equation}
+
+Теперь вставим полученные соотношения в уравнение, а также, поскольку работаем в 
+ультрарелятивийском приближении, то перейдём от переменной по времени к координате, 
+тогда получим
+\begin{equation}
+	\imath\frac{\dd}{\dd 
+		r}\psi_{\beta\alpha}(r)=\left( p+\frac{m_{1}^{2}}{2E}\right) 
+		\psi_{\beta\alpha}(r)+\sum_{\rho}\sum_{k}U_{\beta k}\frac{\Delta m^{2}_{k1}}{2E} U^{*}_{\rho 
+		k}\psi_{\rho\alpha}(r)+\left( 
+		V_{CC}\delta_{\beta e}+V_{NC}\right) \psi_{\beta\alpha}(r).
+\end{equation} 
+Теперь сгруппируем правую часть следующим образом
+\begin{multline}
+	\imath\frac{\dd}{\dd 
+		r}\psi_{\beta\alpha}(r)=\left( p+\frac{m_{1}^{2}}{2E}+V_{NC}\right) 
+		\psi_{\beta\alpha}(r)+\sum_{\rho}\left( 
+		\sum_{k}U_{\beta k}\frac{\Delta m^{2}_{k1}}{2E}U^{*}_{\rho k}+V_{CC}\delta_{\beta 
+		e}\delta_{\rho e}\right) \psi_{\rho\alpha}(r).
+\end{multline} 
+Первое слагаемое в получившемся уравнении даёт только 
+фазовый сдвиг следующего вида
+\begin{equation}
+	\psi_{\beta\alpha}(r)\rightarrow\psi_{\beta\alpha}(r)\exp^{\imath\left( 
+	p+\frac{m_{1}^{2}}{2E}\right) r+\imath\int_{0}^{r}V_{NC}(r')\dd r'}.
+\end{equation}
+Вклад в вероятность этот сдвиг не даст, поэтому его можно не учитывать.
+В итоге, имеем следующий вид уравнения
+\begin{equation}
+	\imath\frac{\dd}{\dd 
+		r}\psi_{\beta\alpha}(r)=\sum_{\rho}\left( 
+		\sum_{k}U_{\beta k}\frac{\Delta m^{2}_{k1}}{2E}U^{*}_{\rho k}+V_{CC}\delta_{\beta 
+		e}\delta_{\rho e}\right) \psi_{\rho\alpha}(r).
+\end{equation}
+Так как амплитуды нейтрино после того, как они покинут область вещества, начинают 
+подчинятся вакуумному уравнению, решение которого проще в массивном представлении, 
+то имеет смысл полученное уравнение переписать также в массивном представлении 
+амплитуд. В результате уравнение для амплитуд в массивном представлении в матричном 
+виде запишется так
+\begin{equation}
+	\imath\frac{\dd}{\dd r}\Phi(r)=\left[ H_{0}+U^{\dagger}VU\right] \Phi(r),
+\end{equation}
+где \(\Phi^{T}(r)=(\phi_{1}(r),\phi_{2}(r),\phi_{3}(r)\), \(V=\diag(V_{CC},0,0)\), 
+\(H_{0}=\diag(0,\frac{\Delta m^{2}_{21}}{2E},\frac{\Delta m^{2}_{31}}{2E})\).
+Наконец, если сделать преобразование для амплитуды 
+\(\Psi(r)=\Gamma_{D}^{\dagger}\Phi(r)\), вынести из \(V\) эффективный потенциал 
+\(V_{CC}\equiv\nu(r)\) и определить 
+матрицу \(W=U^{\dagger}\diag(1,0,0)U\), то в результате получим итоговый вид уравнения 
+\begin{equation}
+	\label{eq:18}
+	 \imath\frac{\dd\Psi(r)}{\dd r}=H(r)\Psi(r),
+	\qquad
+	H(r)=H_{0}+v(r)W. 
+\end{equation} 
+
+Получив уравнение на амплитуды, можно перейти к вычислению вероятности перехода 
+флейворного состояния нейтрино. В терминах амплитуды перехода в флейворном 
+представлении она выразится так
+\begin{equation}
+	\label{eq:16}
+	P(\nu_{\alpha}\rightarrow\nu_{\beta})(r)=|\psi_{\alpha\beta}(r)|^{2}.
+\end{equation}
+Теперь вспомним, что как только нейтрино покидает область вещества его амплитуда 
+подчиняется вакуумному уравнению, исходя из этого можно переписать амплитуду 
+флейворного состояния следующим образом
+\begin{equation}
+	\psi_{\alpha\beta}=\sum_{i=1}^{3}U_{\beta i}A_{i}\exp^{-\imath E_{i}L},
+\end{equation}
+где \(A_{i}=\phi_{i}(r_{*})\) --- это амплитуда вероятности обнаружения массивного состояния 
+нейтрино на краю области вещества, \(L=r-r_{*}\) --- расстояние, которое преодолело 
+нейтрино в вакууме. Теперь подставим это определение в формулу \eqref{eq:16}, тогда 
+получим
+\begin{equation}
+	P(\nu_{\alpha}\rightarrow\nu_{\beta})(r)=\sum_{i}|U_{\beta 
+	i}|^{2}|A_{i}|^{2}+2\sum_{i>j}\Re\left[ U_{\beta i}U^{*}_{\beta 
+	j}A_{i}A_{j}^{*}\exp^{-\imath\Delta_{ij}L}\right] .
+\end{equation}
+Наконец, если усреднить полученное выражение, увидим, что члены колебательной 
+интерференции занулятся, в итоге получим
+\begin{equation}
+	\label{eq:17}
+	\langle P_{\alpha\beta}\rangle=\langle P(\nu_{\alpha}\rightarrow\nu_{\beta}) 
+	\rangle=\sum_{i}|U_{\beta i}|^{2}\rho_{i}, \quad \rho_{i}=|A_{i}|^{2}.
+\end{equation}
+Теперь приведём конкретные значения начальных условий для интегрирования. Для этого 
+достаточно воспользоваться соотношением \eqref{eq:15}, зная, что в начальный момент 
+наблюдаем определённое флейворное состояние, то есть электронное или 
+мюонное, 
+или таонное нейтрино. Тогда для электронного нейтрино имеем следующее начальное 
+условие
+\begin{equation}
+	\psi_{0}=\psi(r_{0})=
+	\begin{pmatrix}
+		c_{12}c_{13}\\
+		s_{12}c_{13}\\
+		s_{13}
+	\end{pmatrix}=U^{\trp}
+	\begin{pmatrix}
+		1\\
+		0\\
+		0
+	\end{pmatrix},
+\end{equation}
+\(c_{ij}\) и \(s_{ij}\) соответственно значения косинуса и синуса углов смешивания.  
+Для мюонного нейтрино начальное условие выглядит так
+\begin{equation}
+	\psi_{0}=
+	\begin{pmatrix}
+		-s_{12}c_{23}-c_{12}s_{23}s_{13}\\
+		c_{12}c_{23}-s_{12}s_{23}s_{13}\\
+		c_{13}s_{23}
+	\end{pmatrix}=U^{\trp}
+	\begin{pmatrix}
+		0\\
+		1\\
+		0
+	\end{pmatrix}.
+\end{equation}
+Наконец для таонного имеем
+\begin{equation}
+	\psi_{0}=
+	\begin{pmatrix}
+		s_{12}s_{23}-c_{12}c_{23}s_{13}\\
+		-c_{12}s_{23}-s_{12}c_{23}s_{13}\\
+		c_{13}c_{23}
+	\end{pmatrix}=U^{\trp}
+	\begin{pmatrix}
+		0\\
+		0\\
+		1
+	\end{pmatrix}.
+\end{equation}
+Теперь приведём конкретные формулы для вычисления вероятности перехода. Для этого 
+воспользуемся общей формулой \eqref{eq:17}. Как видно, вид формулы вероятности зависит 
+лишь от индекса \(\beta\), он определяется флейворным состоянием, в который был 
+совершён переход. Для перехода в электронное состояние \(\beta=1\), в мюонное --- 
+\(\beta=2\), в таонное --- \(\beta=3\). Тогда для вероятности 
+перехода в 
+электронное состояние имеем следующее выражение 
+\begin{equation}
+	 \langle 
+	 P(\nu_{\alpha}\rightarrow\nu_{e})\rangle=c_{12}^2c_{13}^{2}\rho_{1}+s_{12}^{2}c_{13}^{2}\rho_{2}+s_{13}^{2}\rho_{3},
+	\quad \rho_{i}=\abs{A_{i}}^{2}.
+\end{equation}
+Для перехода в мюонное состояние будем иметь следующую формулу
+\begin{multline}
+	\langle 
+	P(\nu_{\alpha}\rightarrow\nu_{\mu})\rangle=\big(s_{12}^{2}c_{23}^{2}+c_{12}^{2}s_{23}^{2}s_{13}^{2}+
+	2s_{12}c_{23}c_{12}s_{23}s_{13}\big)\rho_{1}+\\
+	+\big(c_{12}^{2}c_{23}^{2}+s_{12}^{2}s_{23}^{2}s_{13}^{2}-2c_{12}c_{23}s_{12}s_{23}s_{13}\big)\rho_{2}+
+	s_{23}^{2}c_{13}^{2}\rho_{3}.
+\end{multline}
+Наконец, для перехода в таонное состояние имеем
+\begin{multline}
+	\langle P_{e\tau}\rangle=\big(s_{12}^{2}s_{23}^{2}+c_{12}^{2}c_{23}^{2}s_{13}^{2}-
+	2s_{12}s_{23}c_{12}c_{23}s_{13}\big)\rho_{1}+\\
+	+\big(c_{12}^{2}s_{23}^{2}+s_{12}^{2}c_{23}^{2}s_{13}^{2}+2c_{12}s_{23}s_{12}c_{23}s_{13}\big)\rho_{2}+
+	c_{13}^{2}c_{23}^{2}\rho_{3}.
+\end{multline}
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-master: "diplom.ltx"
