@@ -1,0 +1,181 @@
+% !TeX document-id = {8af2b23d-7b47-4cdc-a890-9a7f82b3512f}
+% !TeX TXS-program:compile = txs:///latexmk -shell-escape
+
+\let\RaggedRight\raggedright
+\let\raggedright\relax
+\documentclass[utf8,9pt,mathserif,usepdftitle=false]{beamer}
+\usepackage[russian]{babel}
+\usepackage{mathtools}
+%\usepackage{minted}
+
+\newcommand{\dd}{\mathrm{d}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\exp}{\operatorname{e}}
+\renewcommand{\imath}{\mathrm{i}}
+\newcommand\Vect[1]{{\boldsymbol{#1}}}
+\newcommand{\diag}{\operatorname{diag}}
+
+\DeclarePairedDelimiter{\bra}{\langle}{|}
+\DeclarePairedDelimiter{\ket}{|}{\rangle}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiterX{\commut}[2]{[}{]}{#1,#2}
+
+% \input{present.daf}
+
+% \setbeameroption{show notes on second screen}
+\setbeameroption{hide notes}
+\mode<presentation>
+{
+	\usetheme{default}
+	%\usecolortheme{default} % dove, beaver
+	\usecolortheme{whale}
+	%\usefonttheme{serif}
+}
+
+\hypersetup{%
+	pdfinfo={%
+		Title={Lyapunov conference, IDSTU},%
+		Subject={Spin degrees of freedom for fermion systems},%
+		Author={Даниил Кучеров},%
+		Keywords={fermion polarization;fermion spinor projection}%
+	}
+}
+
+\title{Численные ограничения применения нейтрино для томографии объектов}%
+\author{\underline{Кучеров Д.А.}\\[7em]\raggedleft\footnotesize Научный руководитель:
+	Ломов В.П.\\%
+}%
+\date[ИГУ, 2025]{\vfill%\\[4ex]%
+	\small{}Иркутск, 2026}
+
+\begin{document}
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Введение}
+		\begin{itemize}
+			\item<1-> Нейтрино — это нейтральные частицы имеющие полуцелый спин 
+			относящиеся 
+			классу лептонов;
+			\item<2-> В феноменологии выделяют два типа нейтрино: массивное и флейворное.
+			\item<3-> Согласно современным представлениям, нейтрино собираются в три 
+			поколения,
+			которые выделяют по флейворам: электронное нейтрино, мюонное нейтрино и
+			тау-нейтрино;
+			\item<4-> Самая необычная черта нейтрино — это их осцилляции. Осцилляции 
+			нейтрино —
+			периодические переходы между флейворами этих частиц, распространяющихся в
+			веществе или в вакууме;
+			\item<5-> Осцилляции нейтрино в веществе значительно отличается от осцилляций в 
+			вакууме, причём на осцилляцию в веществе оказывает влияние профиль плотности 
+			среды;
+			\item<6-> В теории, эффект осцилляций нейтрино в веществе, а также его слабое 
+			взаимодействие с
+			материей возможно использовать для
+			исследования внутреннего строения какого-либо объекта, например Солнце, Землю и
+			т.д.
+		\end{itemize}	
+	\end{frame}
+	
+	\begin{frame}
+			\frametitle{Постановка задачи}
+		\begin{itemize}
+			\item<1-> Главный вопрос заключается в том, как будет влиять неопределённости в 
+			значениях углов смешивания и параметрах профиля плотности среды на осцилляцию 
+			нейтрино; 
+			\item<2-> Задачи работы:
+				\begin{itemize}
+					\item<3-> Разобрать феноменологическую теорию нейтринных осцилляций;
+					\item<4-> Провести численные расчёты вероятностей переходов при вариации 
+					параметров профиля плотности среды и углов смешивания;
+					\item<5-> Проанализировать полученные значения и сделать вывод о степени 
+					влияния вариации на значения вероятностей;
+				\end{itemize}
+		\end{itemize}
+	\end{frame}
+		
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
+		\begin{itemize}
+			\item<1-> В феноменологии нейтринного смешивания на первых порах игнорируют 
+			возможный 
+			тип нейтрино: дираковский или майороновские они, поэтому уравнение движения для 
+			них — это уравнение Шрёдингера в дираковском подходе
+			\begin{equation}
+				\label{eq:1}
+				\imath\frac{\dd}{\dd t}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)}=
+				E_{i}\ket{\nu_{i}(t)},
+			\end{equation}
+			где собственные значения гамильтониана — это релятивистская энергия нейтрино
+			\begin{equation}\label{eq:2}
+				E_{i}=\sqrt{|\Vect{p}|^{2}+m_{i}^{2}}.
+			\end{equation}
+			\item<2-> Решение данного уравнения будет иметь следующий вид
+			\begin{equation}\label{eq:3}
+				\ket{\nu_{i}(t)}=\exp^{-\imath E_{i}t}\ket{\nu_{i}(0)}.
+			\end{equation}	
+			\item<3-> Чтобы найти решение в точке удалённой от места рождения нейтрино, 
+			нужно 
+			подействовать на решение в точке покоя оператором трансляции
+			\begin{equation}
+				T(L)=\exp^{\imath pL}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
+		\begin{itemize}
+			\item<1->В этом случае выражение для эволюции нейтрино на расстоянии \(L\) 
+			запишется так
+			\begin{equation}\label{eq:4}
+				|\nu_{i}(t)\rangle=\exp^{-\imath (Et-p_{i}L)}|\nu_{i}(0)\rangle.
+			\end{equation}
+			\item<2->Примем, что массы нейтрино насколько малы, так что даже движение с 
+			энергией
+			порядка \(1\,\text{кэВ}\) — уже ультрарелятивистское и импульс можно переписать
+			так
+			\begin{equation}
+				p_{i}=\sqrt{E^{2}-m_{i}^{2}}\approx E-\frac{m_{i}^{2}}{2E}.
+			\end{equation}
+			\item<3->Подставив это приближение в выражение \eqref{eq:4}, то без учёта общей 
+			фазы 
+			\(\exp^{\imath E(t-L)}\) получим следующее выражение
+			\begin{equation}
+				\label{eq:5}
+				\ket{\nu_{i}(L)} = \exp^{-\imath \frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
+			\end{equation}
+			\item<4->Это соотношение можно рассматривать как решение уравнения 
+			шрёдингеровского 
+			типа
+			\begin{equation}
+				\label{eq:6}
+				\imath \frac{\dd}{\dd\xi} \ket{\nu(\xi)}=
+				H_{\text{eff}}\ket{\nu(\xi)},\quad
+				\ket{\nu(\xi)}=
+				\begin{pmatrix}
+					\ket{\nu_{1}(\xi)}\\
+					\ket{\nu_{2}(\xi)}\\
+					\ket{\nu_{3}(\xi)}
+				\end{pmatrix},\quad
+				H_{\text{eff}}=\frac{M^{2}}{2E}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
+		Для вычисления вероятности перехода флейвора нейтрино нужно выражение 
+		\eqref{eq:5} переписать в флейворном представлении.
+		
+	\end{frame}
+		
+		
+		
+
+
+\end{document}
