@@ -6,6 +6,7 @@
 \documentclass[utf8,9pt,mathserif,usepdftitle=false]{beamer}
 \usepackage[russian]{babel}
 \usepackage{mathtools}
+\usepackage{mathrsfs}
 %\usepackage{minted}
 
 \newcommand{\dd}{\mathrm{d}}
@@ -232,8 +233,287 @@
 			\end{multline} 
 		\end{itemize}
 	\end{frame}
-		
-		
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->На осцилляцию нейтрино в веществе влияет МСВ-эффект --- эффект 
+			возникающий при когерентном упругом рассеянии вперёд нейтрино на частицах 
+			вещества (нуклоны, электроны).
+			\item<2->Взаимодействие нейтрино с электронами идёт как посредством
+			нейтрального тока (через обмен \(Z^{0}\)-бозоном), так и заряженного (через
+			обмен \(W^{\pm}\)-бозоном), см. рис.~\ref{fig:1}. Оба варианта дают вклад в
+			упругое рассеяние нейтрино в первом порядке. 
+			\item<3->В случае взаимодействия с нуклонами, а точнее с кварками, нейтральный ток 
+			даёт вклад в упругое рассеяние в первом порядке, заряженный --- вклад в неупругое 
+			рассеяние в первом порядке и лишь во втором порядке вклад будет идти в упругое 
+			рассеяние.
+		\end{itemize}
+	\end{frame}
 
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{figure}[htb]
+			\centering%
+			\includegraphics[scale=0.7]{fig-1}
+			\qquad
+			\includegraphics[scale=0.7]{fig-4}
+			\qquad
+			\includegraphics[scale=0.7]{fig-2}
+			\qquad
+			\includegraphics[scale=0.7]{fig-3}
+			\caption{Упругое рассеяние в первом порядке.}
+			\label{fig:1}
+		\end{figure}
+		\begin{figure}[htb]
+			\centering%
+			\includegraphics[scale=0.7]{fig-5}
+			\qquad
+			\includegraphics[scale=0.7]{fig-6}
+			\qquad
+			\includegraphics[scale=0.7]{fig-7}
+			\caption{Неупругое рассеяние в первом порядке.}
+			\label{fig:2}
+		\end{figure}
+	\end{frame}
+	
+		
+	\begin{frame}
+			\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+			\begin{figure}[htb]
+			\centering%
+			\includegraphics{fig-8}
+			\qquad
+			\includegraphics{fig-9}
+			\caption{Упругое рассеяние во втором порядке.}
+			\label{fig:3}
+			\end{figure}
+	\end{frame}
 
+	\begin{frame}
+		\begin{itemize}
+			\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+			\item<1->Оценим долю каждого вклада в упругое рассеяние первого порядка 
+			относительно вклада взаимодействия с электроном по средством нейтрального тока 
+			по следующему подходу:
+			\begin{itemize}
+				\item<2->Вычисляем интенсивность как произведение вершин соответствующей 
+				диаграммы по модулю;
+				\item<3->Делим интенсивность каждого вклада на интенсивность клада 
+				взаимодействия с электроном по средством нейтрального тока;
+			\end{itemize}
+			\item<4-> Используем следующие выражения для вершин диаграмм:
+			\begin{itemize}
+				\item<4-> Для \(W^{\pm}\)-бозонной вершины с лептонами имеем
+				\begin{equation}
+					\frac{g}{2\sqrt{2}}\gamma^{\alpha}(1-\gamma^{5});
+				\end{equation}
+				\item<5-> Для \(Z^{0}\)-бозонной вершины с нейтрино
+				\begin{equation}
+					\frac{g}{4\cos\theta_{W}}\gamma^{\alpha}(1-\gamma^{5}).
+				\end{equation}
+				\item<6-> Для \(Z^{0}\)-бозонной вершины с заряженным лептоном
+				\begin{equation}
+					\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+					\frac{1}{2}(1-\gamma^{5})+2\sin^{2}\theta_{W}\right) ,
+				\end{equation}
+				где \(g_{v}\) и \(g_{a}\) это коэффициенты векторной и аксиальной аномалии. Их для 
+				простоты 
+				возьмём равными 1. 
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->Для \(W^{+}\) и \(W^{-}\)-бозонных вершин с кварками (\(u_{i}-W^{+}-d_{k}\)) и 
+			(\(d_{i}-W^{-}-u_{k}\)) имеем соответственно 
+			\begin{align}
+				\frac{g}{2\sqrt{2}}V_{Ii}\gamma^{\alpha}(1-\gamma^{5}), \\ 
+				\frac{g}{2\sqrt{2}}V_{iI}^{\dagger}\gamma^{\alpha}(1-\gamma^{5}).
+			\end{align}
+			\item<2->Для \(Z^{0}\)-бозонной вершины с кварками (\(u_{i}-Z^{0}-u_{i}\)) и 
+			(\(d_{i}-Z^{0}-d_{i}\)) 
+			имеем 
+			соответственно
+			\begin{align}
+				\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+				\frac{1}{2}(1-\gamma^{5})-\frac{4}{3}\sin^{2}\theta_{W}\right) ,\\
+				\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+				-\frac{1}{2}(1-\gamma^{5})+\frac{2}{3}\sin^{2}\theta_{W}\right)
+			\end{align}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> В результате получим следующие оценки долей вкладов в упругое рассеяние 
+			первого 
+			порядка
+			\begin{align}
+				I(e-Z^{0})=1,\\
+				I(e-W^{\pm})\approx 0,77,\\
+				I(d_{i}-Z^{0})\approx 0,31,\\
+				I(u_{i}-Z^{0})\approx 0,16,\\
+				%			I(d_{i}-W^{-})\approx\begin{cases}
+					%				0,77, & \text{если}\qquad u_{k}d_{i}=ud, cs, 
+					%				tb\\
+					%				0,16, & \text{если}\qquad u_{k}d_{i}=us, cd\\
+					%				0,008, & \text{если}\qquad u_{k}d_{i}=ts, cb\\
+					%				0,0008, & \text{если}\qquad u_{k}d_{i}=td, ub
+					%			\end{cases},\\
+				%			I(u_{i}-W^{+})\approx\begin{cases}
+					%				0,77, & \text{если}\qquad u_{i}d_{k}=ud, cs, 
+					%				tb\\
+					%				0,16, & \text{если}\qquad u_{i}d_{k}=us, cd\\
+					%				0,008, & \text{если}\qquad u_{i}d_{k}=ts, cb\\
+					%				0,0008, & \text{если}\qquad u_{i}d_{k}=td, ub
+					%			\end{cases}.
+			\end{align}
+			\item<2-> В случае солнечной модели, вдобавок к полученным оценкам, не 
+			рассматривается зона термоядерных реакций --- зона, где нейтрино главным образом 
+			взаимодействует с кварками. Вне этой зоны взаимодействие происходит в основном с 
+			электронами.
+			\item<3-> Эти факты позволяют пренебречь влиянием взаимодействия нейтрино с 
+			кварками. 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Для того, чтобы учесть влияние МСВ-эффекта на осцилляцию нейтрино, 
+			необходимо ввести добавку в эффективный гамильтониан, описывающий 
+			распространение нейтрино.
+			\item<2-> В общем случае лагранжиан взаимодействия векторных массивных 
+			бозонов с фермионами записывается следующим образом
+			\begin{equation}
+				\mathscr{L}_{weak}=\frac{g}{2\cos\theta_{W}}j_{\rho}^{NC}Z^{\rho}+\frac{g}{2\sqrt{2}}(j_{\rho}^{CC}W^{\rho}+h.c.).
+			\end{equation}
+			где нейтральный \(j_{\rho}^{NC}\) и заряженный \(j_{\rho}^{CC}\) токи выражаются 
+			следующим образом
+			\begin{equation}
+				j_{\rho}^{CC}=\sum_{\alpha=e, \mu, 
+					\tau}\bar{\nu}_{\alpha}\gamma_{\rho}(1-\gamma^{5})l_{\alpha}+\sum_{I,i}\bar{\psi}_{I}\gamma_{\rho}(1-\gamma^{5})V_{Ii}\psi_{i},
+			\end{equation}
+			\begin{equation}
+				j^{NC}_{\rho}=\sum_{f}\bar{f}\gamma_{\rho}(t_{3}^{f}(1-\gamma^{5})-2q_{f}\sin^{2}\theta_{W})f.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Воспользуемся эффективной теорией Ферми. В рамках этой теории можно 
+			провести процедуру "отынтегрирование". Ее суть заключается в стягивании 
+			пропагатора \(Z-\) и \(W-\) бозонов в точку, что как бы переводит диаграммы СМ в 
+			диаграммы отвечающей теории Ферми --- эффективному четырёх-фермионному 
+			взаимодействию.
+			\item<2-> В результате получим следующие выражения для лагранжианов 
+			взаимодействия по 
+			заряженному и нейтральному токов соответственно
+			\begin{equation}
+				\mathscr{L}_{NC}=-\frac{G_{F}}{\sqrt{2}}j_{\rho}^{NC}j^{NC\rho},
+			\end{equation}
+			\begin{equation}
+				\mathscr{L}_{CC}=-\frac{G_{F}}{\sqrt{2}}j^{CC}_{\rho}(j^{CC\dagger})^{\rho}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->Теперь нужно перейти от лагранжиана к гамильтониану. Так как мы 
+			работаем в рамках теории поля, и лагранжиан записан в представлении 
+			взаимодействия, то 
+			связь лагранжиана к гамильтониану выглядит так
+			\begin{equation}
+				\mathscr{H}=-\mathscr{L},
+			\end{equation}
+			\item<2->Подставив выражения для нейтрального и заряженного токов в определения 
+			лагранжианов и перейдя к гамильтонианам, получем следующее
+			\begin{align}
+				\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})e\cdot\bar{e}\gamma_{\rho}(1-\gamma^{5})\nu_{e},\\
+				\mathscr{H}_{NC}=\frac{G_{F}}{\sqrt{2}}\sum_{\alpha=e, \mu, 
+					\tau}[\bar{\nu}_{\alpha}\gamma^{\rho}(1-\gamma^{5})\nu_{\alpha}]\cdot 
+				\bar{e}\gamma_{\rho}(g_{v}-g_{a}\gamma^{5})e.
+			\end{align}
+			где \(g_{v}\) и \(g_{a}\) для электрона имеют следующие значения
+			\begin{equation}
+				g_{a}=-\frac{1}{2}, \qquad g_{v}=-\frac{1}{2}+2q_{e}\sin^{2}\theta_{W}.
+			\end{equation} 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->Чтобы получить добавки к эффективному гамильтониану в терминах 
+			эффективного потенциала, требуется усреднить полученные гамильтонианы по 
+			состоянию среды.
+			\item<2->Для гамильтониана взаимодействия по заряженному току, нужно сначала 
+			преобразовать его в более удобный вид через тождество Фирца так как электронные и 
+			нейтринные спиноры перемешаны. В итоге получим
+			\begin{equation}
+				\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})\nu_{e}\cdot\bar{e}\gamma_{\rho}(1-\gamma^{5})e.
+			\end{equation}
+			\item<3->Усредняем по по состоянию среды (по импульсу электронов и по их 
+			спиральности)
+			\begin{equation}
+				\overline{\mathscr{H}}_{CC}= 
+				\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})\nu_{e}\int\dd^{3}
+				p_{e}f(E_{e},T)
+				\frac{1}{2}\sum_{h_{e}=\pm1}\bra{e(p_{e},h_{e})}\bar{e}\gamma_{\rho}(1-\gamma^{5})e\ket{e(p_{e},h_{e})}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->Взяв сумму и интеграл, получим следующее 
+			\begin{equation}
+				\label{eq:10}
+				\overline{\mathscr{H}}_{CC}=V_{CC}\bar{\nu}_{e}\gamma^{0}\nu_{e},
+			\end{equation} 
+			где \(V_{CC}\) является эффективным потенциалом взаимодействия нейтрино с 
+			электронами 
+			через заряженный ток
+			\begin{equation}
+				V_{CC}=\sqrt{2}G_{F}N_{e}.
+			\end{equation}
+			\item<2-> Проведя все те же процедуры для нейтрального тока получим следующую 
+			добавку
+			\begin{equation}
+				\overline{\mathscr{H}}_{NC}=\sum_{\alpha=e, \mu, 
+					\tau}V_{NC}\bar{\nu}_{\alpha}\gamma^{0}\nu_{\alpha},
+			\end{equation} 
+			где эффективный потенциал взаимодействия по нейтральному току запишется так
+			\begin{equation}
+				V_{NC}=-\frac{1}{2}\sqrt{2}G_{F}N_{e}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Вклад полученный для случая нейтрального тока идёт одинаково для всех 
+			флейворов нейтрино, в результате появляется общая фаза которой можно пренебречь.
+			\item<2->Итого, с учётом добавки от заряженного тока, получаем следующее 
+			уравнение на массивные состояния
+			\begin{align}
+				\label{eq:12}
+				\imath\frac{\dd}{\dd t}\ket{\nu_{\alpha}(t)}=H\ket{\nu_{\alpha}(t)},\qquad \text{где}\quad 
+				H=H_{0}+H_{1}, \\
+				 H_{0}\ket{\nu_{i}}=E_{i}\ket{\nu_{i}}, \quad 
+				H_{1}\ket{\nu_{\alpha}}=V_{\alpha}\ket{\nu_{\alpha}},
+			\end{align}
+			то есть \(H_{0}\) --- это эффективный гамильтониан распространения в вакууме, а 
+			соответственно \(H_{1}\) --- это добавка от взаимодействия со средой.
+		\end{itemize}
+	\end{frame}
 \end{document}
