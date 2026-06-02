@@ -169,11 +169,69 @@
 	
 	\begin{frame}
 		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
-		Для вычисления вероятности перехода флейвора нейтрино нужно выражение 
-		\eqref{eq:5} переписать в флейворном представлении.
-		
+		\begin{itemize}
+			\item<1->Для вычисления вероятности перехода флейвора нейтрино нужно 
+			выражение 
+			\eqref{eq:5} переписать в флейворном представлении. Для этого воспользуемся 
+			выражением 
+			\begin{equation}
+				\label{eq:7}
+				\ket{\nu_{\alpha}} = \sum_{i}U^{*}_{\alpha i}\ket{\nu_{i}},
+			\end{equation}
+			где \(U\) --- это PMNS-матрица, она записывается так
+			\begin{equation}
+				U=
+				\begin{pmatrix}
+					c_{12}c_{13}&s_{12}c_{13}&s_{13}\exp^{-\imath\delta_{CP}}\\
+					-s_{12}c_{23}-c_{12}s_{23}s_{13}\exp^{\imath\delta_{CP}}&c_{12}c_{23}-s_{12}s_{23}s_{13}\exp^{\imath\delta_{CP}}&s_{23}c_{13}\\
+					s_{12}s_{23}-c_{12}c_{23}s_{13}\exp^{\imath\delta_{CP}}&-c_{12}s_{23}-s_{12}c_{23}s_{13}\exp^{\imath\delta_{CP}}&c_{23}c_{13}
+				\end{pmatrix}.
+			\end{equation}
+			\item<2->В итоге получаем следующее выражение
+			\begin{equation}
+				\label{eq:8}
+				\ket{\nu_{\alpha}(L)}=\sum_{i}U^{*}_{\alpha i}\ket{\nu_{i}(L)}=\sum_{i}U^{*}_{\alpha 
+					i}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
+			\end{equation}
+		\end{itemize}
 	\end{frame}
-		
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
+		\begin{itemize}
+			\item<1->Определим амплитуду перехода так
+			\begin{equation}
+				A(\nu_{\alpha} \rightarrow \nu_{\beta})=\langle\nu_{\beta}\ket{\nu_{\alpha}(L)}.
+			\end{equation}
+			\item<2->Далее, воспользовавшись соотношением \eqref{eq:8}, выражение для 
+			амплитуды 
+			запишется так
+			\begin{equation}
+				\label{eq:9}
+				A(\nu_{\alpha} \rightarrow 
+				\nu_{\beta})=\sum_{i}U_{\beta i}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}U^{*}_{\alpha i}.
+			\end{equation}
+			\item<3->По определению вероятность вычисляется как
+			\begin{equation}
+				P(\nu_{\alpha} \rightarrow 
+				\nu_{\beta})=|A(\nu_{\alpha} \rightarrow 
+				\nu_{\beta})|^{2}.
+			\end{equation} 
+			\item<4->Подставив в определение вероятности выражение для амплитуды и 
+			произведя ряд 
+			тождественных преобразований, получим следующее итоговое выражение для 
+			вероятности перехода флейвора нейтрино на расстоянии \(L\) от места рождения
+			\begin{multline}
+				P(\nu_{\alpha} \rightarrow 
+				\nu_{\beta})=\delta_{\alpha\beta}-4\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+						i}U^{*}_{\beta j}U_{\alpha 
+						j})}\sin^{2}{\frac{\Delta m_{ij}^{2}}{4E}L}+\\
+				+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
+						i}U^{*}_{\beta j}U_{\alpha 
+						j})}\sin{\frac{\Delta m_{ij}^{2}}{2E}L}.
+			\end{multline} 
+		\end{itemize}
+	\end{frame}
 		
 		
 
