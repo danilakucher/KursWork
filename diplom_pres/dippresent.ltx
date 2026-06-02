@@ -16,6 +16,7 @@
 \renewcommand{\imath}{\mathrm{i}}
 \newcommand\Vect[1]{{\boldsymbol{#1}}}
 \newcommand{\diag}{\operatorname{diag}}
+\newcommand{\trp}{\mathrm{T}}
 
 \DeclarePairedDelimiter{\bra}{\langle}{|}
 \DeclarePairedDelimiter{\ket}{|}{\rangle}
@@ -501,12 +502,21 @@
 	\begin{frame}
 		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
 		\begin{itemize}
-			\item<1-> Вклад полученный для случая нейтрального тока идёт одинаково для всех 
-			флейворов нейтрино, в результате появляется общая фаза которой можно пренебречь.
-			\item<2->Итого, с учётом добавки от заряженного тока, получаем следующее 
-			уравнение на массивные состояния
+			\item<1-> В итоге, добавка в эффективный гамильтониан характеризующая  
+			МСВ-эффект будет иметь следующий вид
+			\begin{equation}
+				\overline{\mathscr{H}}_{eff}=\overline{\mathscr{H}}_{CC}+\overline{\mathscr{H}}_{NC}=\sum_{\alpha=e,
+					\mu, 
+					\tau}V_{\alpha}\bar{\nu}_{\alpha}\gamma^{0}\nu_{\alpha},
+			\end{equation}
+			где потенциал \(V_{\alpha}\) имеет вид
+			\begin{equation}
+				V_{\alpha}=V_{CC}\delta_{e\alpha}+V_{NC}.
+			\end{equation}
+			\item<2-> С учётом полученной добавки, уравнение на эволюцию флейворных 
+			состояний запишется так
 			\begin{align}
-				\label{eq:12}
+				\label{eq:11}
 				\imath\frac{\dd}{\dd t}\ket{\nu_{\alpha}(t)}=H\ket{\nu_{\alpha}(t)},\qquad \text{где}\quad 
 				H=H_{0}+H_{1}, \\
 				 H_{0}\ket{\nu_{i}}=E_{i}\ket{\nu_{i}}, \quad 
@@ -515,5 +525,168 @@
 			то есть \(H_{0}\) --- это эффективный гамильтониан распространения в вакууме, а 
 			соответственно \(H_{1}\) --- это добавка от взаимодействия со средой.
 		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Перейдём от векторов состояния к амплитудам перехода флейвора 
+			нейтрино, определённых так
+			\begin{equation}
+				\psi_{\beta\alpha}(t)=\bra{\nu_{\beta}}\nu_{\alpha}(t)\rangle.
+			\end{equation}
+			\item<2->  Тогда, если исходное уравнение \eqref{eq:11} умножим обе части слева на 
+			\(\bra{\nu_{\beta}}\) и получившееся уравнение преобразуем так, чтобы выделить 
+			амплитуду, то в итоге получим
+			\begin{multline}
+				\imath\frac{\dd}{\dd 
+					r}\psi_{\beta\alpha}(r)=\left( p+\frac{m_{1}^{2}}{2E}+V_{NC}\right) 
+				\psi_{\beta\alpha}(r)+\\
+				+\sum_{\rho}\left( 
+				\sum_{k}U_{\beta k}\frac{\Delta m^{2}_{k1}}{2E}U^{*}_{\rho k}+V_{CC}\delta_{\beta 
+					e}\delta_{\rho e}\right) \psi_{\rho\alpha}(r).
+			\end{multline} 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Первое слагаемое в правой части даёт только фазовый сдвиг
+			\begin{equation}
+				\psi_{\beta\alpha}(r)\rightarrow\psi_{\beta\alpha}(r)\exp^{\imath\left( 
+					p+\frac{m_{1}^{2}}{2E}\right) r+\imath\int_{0}^{r}V_{NC}(r')\dd r'},
+			\end{equation}
+			которым можно пренебречь.
+			\item<2->  Если в получившемся уравнении перейти к амплитудам массивных 
+			состояний, то в матричном виде получаем следующее уравнение
+			\begin{equation}
+				\imath\frac{\dd}{\dd r}\Phi(r)=\left[ H_{0}+U^{\dagger}VU\right] \Phi(r),
+			\end{equation}
+			где \(\Phi^{T}(r)=(\phi_{1}(r),\phi_{2}(r),\phi_{3}(r))\), \(V=\diag(V_{CC},0,0)\), 
+			
+			\(H_{0}=\diag(0,\frac{\Delta m^{2}_{21}}{2E},\frac{\Delta m^{2}_{31}}{2E})\).
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Наконец,  если сделать преобразование для амплитуды 
+			\(\Psi(r)=\Gamma_{D}^{\dagger}\Phi(r)\), вынести из \(V\) эффективный потенциал 
+			\(V_{CC}\equiv\nu(r)\) и определить 
+			матрицу \(W=U^{\dagger}\diag(1,0,0)U\), то в результате получим итоговый вид 
+			уравнения 
+			\begin{equation}
+				\label{eq:18}
+				\imath\frac{\dd\Psi(r)}{\dd r}=H(r)\Psi(r),
+				\qquad
+				H(r)=H_{0}+v(r)W. 
+			\end{equation} 
+			\item<2-> В терминах амплитуды перехода в флейворном 
+			представлении вероятность перехода выразится так
+			\begin{equation}
+				\label{eq:16}
+				P(\nu_{\alpha}\rightarrow\nu_{\beta})(r)=|\psi_{\alpha\beta}(r)|^{2}.
+			\end{equation}
+			\item<3-> Если учесть факт, что как только нейтрино покидает объём среды его 
+			эволюция подчиняется вакуумному уравнению, поэтому амплитуду перехода 
+			флейвора нейтрино лучше записать так
+			\begin{equation}
+				\psi_{\alpha\beta}=\sum_{i=1}^{3}U_{\beta i}A_{i}\exp^{-\imath E_{i}L},
+			\end{equation}
+			где \(A_{i}=\phi_{i}(r_{*})\) --- это амплитуда вероятности обнаружения массивного 
+			состояния 
+			нейтрино на краю области вещества, \(L=r-r_{*}\) --- расстояние, которое преодолело 
+			нейтрино в вакууме.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Наконец, если возвести амплитуду по модулю в квадрате и усреднить 
+			полученное выражение, то в итоге выражение для вероятности перехода запишется 
+			так
+			\begin{equation}
+				\label{eq:12}
+				\langle P_{\alpha\beta}\rangle=\langle P(\nu_{\alpha}\rightarrow\nu_{\beta}) 
+				\rangle=\sum_{i}|U_{\beta i}|^{2}\rho_{i}, \quad \rho_{i}=|A_{i}|^{2}.
+			\end{equation}
+			\item<2-> Приведём примеры начальных условий когда на краю среды наблюдается 
+			определённый флейвор нейтрино
+			\begin{align}
+				\psi_{0}^{(\nu_{e})}=\psi^{(\nu_{e})}(r_{0})=
+				\begin{pmatrix}
+					c_{12}c_{13}\\
+					s_{12}c_{13}\\
+					s_{13}
+				\end{pmatrix}=U^{\trp}
+				\begin{pmatrix}
+					1\\
+					0\\
+					0
+				\end{pmatrix},
+			\\
+				\psi_{0}^{(\nu_{\mu})}=
+				\begin{pmatrix}
+					-s_{12}c_{23}-c_{12}s_{23}s_{13}\\
+					c_{12}c_{23}-s_{12}s_{23}s_{13}\\
+					c_{13}s_{23}
+				\end{pmatrix}=U^{\trp}
+				\begin{pmatrix}
+					0\\
+					1\\
+					0
+				\end{pmatrix},
+			\\
+				\psi_{0}^{(\nu_{\tau})}=
+				\begin{pmatrix}
+					s_{12}s_{23}-c_{12}c_{23}s_{13}\\
+					-c_{12}s_{23}-s_{12}c_{23}s_{13}\\
+					c_{13}c_{23}
+				\end{pmatrix}=U^{\trp}
+				\begin{pmatrix}
+					0\\
+					0\\
+					1
+				\end{pmatrix}.
+			\end{align}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Формулы для вычисления вероятности при:
+			\begin{itemize}
+				\item<1-> переходе в электронное состояние 
+				\begin{equation}
+					\langle 
+					P(\nu_{\alpha}\rightarrow\nu_{e})\rangle=c_{12}^2c_{13}^{2}\rho_{1}+s_{12}^{2}c_{13}^{2}\rho_{2}+s_{13}^{2}\rho_{3},
+					\quad \rho_{i}=\abs{A_{i}}^{2};
+				\end{equation}
+				\item<2-> переходе в мюонное состояние
+				\begin{multline}
+					\langle 
+					P(\nu_{\alpha}\rightarrow\nu_{\mu})\rangle=\big(s_{12}^{2}c_{23}^{2}+c_{12}^{2}s_{23}^{2}s_{13}^{2}+
+					2s_{12}c_{23}c_{12}s_{23}s_{13}\big)\rho_{1}+\\
+					+\big(c_{12}^{2}c_{23}^{2}+s_{12}^{2}s_{23}^{2}s_{13}^{2}-2c_{12}c_{23}s_{12}s_{23}s_{13}\big)\rho_{2}+
+					s_{23}^{2}c_{13}^{2}\rho_{3}.
+				\end{multline}
+				\item<3-> переходе в таонное состояние
+				\begin{multline}
+					\langle 
+					P(\nu_{\alpha}\rightarrow\nu_{\tau})\rangle=\big(s_{12}^{2}s_{23}^{2}+c_{12}^{2}c_{23}^{2}s_{13}^{2}-
+					2s_{12}s_{23}c_{12}c_{23}s_{13}\big)\rho_{1}+\\
+					+\big(c_{12}^{2}s_{23}^{2}+s_{12}^{2}c_{23}^{2}s_{13}^{2}+2c_{12}s_{23}s_{12}c_{23}s_{13}\big)\rho_{2}+
+					c_{13}^{2}c_{23}^{2}\rho_{3}.
+				\end{multline}
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса}
 	\end{frame}
 \end{document}
