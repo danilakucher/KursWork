@@ -37,10 +37,10 @@
 
 \hypersetup{%
 	pdfinfo={%
-		Title={Lyapunov conference, IDSTU},%
-		Subject={Spin degrees of freedom for fermion systems},%
+		Title={Diploma defense, ISU},%
+		Subject={Numerical limitations of neutrino application for object tomography},%
 		Author={Даниил Кучеров},%
-		Keywords={fermion polarization;fermion spinor projection}%
+		Keywords={neutrino oscillations}%
 	}
 }
 
@@ -48,7 +48,7 @@
 \author{Кучеров Д.А.\\[7em]\raggedleft\footnotesize Научный руководитель:
 	Ломов В.П.\\%
 }%
-\date[ИГУ, 2025]{\vfill%\\[4ex]%
+\date[ИГУ, 2026]{\vfill%\\[4ex]%
 	\small{}Иркутск, 2026}
 
 \begin{document}
@@ -99,14 +99,11 @@
 				\imath\frac{\dd}{\dd t}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)}=
 				E_{i}\ket{\nu_{i}(t)},\quad E_{i}=\sqrt{|\Vect{p}|^{2}+m_{i}^{2}}.
 			\end{equation}
-			\item<2-> Подействуем на решение уравнения \eqref{eq:1} в случае фиксированной 
-			энергии оператором трансляции и, учитывая ультрарелятивистское приближение, 
-			перепишем импульс так
+			\item<2-> В ультрарелятивистском приближении
 			\begin{equation}
 				p_{i}=\sqrt{E^{2}-m_{i}^{2}}\approx E-\frac{m_{i}^{2}}{2E}.
 			\end{equation}
-			\item<4-> Тогда итоговое выражение для эволюции без учёта общей фазы будет
-			иметь вид
+			\item<3-> Выражение для эволюции без учёта общей фазы
 			\begin{equation}
 				\label{eq:2}
 				\ket{\nu_{i}(L)} = \exp^{-\imath \frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
@@ -147,9 +144,8 @@
 				\end{pmatrix},
 			\end{equation}
 			где обозначения \(c_{ij}\) и \(s_{ij}\) это соответственно \(\cos\theta_{ij}\) и 
-			\(\sin\theta_{ij}\).
-			\item<3-> Используя полученные соотношения, можно вычислить вероятность 
-			перехода, используя следующее определение
+			\(\sin\theta_{ij}\), в свою очередь \(\theta_{ij}\) --- это углы смешивания.
+			\item<3-> Вероятность перехода определяется так
 			\begin{equation}
 				P(\nu_{\alpha}\rightarrow\nu_{\beta})=|\langle\nu_{\beta}\ket{\nu_{\alpha}(L)}|^{2}.
 			\end{equation} 
@@ -160,11 +156,9 @@
 		\frametitle{Осцилляции в веществе}
 		\begin{itemize}
 			\item<1-> На осцилляцию нейтрино в веществе влияет МСВ-эффект --- эффект 
-			возникающий при когерентном упругом рассеянии вперёд нейтрино на частицах 
-			вещества (нуклоны, электроны).
+			возникающий при взаимодействии с частицами вещества (нуклоны, электроны).
 			\item<2-> Оценки вкладов от упругого рассеяния нейтрино на частицах среды в 
-			первом порядке относительно вклада от взаимодействия с электроном через 
-			нейтральный ток
+			первом порядке
 			\begin{align*}
 				I(e-Z^{0})=1,\\
 				I(e-W^{\pm})\approx 0,77,\\
@@ -181,8 +175,7 @@
 	\begin{frame}
 		\frametitle{Осцилляции в веществе}
 		\begin{itemize}
-			\item<1-> В итоговое уравнение на амплитуды перехода массивных состояний имеет 
-			следующий вид
+			\item<1-> Итоговое уравнение на амплитуды перехода массивных состояний
 			\begin{equation}
 				\label{eq:5}
 				\imath\frac{\dd\Psi(r)}{\dd r}=H(r)\Psi(r),
@@ -191,14 +184,13 @@
 			\end{equation} 
 			где \(H_{0}=\diag(0,\frac{\Delta m^{2}_{21}}{2E},\frac{\Delta m^{2}_{31}}{2E})\), 
 			\(W=U^{\dagger}\diag(1,0,0)U\), \(\nu(r)\) --- функция профиля плотности.
-			\item<2-> Средняя вероятность перехода будет вычисляться по следующей формуле
+			\item<2-> Средняя вероятность перехода
 			\begin{equation}
 				\label{eq:6}
 				\langle P_{\alpha\beta}\rangle=\langle P(\nu_{\alpha}\rightarrow\nu_{\beta}) 
 				\rangle=\sum_{i}|U_{\beta i}|^{2}\rho_{i}, \quad \rho_{i}=|A_{i}|^{2}.
 			\end{equation}
-			\item<3-> Для случая перехода в электронное состояние формула вероятности будет 
-			выглядеть так
+			\item<3-> Для случая перехода в электронное состояние 
 			\begin{equation}
 				\langle 
 				P(\nu_{\alpha}\rightarrow\nu_{e})\rangle=c_{12}^2c_{13}^{2}\rho_{1}+s_{12}^{2}c_{13}^{2}\rho_{2}+s_{13}^{2}\rho_{3},
@@ -209,24 +201,1201 @@
 	
 	\begin{frame}
 		\frametitle{Метод Магнуса}
+		\begin{itemize}
+			\item<1-> Общий вид матричного дифференциального уравнения
+			\begin{equation}\label{eq:7}
+				\frac{\dd}{\dd t}Y(t)=A(t)Y(t), \qquad A \in C^{n\times n}, \quad Y\in C^{n},
+			\end{equation}
+			с начальным условием \(Y(t_{0})=Y_{0}\).
+			\item<2-> Поиск решения вида 
+			\begin{equation}
+				Y(t)=\exp^{\Omega(t,t_{0})}Y_{0}, \qquad \Omega(t,t_{0})\in C^{n\times n}, \quad
+				\Omega(t_{0},t_{0})=0.
+			\end{equation}
+			\item<3-> \(\Omega(t,t_{0})\) выражается так
+			\begin{equation}
+				\label{eq:8}
+				\Omega(t,t_{0})=\sum_{k=1}^{\infty}\Omega_{k}(t,t_{0}).
+			\end{equation}
+			\item<4-> решение в точке \(t_{n+1}\) 
+			\begin{equation}
+				Y(t_{n+1})=\exp^{\Omega(t_{n}+h_{n},t_{n})}Y(t_{n}),
+			\end{equation}
+			где \(h_{n}\) --- шаг интегрирования.
+			\item<5-> Решение в конечной точке интервала 
+			\begin{equation}
+				Y(t_{f})=\prod^{N-1}_{n=0}\exp^{\Omega(t_{n};h_{n})}Y(t_{0}), \qquad
+				\Omega(t_{n};h_{n})\equiv\Omega(t_{n}+h_{n},t_{n}).
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод Магнуса}
+		\begin{itemize}
+			\item<1-> Для получения решения \(Y(t_{n}+h_{n})\) с точностью до до 
+			\(O(h^{r'+1}_{n})\), достаточно разложить ряд \eqref{eq:8} до первых \(p=2r'-2\) 
+			слагаемых.
+			\item<2-> Первые три слагаемые ряда \eqref{eq:8}
+			\begin{flalign*}
+				\Omega_{1}(t,t_{0})&=\int_{t_{0}}^{t} \dd t_{1} A_{1},\\
+				\Omega_{2}(t,t_{0})&=\frac{1}{2}\int_{t_{0}}^{t}\dd
+				t_{1}\int_{t_{0}}^{t_{1}}\dd t_{2}[A_{1},\,A_{2}],\\
+				\Omega_{3}(t,t_{0})&=\frac{1}{6}\int_{t_{0}}^{t}\dd
+				t_{1}\int_{t_{0}}^{t_{1}}\dd
+				t_{2}\int_{t_{0}}^{t_{2}}\Big\{\big[A_{1},\,[A_{2},\,A_{3}]\big] +
+				\big[[A_{1},\,A_{2}],\,A_{3}\big]\Big\}.
+			\end{flalign*}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Численные расчёты}
+		\begin{itemize}
+			\item<1-> В работе проводились численные расчёты с вариацией: \(\gamma\), \(\eta\), 
+			\(s_{12}\), \(s_{13}\).
+			\item<2-> В численном анализе опираемся на относительную величину отклонения 
+			вероятности перехода
+			\begin{equation}
+				\label{eq:9}
+				\eta=\frac{\Prob_{f}-\Prob_{0}}{\Prob_{0}}.
+			\end{equation}
+			\item<3-> Вариация углов
+			\begin{equation}
+				\label{eq:10}
+				\sin{\theta_{f}}=f\cdot \sin{\theta_{0}},\quad f\in \left[ 0,9;1,1\right] 
+			\end{equation}
+			\item<4-> вариация параметров плотности среды
+			\begin{equation}
+				\label{eq:11}
+				par_{f}=f\cdot par_{0},\quad f\in \left[ 0,9;1,1\right] 
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{figure}[htp]
+			\centering%
+			\includegraphics[scale=0.6]{sun-out-par1-e-mu_0,5}
+			\caption{График вариации параметра \(\gamma\) по каналу \(e-\mu\)}
+			\label{fig:1}
+		\end{figure}	
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{figure}[htp]
+			\centering%
+			\includegraphics[scale=0.6]{sun-out-par1-mu-mu_0,5}
+			\caption{График вариации параметра \(\gamma\) по каналу \(\mu-\mu\)}
+			\label{fig:2}
+		\end{figure}	
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{figure}[htp]
+			\centering%
+			\includegraphics[scale=0.6]{sun-out-ang12-e-mu_0,5}
+			\caption{График вариации угла \(s_{12}\) по каналу	\(e-\mu\)}
+			\label{fig:3}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{figure}[htp]
+			\centering%
+			\includegraphics[scale=0.6]{sun-out-ang12-mu-mu_0,5}
+			\caption{График вариации угла \(s_{12}\) по каналу	\(\mu-\mu\)}
+			\label{fig:4}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Заключение}
+		\begin{itemize}
+			\item<1-> В работе представлены принципы, положенные в новое потенциальное 
+			направление практического применения нейтрино --- нейтринной томографии 
+			объектов. Основой служит экспериментальный факт --- нейтринные осцилляции, 
+			которые усиливаются в среде.
+			\item<2-> В данной работе было рассмотрено как влияет на вероятности перехода 
+			нейтрино такие переменные как углы смешивания и параметры среды. Кроме этого 
+			были рассмотрены разные флейворы нейтрино. Для расчётов использовалась 
+			программа на основе разложения Магнуса приспособленная к данной задаче.
+			\item<3-> Для автоматизации получения необходимых данных были написаны 
+			сценарии пакетного 
+			запуска программы расчёта, а также сценарии для визуализации полученных данных. 
+			Используя их, можно определить как удобный для работы диапазон энергий нейтрино, 
+			так и 
+			тип нейтрино.
+			
+			\item<4-> В процессе работы было выявлено странное поведение в расчётных данных. 
+			На текущий 
+			момент не известна точная причина: либо проблема в исходном приближении 
+			модели, либо 
+			численные ошибки в программе.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{}%
+		\begin{center}
+			\LARGE%
+			\bfseries%
+			\textit{СПАСИБО ЗА ВНИМАНИЕ!}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{}%
+		\begin{center}
+			\LARGE%
+			\bfseries%
+			\textit{ДОПОЛНИТЕЛЬНЫЕ МАТЕРИАЛЫ}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
+		\begin{itemize}
+			\item<1-> В феноменологии нейтринного смешивания на первых порах игнорируют 
+			возможный 
+			тип нейтрино: дираковский или майороновские они, поэтому уравнение движения для 
+			них — это уравнение Шрёдингера в дираковском подходе
+			\begin{equation}
+				\label{eq:1}
+				\imath\frac{\dd}{\dd t}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)}=
+				E_{i}\ket{\nu_{i}(t)},
+			\end{equation}
+			где собственные значения гамильтониана — это релятивистская энергия нейтрино
+			\begin{equation}\label{eq:2}
+				E_{i}=\sqrt{|\Vect{p}|^{2}+m_{i}^{2}}.
+			\end{equation}
+			\item<2-> Решение данного уравнения будет иметь следующий вид
+			\begin{equation}\label{eq:3}
+				\ket{\nu_{i}(t)}=\exp^{-\imath E_{i}t}\ket{\nu_{i}(0)}.
+			\end{equation}	
+			\item<3-> Чтобы найти решение в точке удалённой от места рождения нейтрино, 
+			нужно 
+			подействовать на решение в точке покоя оператором трансляции
+			\begin{equation}
+				T(L)=\exp^{\imath pL}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
+		\begin{itemize}
+			\item<1->В этом случае выражение для эволюции нейтрино на расстоянии \(L\) 
+			запишется так
+			\begin{equation}\label{eq:4}
+				|\nu_{i}(t)\rangle=\exp^{-\imath (Et-p_{i}L)}|\nu_{i}(0)\rangle.
+			\end{equation}
+			\item<2->Примем, что массы нейтрино насколько малы, так что даже движение с 
+			энергией
+			порядка \(1\,\text{кэВ}\) — уже ультрарелятивистское и импульс можно переписать
+			так
+			\begin{equation}
+				p_{i}=\sqrt{E^{2}-m_{i}^{2}}\approx E-\frac{m_{i}^{2}}{2E}.
+			\end{equation}
+			\item<3->Подставив это приближение в выражение \eqref{eq:4}, то без учёта общей 
+			фазы 
+			\(\exp^{\imath E(t-L)}\) получим следующее выражение
+			\begin{equation}
+				\label{eq:5}
+				\ket{\nu_{i}(L)} = \exp^{-\imath \frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
+			\end{equation}
+			\item<4->Это соотношение можно рассматривать как решение уравнения 
+			шрёдингеровского 
+			типа
+			\begin{equation}
+				\label{eq:6}
+				\imath \frac{\dd}{\dd\xi} \ket{\nu(\xi)}=
+				H_{\text{eff}}\ket{\nu(\xi)},\quad
+				\ket{\nu(\xi)}=
+				\begin{pmatrix}
+					\ket{\nu_{1}(\xi)}\\
+					\ket{\nu_{2}(\xi)}\\
+					\ket{\nu_{3}(\xi)}
+				\end{pmatrix},\quad
+				H_{\text{eff}}=\frac{M^{2}}{2E}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
+		\begin{itemize}
+			\item<1->Для вычисления вероятности перехода флейвора нейтрино нужно 
+			выражение 
+			\eqref{eq:5} переписать в флейворном представлении. Для этого воспользуемся 
+			выражением 
+			\begin{equation}
+				\label{eq:7}
+				\ket{\nu_{\alpha}} = \sum_{i}U^{*}_{\alpha i}\ket{\nu_{i}},
+			\end{equation}
+			где \(U\) --- это PMNS-матрица, она записывается так
+			\begin{equation}
+				U=
+				\begin{pmatrix}
+					c_{12}c_{13}&s_{12}c_{13}&s_{13}\exp^{-\imath\delta_{CP}}\\
+					-s_{12}c_{23}-c_{12}s_{23}s_{13}\exp^{\imath\delta_{CP}}&c_{12}c_{23}-s_{12}s_{23}s_{13}\exp^{\imath\delta_{CP}}&s_{23}c_{13}\\
+					s_{12}s_{23}-c_{12}c_{23}s_{13}\exp^{\imath\delta_{CP}}&-c_{12}s_{23}-s_{12}c_{23}s_{13}\exp^{\imath\delta_{CP}}&c_{23}c_{13}
+				\end{pmatrix}.
+			\end{equation}
+			\item<2->В итоге получаем следующее выражение
+			\begin{equation}
+				\label{eq:8}
+				\ket{\nu_{\alpha}(L)}=\sum_{i}U^{*}_{\alpha i}\ket{\nu_{i}(L)}=\sum_{i}U^{*}_{\alpha 
+					i}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай вакуума)}
+		\begin{itemize}
+			\item<1->Определим амплитуду перехода так
+			\begin{equation}
+				A(\nu_{\alpha} \rightarrow \nu_{\beta})=\langle\nu_{\beta}\ket{\nu_{\alpha}(L)}.
+			\end{equation}
+			\item<2->Далее, воспользовавшись соотношением \eqref{eq:8}, выражение для 
+			амплитуды 
+			запишется так
+			\begin{equation}
+				\label{eq:9}
+				A(\nu_{\alpha} \rightarrow 
+				\nu_{\beta})=\sum_{i}U_{\beta i}\exp^{-\imath\frac{m_{i}^{2}}{2E}L}U^{*}_{\alpha i}.
+			\end{equation}
+			\item<3->По определению вероятность вычисляется как
+			\begin{equation}
+				P(\nu_{\alpha} \rightarrow 
+				\nu_{\beta})=|A(\nu_{\alpha} \rightarrow 
+				\nu_{\beta})|^{2}.
+			\end{equation} 
+			\item<4->Подставив в определение вероятности выражение для амплитуды и 
+			произведя ряд 
+			тождественных преобразований, получим следующее итоговое выражение для 
+			вероятности перехода флейвора нейтрино на расстоянии \(L\) от места рождения
+			\begin{multline}
+				P(\nu_{\alpha} \rightarrow 
+				\nu_{\beta})=\delta_{\alpha\beta}-4\sum_{i>j}\Re{(U_{\beta i}U^{*}_{\alpha 
+						i}U^{*}_{\beta j}U_{\alpha 
+						j})}\sin^{2}{\frac{\Delta m_{ij}^{2}}{4E}L}+\\
+				+2\sum_{i>j}\Im{(U_{\beta i}U^{*}_{\alpha 
+						i}U^{*}_{\beta j}U_{\alpha 
+						j})}\sin{\frac{\Delta m_{ij}^{2}}{2E}L}.
+			\end{multline} 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->На осцилляцию нейтрино в веществе влияет МСВ-эффект --- эффект 
+			возникающий при когерентном упругом рассеянии вперёд нейтрино на частицах 
+			вещества (нуклоны, электроны).
+			\item<2->Взаимодействие нейтрино с электронами идёт как посредством
+			нейтрального тока (через обмен \(Z^{0}\)-бозоном), так и заряженного (через
+			обмен \(W^{\pm}\)-бозоном), см. рис.~\ref{fig:1}. Оба варианта дают вклад в
+			упругое рассеяние нейтрино в первом порядке. 
+			\item<3->В случае взаимодействия с нуклонами, а точнее с кварками, нейтральный ток 
+			даёт вклад в упругое рассеяние в первом порядке, заряженный --- вклад в неупругое 
+			рассеяние в первом порядке и лишь во втором порядке вклад будет идти в упругое 
+			рассеяние.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{figure}[htb]
+			\centering%
+			\includegraphics[scale=0.7]{fig-1}
+			\qquad
+			\includegraphics[scale=0.7]{fig-4}
+			\qquad
+			\includegraphics[scale=0.7]{fig-2}
+			\qquad
+			\includegraphics[scale=0.7]{fig-3}
+			\caption{Упругое рассеяние в первом порядке.}
+			\label{fig:1}
+		\end{figure}
+		\begin{figure}[htb]
+			\centering%
+			\includegraphics[scale=0.7]{fig-5}
+			\qquad
+			\includegraphics[scale=0.7]{fig-6}
+			\qquad
+			\includegraphics[scale=0.7]{fig-7}
+			\caption{Неупругое рассеяние в первом порядке.}
+			\label{fig:2}
+		\end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{figure}[htb]
+			\centering%
+			\includegraphics{fig-8}
+			\qquad
+			\includegraphics{fig-9}
+			\caption{Упругое рассеяние во втором порядке.}
+			\label{fig:3}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\begin{itemize}
+			\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+			\item<1->Оценим долю каждого вклада в упругое рассеяние первого порядка 
+			относительно вклада взаимодействия с электроном по средством нейтрального тока 
+			по следующему подходу:
+			\begin{itemize}
+				\item<2->Вычисляем интенсивность как произведение вершин соответствующей 
+				диаграммы по модулю;
+				\item<3->Делим интенсивность каждого вклада на интенсивность клада 
+				взаимодействия с электроном по средством нейтрального тока;
+			\end{itemize}
+			\item<4-> Используем следующие выражения для вершин диаграмм:
+			\begin{itemize}
+				\item<4-> Для \(W^{\pm}\)-бозонной вершины с лептонами имеем
+				\begin{equation}
+					\frac{g}{2\sqrt{2}}\gamma^{\alpha}(1-\gamma^{5});
+				\end{equation}
+				\item<5-> Для \(Z^{0}\)-бозонной вершины с нейтрино
+				\begin{equation}
+					\frac{g}{4\cos\theta_{W}}\gamma^{\alpha}(1-\gamma^{5}).
+				\end{equation}
+				\item<6-> Для \(Z^{0}\)-бозонной вершины с заряженным лептоном
+				\begin{equation}
+					\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+					\frac{1}{2}(1-\gamma^{5})+2\sin^{2}\theta_{W}\right) ,
+				\end{equation}
+				где \(g_{v}\) и \(g_{a}\) это коэффициенты векторной и аксиальной аномалии. Их для 
+				простоты 
+				возьмём равными 1. 
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->Для \(W^{+}\) и \(W^{-}\)-бозонных вершин с кварками (\(u_{i}-W^{+}-d_{k}\)) и 
+			(\(d_{i}-W^{-}-u_{k}\)) имеем соответственно 
+			\begin{align}
+				\frac{g}{2\sqrt{2}}V_{Ii}\gamma^{\alpha}(1-\gamma^{5}), \\ 
+				\frac{g}{2\sqrt{2}}V_{iI}^{\dagger}\gamma^{\alpha}(1-\gamma^{5}).
+			\end{align}
+			\item<2->Для \(Z^{0}\)-бозонной вершины с кварками (\(u_{i}-Z^{0}-u_{i}\)) и 
+			(\(d_{i}-Z^{0}-d_{i}\)) 
+			имеем 
+			соответственно
+			\begin{align}
+				\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+				\frac{1}{2}(1-\gamma^{5})-\frac{4}{3}\sin^{2}\theta_{W}\right) ,\\
+				\frac{g}{2\cos\theta_{W}}\gamma^{\alpha}\left( 
+				-\frac{1}{2}(1-\gamma^{5})+\frac{2}{3}\sin^{2}\theta_{W}\right)
+			\end{align}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> В результате получим следующие оценки долей вкладов в упругое рассеяние 
+			первого 
+			порядка
+			\begin{align}
+				I(e-Z^{0})=1,\\
+				I(e-W^{\pm})\approx 0,77,\\
+				I(d_{i}-Z^{0})\approx 0,31,\\
+				I(u_{i}-Z^{0})\approx 0,16,\\
+				%			I(d_{i}-W^{-})\approx\begin{cases}
+					%				0,77, & \text{если}\qquad u_{k}d_{i}=ud, cs, 
+					%				tb\\
+					%				0,16, & \text{если}\qquad u_{k}d_{i}=us, cd\\
+					%				0,008, & \text{если}\qquad u_{k}d_{i}=ts, cb\\
+					%				0,0008, & \text{если}\qquad u_{k}d_{i}=td, ub
+					%			\end{cases},\\
+				%			I(u_{i}-W^{+})\approx\begin{cases}
+					%				0,77, & \text{если}\qquad u_{i}d_{k}=ud, cs, 
+					%				tb\\
+					%				0,16, & \text{если}\qquad u_{i}d_{k}=us, cd\\
+					%				0,008, & \text{если}\qquad u_{i}d_{k}=ts, cb\\
+					%				0,0008, & \text{если}\qquad u_{i}d_{k}=td, ub
+					%			\end{cases}.
+			\end{align}
+			\item<2-> В случае солнечной модели, вдобавок к полученным оценкам, не 
+			рассматривается зона термоядерных реакций --- зона, где нейтрино главным образом 
+			взаимодействует с кварками. Вне этой зоны взаимодействие происходит в основном с 
+			электронами.
+			\item<3-> Эти факты позволяют пренебречь влиянием взаимодействия нейтрино с 
+			кварками. 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Для того, чтобы учесть влияние МСВ-эффекта на осцилляцию нейтрино, 
+			необходимо ввести добавку в эффективный гамильтониан, описывающий 
+			распространение нейтрино.
+			\item<2-> В общем случае лагранжиан взаимодействия векторных массивных 
+			бозонов с фермионами записывается следующим образом
+			\begin{equation}
+				\mathscr{L}_{weak}=\frac{g}{2\cos\theta_{W}}j_{\rho}^{NC}Z^{\rho}+\frac{g}{2\sqrt{2}}(j_{\rho}^{CC}W^{\rho}+h.c.).
+			\end{equation}
+			где нейтральный \(j_{\rho}^{NC}\) и заряженный \(j_{\rho}^{CC}\) токи выражаются 
+			следующим образом
+			\begin{equation}
+				j_{\rho}^{CC}=\sum_{\alpha=e, \mu, 
+					\tau}\bar{\nu}_{\alpha}\gamma_{\rho}(1-\gamma^{5})l_{\alpha}+\sum_{I,i}\bar{\psi}_{I}\gamma_{\rho}(1-\gamma^{5})V_{Ii}\psi_{i},
+			\end{equation}
+			\begin{equation}
+				j^{NC}_{\rho}=\sum_{f}\bar{f}\gamma_{\rho}(t_{3}^{f}(1-\gamma^{5})-2q_{f}\sin^{2}\theta_{W})f.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Воспользуемся эффективной теорией Ферми. В рамках этой теории можно 
+			провести процедуру "отынтегрирование". Ее суть заключается в стягивании 
+			пропагатора \(Z-\) и \(W-\) бозонов в точку, что как бы переводит диаграммы СМ в 
+			диаграммы отвечающей теории Ферми --- эффективному четырёх-фермионному 
+			взаимодействию.
+			\item<2-> В результате получим следующие выражения для лагранжианов 
+			взаимодействия по 
+			заряженному и нейтральному токов соответственно
+			\begin{equation}
+				\mathscr{L}_{NC}=-\frac{G_{F}}{\sqrt{2}}j_{\rho}^{NC}j^{NC\rho},
+			\end{equation}
+			\begin{equation}
+				\mathscr{L}_{CC}=-\frac{G_{F}}{\sqrt{2}}j^{CC}_{\rho}(j^{CC\dagger})^{\rho}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->Теперь нужно перейти от лагранжиана к гамильтониану. Так как мы 
+			работаем в рамках теории поля, и лагранжиан записан в представлении 
+			взаимодействия, то 
+			связь лагранжиана к гамильтониану выглядит так
+			\begin{equation}
+				\mathscr{H}=-\mathscr{L},
+			\end{equation}
+			\item<2->Подставив выражения для нейтрального и заряженного токов в определения 
+			лагранжианов и перейдя к гамильтонианам, получем следующее
+			\begin{align}
+				\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})e\cdot\bar{e}\gamma_{\rho}(1-\gamma^{5})\nu_{e},\\
+				\mathscr{H}_{NC}=\frac{G_{F}}{\sqrt{2}}\sum_{\alpha=e, \mu, 
+					\tau}[\bar{\nu}_{\alpha}\gamma^{\rho}(1-\gamma^{5})\nu_{\alpha}]\cdot 
+				\bar{e}\gamma_{\rho}(g_{v}-g_{a}\gamma^{5})e.
+			\end{align}
+			где \(g_{v}\) и \(g_{a}\) для электрона имеют следующие значения
+			\begin{equation}
+				g_{a}=-\frac{1}{2}, \qquad g_{v}=-\frac{1}{2}+2q_{e}\sin^{2}\theta_{W}.
+			\end{equation} 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->Чтобы получить добавки к эффективному гамильтониану в терминах 
+			эффективного потенциала, требуется усреднить полученные гамильтонианы по 
+			состоянию среды.
+			\item<2->Для гамильтониана взаимодействия по заряженному току, нужно сначала 
+			преобразовать его в более удобный вид через тождество Фирца так как электронные и 
+			нейтринные спиноры перемешаны. В итоге получим
+			\begin{equation}
+				\mathscr{H}_{CC}=\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})\nu_{e}\cdot\bar{e}\gamma_{\rho}(1-\gamma^{5})e.
+			\end{equation}
+			\item<3->Усредняем по по состоянию среды (по импульсу электронов и по их 
+			спиральности)
+			\begin{equation}
+				\overline{\mathscr{H}}_{CC}= 
+				\frac{G_{F}}{\sqrt{2}}\bar{\nu}_{e}\gamma^{\rho}(1-\gamma^{5})\nu_{e}\int\dd^{3}
+				p_{e}f(E_{e},T)
+				\frac{1}{2}\sum_{h_{e}=\pm1}\bra{e(p_{e},h_{e})}\bar{e}\gamma_{\rho}(1-\gamma^{5})e\ket{e(p_{e},h_{e})}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1->Взяв сумму и интеграл, получим следующее 
+			\begin{equation}
+				\label{eq:10}
+				\overline{\mathscr{H}}_{CC}=V_{CC}\bar{\nu}_{e}\gamma^{0}\nu_{e},
+			\end{equation} 
+			где \(V_{CC}\) является эффективным потенциалом взаимодействия нейтрино с 
+			электронами 
+			через заряженный ток
+			\begin{equation}
+				V_{CC}=\sqrt{2}G_{F}N_{e}.
+			\end{equation}
+			\item<2-> Проведя все те же процедуры для нейтрального тока получим следующую 
+			добавку
+			\begin{equation}
+				\overline{\mathscr{H}}_{NC}=\sum_{\alpha=e, \mu, 
+					\tau}V_{NC}\bar{\nu}_{\alpha}\gamma^{0}\nu_{\alpha},
+			\end{equation} 
+			где эффективный потенциал взаимодействия по нейтральному току запишется так
+			\begin{equation}
+				V_{NC}=-\frac{1}{2}\sqrt{2}G_{F}N_{e}.
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> В итоге, добавка в эффективный гамильтониан характеризующая  
+			МСВ-эффект будет иметь следующий вид
+			\begin{equation}
+				\overline{\mathscr{H}}_{eff}=\overline{\mathscr{H}}_{CC}+\overline{\mathscr{H}}_{NC}=\sum_{\alpha=e,
+					\mu, 
+					\tau}V_{\alpha}\bar{\nu}_{\alpha}\gamma^{0}\nu_{\alpha},
+			\end{equation}
+			где потенциал \(V_{\alpha}\) имеет вид
+			\begin{equation}
+				V_{\alpha}=V_{CC}\delta_{e\alpha}+V_{NC}.
+			\end{equation}
+			\item<2-> С учётом полученной добавки, уравнение на эволюцию флейворных 
+			состояний запишется так
+			\begin{align}
+				\label{eq:11}
+				\imath\frac{\dd}{\dd t}\ket{\nu_{\alpha}(t)}=H\ket{\nu_{\alpha}(t)},\qquad \text{где}\quad 
+				H=H_{0}+H_{1}, \\
+				H_{0}\ket{\nu_{i}}=E_{i}\ket{\nu_{i}}, \quad 
+				H_{1}\ket{\nu_{\alpha}}=V_{\alpha}\ket{\nu_{\alpha}},
+			\end{align}
+			то есть \(H_{0}\) --- это эффективный гамильтониан распространения в вакууме, а 
+			соответственно \(H_{1}\) --- это добавка от взаимодействия со средой.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Перейдём от векторов состояния к амплитудам перехода флейвора 
+			нейтрино, определённых так
+			\begin{equation}
+				\psi_{\beta\alpha}(t)=\bra{\nu_{\beta}}\nu_{\alpha}(t)\rangle.
+			\end{equation}
+			\item<2->  Тогда, если исходное уравнение \eqref{eq:11} умножим обе части слева на 
+			\(\bra{\nu_{\beta}}\) и получившееся уравнение преобразуем так, чтобы выделить 
+			амплитуду, то в итоге получим
+			\begin{multline}
+				\imath\frac{\dd}{\dd 
+					r}\psi_{\beta\alpha}(r)=\left( p+\frac{m_{1}^{2}}{2E}+V_{NC}\right) 
+				\psi_{\beta\alpha}(r)+\\
+				+\sum_{\rho}\left( 
+				\sum_{k}U_{\beta k}\frac{\Delta m^{2}_{k1}}{2E}U^{*}_{\rho k}+V_{CC}\delta_{\beta 
+					e}\delta_{\rho e}\right) \psi_{\rho\alpha}(r).
+			\end{multline} 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Первое слагаемое в правой части даёт только фазовый сдвиг
+			\begin{equation}
+				\psi_{\beta\alpha}(r)\rightarrow\psi_{\beta\alpha}(r)\exp^{\imath\left( 
+					p+\frac{m_{1}^{2}}{2E}\right) r+\imath\int_{0}^{r}V_{NC}(r')\dd r'},
+			\end{equation}
+			которым можно пренебречь.
+			\item<2->  Если в получившемся уравнении перейти к амплитудам массивных 
+			состояний, то в матричном виде получаем следующее уравнение
+			\begin{equation}
+				\imath\frac{\dd}{\dd r}\Phi(r)=\left[ H_{0}+U^{\dagger}VU\right] \Phi(r),
+			\end{equation}
+			где \(\Phi^{T}(r)=(\phi_{1}(r),\phi_{2}(r),\phi_{3}(r))\), \(V=\diag(V_{CC},0,0)\), 
+			
+			\(H_{0}=\diag(0,\frac{\Delta m^{2}_{21}}{2E},\frac{\Delta m^{2}_{31}}{2E})\).
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Наконец,  если сделать преобразование для амплитуды 
+			\(\Psi(r)=\Gamma_{D}^{\dagger}\Phi(r)\), вынести из \(V\) эффективный потенциал 
+			\(V_{CC}\equiv\nu(r)\) и определить 
+			матрицу \(W=U^{\dagger}\diag(1,0,0)U\), то в результате получим итоговый вид 
+			уравнения 
+			\begin{equation}
+				\label{eq:18}
+				\imath\frac{\dd\Psi(r)}{\dd r}=H(r)\Psi(r),
+				\qquad
+				H(r)=H_{0}+v(r)W. 
+			\end{equation} 
+			\item<2-> В терминах амплитуды перехода в флейворном 
+			представлении вероятность перехода выразится так
+			\begin{equation}
+				\label{eq:16}
+				P(\nu_{\alpha}\rightarrow\nu_{\beta})(r)=|\psi_{\alpha\beta}(r)|^{2}.
+			\end{equation}
+			\item<3-> Если учесть факт, что как только нейтрино покидает объём среды его 
+			эволюция подчиняется вакуумному уравнению, поэтому амплитуду перехода 
+			флейвора нейтрино лучше записать так
+			\begin{equation}
+				\psi_{\alpha\beta}=\sum_{i=1}^{3}U_{\beta i}A_{i}\exp^{-\imath E_{i}L},
+			\end{equation}
+			где \(A_{i}=\phi_{i}(r_{*})\) --- это амплитуда вероятности обнаружения массивного 
+			состояния 
+			нейтрино на краю области вещества, \(L=r-r_{*}\) --- расстояние, которое преодолело 
+			нейтрино в вакууме.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Наконец, если возвести амплитуду по модулю в квадрате и усреднить 
+			полученное выражение, то в итоге выражение для вероятности перехода запишется 
+			так
+			\begin{equation}
+				\label{eq:12}
+				\langle P_{\alpha\beta}\rangle=\langle P(\nu_{\alpha}\rightarrow\nu_{\beta}) 
+				\rangle=\sum_{i}|U_{\beta i}|^{2}\rho_{i}, \quad \rho_{i}=|A_{i}|^{2}.
+			\end{equation}
+			\item<2-> Приведём примеры начальных условий когда на краю среды наблюдается 
+			определённый флейвор нейтрино
+			\begin{align}
+				\psi_{0}^{(\nu_{e})}=\psi^{(\nu_{e})}(r_{0})=
+				\begin{pmatrix}
+					c_{12}c_{13}\\
+					s_{12}c_{13}\\
+					s_{13}
+				\end{pmatrix}=U^{\trp}
+				\begin{pmatrix}
+					1\\
+					0\\
+					0
+				\end{pmatrix},
+				\\
+				\psi_{0}^{(\nu_{\mu})}=
+				\begin{pmatrix}
+					-s_{12}c_{23}-c_{12}s_{23}s_{13}\\
+					c_{12}c_{23}-s_{12}s_{23}s_{13}\\
+					c_{13}s_{23}
+				\end{pmatrix}=U^{\trp}
+				\begin{pmatrix}
+					0\\
+					1\\
+					0
+				\end{pmatrix},
+				\\
+				\psi_{0}^{(\nu_{\tau})}=
+				\begin{pmatrix}
+					s_{12}s_{23}-c_{12}c_{23}s_{13}\\
+					-c_{12}s_{23}-s_{12}c_{23}s_{13}\\
+					c_{13}c_{23}
+				\end{pmatrix}=U^{\trp}
+				\begin{pmatrix}
+					0\\
+					0\\
+					1
+				\end{pmatrix}.
+			\end{align}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Теория осцилляций нейтрино (случай распространения в веществе)}
+		\begin{itemize}
+			\item<1-> Формулы для вычисления вероятности при:
+			\begin{itemize}
+				\item<1-> переходе в электронное состояние 
+				\begin{equation}
+					\langle 
+					P(\nu_{\alpha}\rightarrow\nu_{e})\rangle=c_{12}^2c_{13}^{2}\rho_{1}+s_{12}^{2}c_{13}^{2}\rho_{2}+s_{13}^{2}\rho_{3},
+					\quad \rho_{i}=\abs{A_{i}}^{2};
+				\end{equation}
+				\item<2-> переходе в мюонное состояние
+				\begin{multline}
+					\langle 
+					P(\nu_{\alpha}\rightarrow\nu_{\mu})\rangle=\big(s_{12}^{2}c_{23}^{2}+c_{12}^{2}s_{23}^{2}s_{13}^{2}+
+					2s_{12}c_{23}c_{12}s_{23}s_{13}\big)\rho_{1}+\\
+					+\big(c_{12}^{2}c_{23}^{2}+s_{12}^{2}s_{23}^{2}s_{13}^{2}-2c_{12}c_{23}s_{12}s_{23}s_{13}\big)\rho_{2}+
+					s_{23}^{2}c_{13}^{2}\rho_{3}.
+				\end{multline}
+				\item<3-> переходе в таонное состояние
+				\begin{multline}
+					\langle 
+					P(\nu_{\alpha}\rightarrow\nu_{\tau})\rangle=\big(s_{12}^{2}s_{23}^{2}+c_{12}^{2}c_{23}^{2}s_{13}^{2}-
+					2s_{12}s_{23}c_{12}c_{23}s_{13}\big)\rho_{1}+\\
+					+\big(c_{12}^{2}s_{23}^{2}+s_{12}^{2}c_{23}^{2}s_{13}^{2}+2c_{12}s_{23}s_{12}c_{23}s_{13}\big)\rho_{2}+
+					c_{13}^{2}c_{23}^{2}\rho_{3}.
+				\end{multline}
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса}
+		\begin{itemize}
+			\item<1-> Главной особенностью метода Магнуса является то, что приближенное 
+			решение, предоставляемое процедурой, разделяет с точным решением 
+			соответствующие геометрические свойства.
+			\item<2-> Пусть дано матричное дифференциальное уравнения вида
+			\begin{equation}\label{eq:13}
+				\frac{\dd}{\dd t}Y(t)=A(t)Y(t), \qquad A \in C^{n\times n}, \quad Y\in C^{n},
+			\end{equation}
+			при начальном условии \(Y(t_{0})=Y_{0}\).
+			\item<3-> Подход Магнуса заключается в поиске
+			экспоненциального представления решения следующего вида
+			\begin{equation}
+				Y(t)=\exp^{\Omega(t,t_{0})}Y_{0}, \qquad \Omega(t,t_{0})\in C^{n\times n}, \quad
+				\Omega(t_{0},t_{0})=0.
+			\end{equation}
+			\item<4-> В общем случае, \(\Omega(t,t_{0})\) задаётся в
+			виде ряда
+			\begin{equation}
+				\label{eq:14}
+				\Omega(t,t_{0})=\sum_{k=1}^{\infty}\Omega_{k}(t,t_{0}).
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса}
+		\begin{itemize}
+			\item<1->Слагаемое \(\Omega_{k}\) составлено из нескольких интегралов вложенных 
+			коммутаторов
+			\(k\) матриц \(A\), вычисленных в \(k\) разных моментов времени. 
+			\item<2->Первые три слагаемые ряда \eqref{eq:14}
+			запишутся так
+			\begin{flalign}
+				\Omega_{1}(t,t_{0})&=\int_{t_{0}}^{t} \dd t_{1} A_{1},\\
+				\Omega_{2}(t,t_{0})&=\frac{1}{2}\int_{t_{0}}^{t}\dd
+				t_{1}\int_{t_{0}}^{t_{1}}\dd t_{2}[A_{1},\,A_{2}],\\
+				\Omega_{3}(t,t_{0})&=\frac{1}{6}\int_{t_{0}}^{t}\dd
+				t_{1}\int_{t_{0}}^{t_{1}}\dd
+				t_{2}\int_{t_{0}}^{t_{2}}\Big\{\big[A_{1},\,[A_{2},\,A_{3}]\big] +
+				\big[[A_{1},\,A_{2}],\,A_{3}\big]\Big\}.
+			\end{flalign}
+			\item<3-> Используя разложение Магнуса в качестве числового интегратора, который 
+			даёт решение \(Y(t)\), начиная с \(Y(t_{0})\), возникает вопрос, как эффективно 
+			обрабатывать один шаг интегрирования.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса}
+		\begin{itemize}
+			\item<1-> Отдельные точки, в которых вычисляется решение на интервале 
+			\([t_{0},t_{f}]\), \(t_{0} < t_{1} <
+			\dots < t_{N}=t_{f}\) связанны с приращением времени на величину 
+			\(h_{n}=t_{n+1}-t_{n}\), где
+			\(0\leqslant n\leqslant N-1\).
+			
+			\item<2-> Определим решение в точке \(t_{n+1}\)
+			\begin{equation}
+				Y(t_{n+1})=\exp^{\Omega(t_{n}+h_{n},t_{n})}Y(t_{n}).
+			\end{equation}
+			\item<3-> После всех итераций, решение в конечной точке интервала даёт
+			\begin{equation}
+				Y(t_{f})=\prod^{N-1}_{n=0}\exp^{\Omega(t_{n};h_{n})}Y(t_{0}), \qquad
+				\Omega(t_{n};h_{n})\equiv\Omega(t_{n}+h_{n},t_{n}).
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса}
+		\begin{itemize}
+			\item<1-> Так как вычисление конечного выражения бесконечного ряда Магнуса 
+			\eqref{eq:14} не имеет 
+			смысла, то оптимальным вариантом будет использовать усечённый ряд
+			\begin{equation}
+				\label{eq:26}
+				\Omega^{(p)}(t_{n};h_{n})=\sum_{k=1}^{p}\Omega_{k}(t_{n};h_{n}).
+			\end{equation} 
+			\item<2-> Теперь, чтобы получить решение \(Y(t_{n}+h_{n})\) с точностью до до 
+			\(O(h^{r'+1}_{n})\), 
+			достаточно разложить ряд \eqref{eq:14} до первых \(p=2r'-2\) слагаемых, где \(r'\) --- 
+			порядок точности.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса}
+		\begin{itemize}
+			\item<1-> Уравнение \eqref{eq:18} как раз относится к уравнениям типа \eqref{eq:13}, 
+			где
+			\(n=3, t=r, A\equiv-\imath H\).
+			\begin{equation}
+				\imath\frac{\dd}{\dd r}\Psi(r)=H(r)\Psi(r).
+			\end{equation}
+			\item<2-> Чтобы получить решение в точке \(\Psi(\xi_{n}+h_{n})\) с точностью до 
+			\(O(h^{r'+1}_{n})\), 
+			используем выражение для усечённого ряда Магнуса в обозначении через порядок 
+			точности 
+			\(r'\):
+			\(\Omega(\xi_{n};h_{n})\simeq\Omega^{[r']}(\xi_{n};h_{n})\).
+			\item<3-> Таким образом, решение порядка точности \(r'\) по \(h_{n}\) будет 
+			реализовано следующей
+			формулой
+			\begin{equation}
+				\Psi(\xi_{n})=\exp^{\Omega^{[r']}(\xi_{n};h_{n})}Psi(\xi_{n}).
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса (алгоритм М2)}
+		\begin{itemize}
+			\item<1->  Рассмотрим два метода реализации, где \(r'=2,4\), названные соответственно
+			M2 и M4.
+			\item<2-> Метод приближения второго порядка является самым простым, так как из 
+			ряда Магнуса
+			остаётся только первое слагаемое \(\Omega^{[2]}=\Omega_{1}\)
+			\begin{equation}\label{eq:15}
+				\Omega_{1}(\xi_{n};h_{n})=-\imath\!\!\!\int_{\xi_{n}}^{\xi_{n}+h_{n}}\!\!\!\!\dd t\, H(t),
+			\end{equation}
+			и для достижения заданной точности достаточно аппроксимировать интеграл
+			\eqref{eq:15} одной
+			точкой.
+			\item<3-> Таким образом, второй порядок точности реализуется формулой
+			\begin{equation}
+				\Omega^{[2]}(\xi_{n})=-\imath 
+				H(\overline{\xi})h_{n}=-\imath(H_{0}+\overline{\upsilon}W)h_{n},
+			\end{equation}
+			где взята средняя точка интервала интегрирования
+			\(\overline{\xi}\equiv\xi_{n}+\frac{h_{n}}{2}\). Величина
+			\(\overline{\upsilon}\equiv\upsilon(\overline{\xi})\) пересчитывается на каждом
+			шаге.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса (алгоритм М4)}
+		\begin{itemize}
+			\item<1->  Для достижения порядка точности \(r'=4\) необходимо считать первые два 
+			члена разложения
+			\(\Omega^{[4]}=\Omega_{1}+\Omega_{2}\), а аппроксимировать интегралы 
+			двухточечными
+			квадратурами Гаусса-Лежандра.
+			\item<2-> Точки вычисления квадратур
+			\begin{equation}
+				\xi_{\pm}=\xi_{n}+\Big(1\pm \frac{1}{\sqrt{3}}\Big)\frac{h_{n}}{2},
+			\end{equation}
+			в которых определены величины \(H_{\pm}=H(\xi_{\pm})\).
+			\item<3->Конечная формула такого метода сводится к следующему выражению
+			\begin{equation}
+				\Omega^{[4]}(\xi_{n};h_{n})=-\imath(H_{+}+H_{-})\frac{h_{n}}{2}+\frac{\sqrt{3}}{12}[H_{-},H_{+}]h_{n}^{2}.
+			\end{equation}
+			Эквивалентное приближение также можно получить с помощью квадратур Симпсона.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса (переменный шаг)}
+		\begin{itemize}
+			\item<1->  Для увеличения точности решений применяется переменный шаг 
+			интегрирования. 
+			\item<2-> Он реализован следующим образом. Вводим величину 
+			чувствительности счета \(tol\) и ставим условие, чтобы локальная ошибка была 
+			меньше 
+			\(tol\). 
+			\item<3-> Для оценки локальной ошибки в текущей точке \(\xi_{n+1}\) используем 
+			методы M2 и 
+			M4
+			\begin{equation}
+				\Psi_{n+1}^{M2}=\exp^{\Omega^{[2]}(\xi_{n},h_{n})}\Psi_{n}, \qquad 
+				\Psi_{n+1}^{M4}=\exp^{\Omega^{[4]}(\xi_{n},h_{n})}\Psi_{n}.
+			\end{equation}  
+			\item<4->Теперь выразим локальную ошибку метода M2 так
+			\begin{equation}
+				E_{r}=||\Psi_{n+1}^{M2}-\Psi_{n+1}^{M4}||,
+			\end{equation}
+			здесь использована эвклидовская норма вектора \(||X||=\sqrt{\sum_{i}x_{i}^{2}}\). 
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса (переменный шаг)}
+		\begin{itemize}
+			\item<1-> В случае, если ошибка превышает чувствительность счета, то возвращаемся 
+			на шаг назад и пересчитываем размер шага по следующей формуле
+			\begin{equation}
+				h_{new}=sh_{c}\left(\frac{tol}{E_{r}} \right)^{\frac{1}{3}}, 
+			\end{equation}
+			где \(h_{c}\) --- текущий размер шага, \(s\) параметр для уменьшения вероятности 
+			срабатывания условия \(E_{r}>tol\). В программе использовано значение \(s=0,8\). 
+			\item<2-> Оценка 
+			\(E_{r}\) может увеличить затрачиваемые ресурсы счета алгоритма. Эту проблему 
+			можно 
+			решить выразив разность в определении ошибки так
+			\begin{equation}
+				\Psi_{n+1}^{M2}-\Psi_{n+1}^{M4}=\left(\exp^{\Omega^{[2]}}- \exp^{\Omega^{[4]}}\right) 
+				\Psi_{n}=\left(\exp^{Z}- 1\right)\Psi_{n+1}^{M4},
+			\end{equation}
+			где 
+			\begin{equation}
+				Z=\ln\left( \exp^{\Omega^{[2]}}\exp^{-\Omega^{[4]}}\right) 
+				=\Omega^{[2]}-\Omega^{[4]}-\frac{1}{2}\left[ \Omega^{[2]},\Omega^{[4]}\right]+... . 
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса (переменный шаг)}
+		\begin{itemize}
+			\item<1->Тогда приближенное выражение ошибки будет иметь следующий вид
+			\begin{equation}
+				E_{r}\simeq||\left(h_{n}^{2}S_{1}+h_{n}^{3}S_{2}+\frac{1}{2}h_{n}^{4}S_{1}^{2} 
+				\right)\Psi_{n+1}^{M4}||+O(h_{n}^{5}), 
+			\end{equation}
+			где \(S_{1}\) и \(S_{2}\) имеют следующие значения
+			\begin{align}
+				S_{1}=-\frac{\sqrt{3}}{12}(\nu_{+}-\nu_{-})\left[H_{0},W \right], \\
+				S_{2}=\imath\frac{\sqrt{3}}{24}(\nu_{+}-\nu_{-})\left(\left[ H_{0},\left[H_{0},W \right]\right] 
+				+\frac{1}{2}(\nu_{+}+\nu_{-})\left[ W,\left[H_{0},W \right]\right] \right).  
+			\end{align}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Метод разложения Магнуса (переменный шаг)}
+		\begin{itemize}
+			\item<1-> В случае, если ошибка превышает чувствительность счета, то возвращаемся 
+			на шаг назад и пересчитываем размер шага по следующей формуле
+			\begin{equation}
+				h_{new}=sh_{c}\left(\frac{tol}{E_{r}} \right)^{\frac{1}{3}}, 
+			\end{equation}
+			где \(h_{c}\) --- текущий размер шага, \(s\) параметр для уменьшения вероятности 
+			срабатывания условия \(E_{r}>tol\). В программе использовано значение \(s=0,8\). 
+			\item<2-> Оценка 
+			\(E_{r}\) может увеличить затрачиваемые ресурсы счета алгоритма. Эту проблему 
+			можно 
+			решить выразив разность в определении ошибки так
+			\begin{equation}
+				\Psi_{n+1}^{M2}-\Psi_{n+1}^{M4}=\left(\exp^{\Omega^{[2]}}- \exp^{\Omega^{[4]}}\right) 
+				\Psi_{n}=\left(\exp^{Z}- 1\right)\Psi_{n+1}^{M4},
+			\end{equation}
+			где 
+			\begin{equation}
+				Z=\ln\left( \exp^{\Omega^{[2]}}\exp^{-\Omega^{[4]}}\right) 
+				=\Omega^{[2]}-\Omega^{[4]}-\frac{1}{2}\left[ \Omega^{[2]},\Omega^{[4]}\right]+... . 
+			\end{equation}
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Модель}
+		\begin{itemize}
+			\item<1-> Проверку возможности использования нейтрино для сканирования объектов 
+			проводим в рамках солнечной модели.
+			\item<2-> В рамках этой модели функция 
+			профиля плотности имеет следующий вид
+			\begin{equation}
+				\label{eq:17}
+				v(r)=\gamma\exp^{-\eta\xi(r)}, \qquad \xi(r)=\frac{r}{R_{0}},
+				\quad \gamma=6,5956\cdot10^{4}, \quad \eta=10,54,
+			\end{equation}
+			где \(R_{0}\) --- это радиус Солнца.
+			\item<3-> В нашей работе модель будет использована для случая нейтрино, 
+			пролетающего сквозь Солнца извне.
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Модель}
+		\begin{figure}[htb]
+			\centering%
+			\includegraphics[scale=1.3]{figure}
+			\caption{Схема прохождения нейтрино сквозь Солнце.}
+			\label{fig:4}
+		\end{figure}    
+	\end{frame}
+	\begin{frame}
+		\frametitle{Модель}
+		\begin{itemize}
+			\item<1-> Обозначения на схеме и используемые значения параметров:
+			\begin{itemize}
+				\item<1->\(R=696220\)км --- радиус Солнца;
+				\item<1-> \(d\) --- расстояние от центра Солнца до траектории 
+				нейтрино \(0,1R<d\leqslant R\);
+				\item<1-> \(r\) --- 
+				радиус-вектор в системе координат, начинающейся в центре 
+				Солнца, и пробегающий по каждой точке траектории движения нейтрино;
+				\item<1-> 	\(L\approx1,5\cdot10^{8}\)км --- среднее расстояние 
+				от центра Солнца до Земли;
+			\end{itemize}
+			\item<2-> Сканирование слоёв Солнца проходит посредством изменения 
+			зенитного угла \(\theta\) в пределах \(\theta\in 
+			[\arcsin\frac{0,1R}{L}\approx4,6\cdot10^{-4};\arcsin\frac{R}{L}\approx4,6\cdot10^{-3}]\). 
+			\item<3-> При работе с зенитным углом была сделана следующая параметризация
+			\begin{equation}
+				\label{eq:24}
+				\theta(x)=(\theta_{max}-\theta_{min})x+\theta_{min}, \qquad x\in[0;1].
+			\end{equation}
+			\item<4-> Для определения значения \(r\) применяется следующая формула
+			\begin{equation}
+				r^{2}=x_{max}^{2}(\xi^{2}-\xi)+R^{2}, \qquad \xi=\frac{x}{x_{max}}, \quad 
+				x_{max}=2R\sqrt{1-\frac{L^{2}}{R^{2}}\sin^{2}\theta},
+			\end{equation}  
+			где \(x\) --- расстояние от точки входа до рассматриваемой точки, \(x_{max}\) --- 
+			расстояние, пройденное внутри Солнца, \(\theta\) --- зенитный угол. 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Численный расчёт и обработка данных}
+		\begin{itemize}
+			\item<1->Для определения наиболее чувствительного типа нейтрино мы будем 
+			интегрировать 
+			уравнение \eqref{eq:18}  в диапазоне энергий \((10^{-3};10^{7})\), попутно варьируя 
+			значения параметров функции профиля плотности \eqref{eq:17} (\(\gamma, \eta\)).
+			\item<2-> В качестве дополнительной задачи определим наиболее чувствительный тип 
+			нейтрино для уточнения значения углов смешивания, которые имеют следующие 
+			современные значения
+			\begin{align*}
+				\sin^{2}{\theta_{12}}=0,307_{-0,012}^{+0,013}\\
+				\sin^{2}{\theta_{23}}=0,417_{-0,028}^{+0,025}\\
+				\sin^{2}{\theta_{13}}=0,0212\pm 0,0008
+			\end{align*} 
+			\item<3-> Варьирование значение параметров будет производится в переделах 
+			\(10\%\).
+		\end{itemize}
 		
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{}%
-		\begin{center}
-			\LARGE%
-			\bfseries%
-			\emph{СПАСИБО ЗА ВНИМАНИЕ!}
-		\end{center}
+		\frametitle{Численный расчёт и обработка данных}
+		\begin{itemize}
+			\item<1-> В численном анализе мы опираемся на величину
+			\begin{equation}
+				\label{eq:19}
+				\eta=\frac{\Prob_{f}-\Prob_{0}}{\Prob_{0}},
+			\end{equation}
+			где \(\Prob_{0}\) — это вероятность перехода при исходных значениях параметров, а 
+			\(\Prob_{f}\) — вероятность перехода с изменённым одним из параметров. 
+			\item<2-> Для углов вариация осуществляется согласно по формуле
+			\begin{equation}
+				\label{eq:20}
+				\sin{\theta_{f}}=f\cdot \sin{\theta_{0}},\quad f\in \left[ 0,9;1,1\right] 
+			\end{equation}
+			где \(\sin{\theta_{0}}\) — начальное значение угла смешивания.
+			\item<3-> В случае вариации параметров используется принципиально та же формула, 
+			что и для 
+			углов
+			\begin{equation}
+				\label{eq:21}
+				par_{f}=f\cdot par_{0},\quad f\in \left[ 0,9;1,1\right] 
+			\end{equation}
+			здесь \(par_{0}\) --- начальное значение параметра. 
+			\item<4->В рамках этой работы мы отдельно варьируем каждый из 
+			параметров, чтобы выделить зависимость от них по отдельности.
+		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{}%
-		\begin{center}
-			\LARGE%
-			\bfseries%
-			\emph{ДОПОЛНИТЕЛЬНЫЕ МАТЕРИАЛЫ}
-		\end{center}
+		\frametitle{Численный расчёт и обработка данных}
+		\begin{itemize}
+			\item<1-> Для лучшей воспроизводимости вычислений, уменьшения вероятности 
+			случайных ошибок от человеческого фактора и упрощения исправления допущенных 
+			ошибок был использован стандартный подход --- автоматизация счёта данных от 
+			программы численного решения. Для этого были разработаны сценарии, коды для 
+			которых были написаны в оболочке bash.
+			\item<2-> Обработка полученных данных и последующая визуализация в виде 
+			температурных и контурных графиков проводилась с помощью сценария (программы) 
+			на языке python.
+		\end{itemize}
 	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Численный расчёт и обработка данных}
+		\begin{itemize}
+			\item<1-> Для лучшей воспроизводимости вычислений, уменьшения вероятности 
+			случайных ошибок от человеческого фактора и упрощения исправления допущенных 
+			ошибок был использован стандартный подход --- автоматизация счёта данных от 
+			программы численного решения. Для этого были разработаны сценарии, коды для 
+			которых были написаны в оболочке bash.
+			\item<2-> Обработка полученных данных и последующая визуализация в виде 
+			температурных и контурных графиков проводилась с помощью сценария (программы) 
+			на языке python.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{itemize}
+			\item<1-> Из всех полученных данных, особое внимание следует уделить переходам
+			\(\nu_{e}\rightarrow\nu_{\mu}\) (далее \(e-\mu\)) и \(\nu_{\mu}\rightarrow\nu_{\mu}\)
+			(далее \(\mu-\mu\)), это связано с тем, что на текущий момент все известные 
+			нейтринные телескопы, такие как: Super-Kamiokande, Baikal-GVD, Ice-Cube, KM3NeT и 
+			т.п. --- ориентированы на регистрацию именно мюонного нейтрино. 
+			\item<2-> Переходы из таонного нейтрино не рассматриваются из-за крайней его 
+			редкости.
+			\item<3-> Далее, мы приведём графики для вариации параметра \(\gamma\) и угла 
+			смешивания \(s_{12}\) при значении параметра зенитного угла \(x=0,5\).
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{figure}[htp]
+			\centering%
+			\includegraphics[scale=0.6]{sun-out-par1-e-mu_0,5}
+			\caption{График вариации параметра \(\gamma\) по каналу \(e-\mu\)}
+			\label{fig:5}
+		\end{figure}	
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{figure}[htp]
+			\centering%
+			\includegraphics[scale=0.6]{sun-out-par1-mu-mu_0,5}
+			\caption{График вариации параметра \(\gamma\) по каналу \(\mu-\mu\)}
+			\label{fig:6}
+		\end{figure}	
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{figure}[htp]
+			\centering%
+			\includegraphics[scale=0.6]{sun-out-ang12-e-mu_0,5}
+			\caption{График вариации угла \(s_{12}\) по каналу	\(e-\mu\)}
+			\label{fig:7}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{figure}[htp]
+			\centering%
+			\includegraphics[scale=0.6]{sun-out-ang12-mu-mu_0,5}
+			\caption{График вариации угла \(s_{12}\) по каналу	\(\mu-\mu\)}
+			\label{fig:8}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Результаты}
+		\begin{itemize}
+			\item<1->По полученным данным можно сделать следующие выводы:
+			\begin{itemize}
+				\item<2-> канал \(e-\mu\) является наиболее чувствительным к изменению угла 
+				\(s_{12}\) по сравнению с каналом \(\mu-\mu\), поэтому он лучше подходит для 
+				задачи по уточнению значения угла \(s_{12}\);
+				\item<3-> для случая параметра \(\gamma\) какого-либо существенного отклонения в 
+				обоих каналов значения вероятности вне особенности обнаружено не было. Это 
+				значит, что рассмотренные каналы неэффективны для вычисления значения 
+				параметра с точностью по крайней мере \(10\%\).
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
 \end{document}
