@@ -95,7 +95,7 @@
 			\item<1->Для нейтрино в массивном представлении справедливо уравнение 
 			Шредингера
 			\begin{equation}
-				\label{eq:1}
+				\label{eq:111}
 				\imath\frac{\dd}{\dd t}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)}=
 				E_{i}\ket{\nu_{i}(t)},\quad E_{i}=\sqrt{|\Vect{p}|^{2}+m_{i}^{2}}.
 			\end{equation}
@@ -105,7 +105,7 @@
 			\end{equation}
 			\item<3-> Выражение для эволюции без учёта общей фазы
 			\begin{equation}
-				\label{eq:2}
+				\label{eq:112}
 				\ket{\nu_{i}(L)} = \exp^{-\imath \frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
 			\end{equation}
 		\end{itemize}
@@ -117,7 +117,7 @@
 			\item<1-> Это соотношение можно рассматривать как решение уравнения следующего 
 			типа
 			\begin{equation}
-				\label{eq:3}
+				\label{eq:113}
 				\imath \frac{\dd}{\dd\xi} \ket{\nu(\xi)}=
 				H_{\text{eff}}\ket{\nu(\xi)},\quad
 				\ket{\nu(\xi)}=
@@ -128,13 +128,14 @@
 				\end{pmatrix},\quad
 				H_{\text{eff}}=\frac{M^{2}}{2E}.
 			\end{equation}
-			\item<2-> Перепишем выражение \eqref{eq:2} в флейворном представлении, используя 
+			\item<2-> Перепишем выражение \eqref{eq:112} в флейворном представлении, 
+			используя 
 			соотношение 
 			\begin{equation}
-				\label{eq:4}
+				\label{eq:114}
 				\ket{\nu_{\alpha}} = \sum_{i}U^{*}_{\alpha i}\ket{\nu_{i}},
 			\end{equation}
-			где \(U\) --- это PMNS-матрица, с учётом \(\delta_{CP}=0\) она записывается так
+			\item<3->где \(U\) --- это PMNS-матрица, с учётом \(\delta_{CP}=0\) она записывается так
 			\begin{equation}
 				U=
 				\begin{pmatrix}
@@ -145,7 +146,7 @@
 			\end{equation}
 			где обозначения \(c_{ij}\) и \(s_{ij}\) это соответственно \(\cos\theta_{ij}\) и 
 			\(\sin\theta_{ij}\), в свою очередь \(\theta_{ij}\) --- это углы смешивания.
-			\item<3-> Вероятность перехода определяется так
+			\item<4-> Вероятность перехода определяется так
 			\begin{equation}
 				P(\nu_{\alpha}\rightarrow\nu_{\beta})=|\langle\nu_{\beta}\ket{\nu_{\alpha}(L)}|^{2}.
 			\end{equation} 
@@ -177,7 +178,7 @@
 		\begin{itemize}
 			\item<1-> Итоговое уравнение на амплитуды перехода массивных состояний
 			\begin{equation}
-				\label{eq:5}
+				\label{eq:115}
 				\imath\frac{\dd\Psi(r)}{\dd r}=H(r)\Psi(r),
 				\qquad
 				H(r)=H_{0}+v(r)W, 
@@ -186,7 +187,7 @@
 			\(W=U^{\dagger}\diag(1,0,0)U\), \(\nu(r)\) --- функция профиля плотности.
 			\item<2-> Средняя вероятность перехода
 			\begin{equation}
-				\label{eq:6}
+				\label{eq:116}
 				\langle P_{\alpha\beta}\rangle=\langle P(\nu_{\alpha}\rightarrow\nu_{\beta}) 
 				\rangle=\sum_{i}|U_{\beta i}|^{2}\rho_{i}, \quad \rho_{i}=|A_{i}|^{2}.
 			\end{equation}
@@ -203,7 +204,7 @@
 		\frametitle{Метод Магнуса}
 		\begin{itemize}
 			\item<1-> Общий вид матричного дифференциального уравнения
-			\begin{equation}\label{eq:7}
+			\begin{equation}\label{eq:117}
 				\frac{\dd}{\dd t}Y(t)=A(t)Y(t), \qquad A \in C^{n\times n}, \quad Y\in C^{n},
 			\end{equation}
 			с начальным условием \(Y(t_{0})=Y_{0}\).
@@ -214,7 +215,7 @@
 			\end{equation}
 			\item<3-> \(\Omega(t,t_{0})\) выражается так
 			\begin{equation}
-				\label{eq:8}
+				\label{eq:118}
 				\Omega(t,t_{0})=\sum_{k=1}^{\infty}\Omega_{k}(t,t_{0}).
 			\end{equation}
 			\item<4-> решение в точке \(t_{n+1}\) 
@@ -234,9 +235,9 @@
 		\frametitle{Метод Магнуса}
 		\begin{itemize}
 			\item<1-> Для получения решения \(Y(t_{n}+h_{n})\) с точностью до до 
-			\(O(h^{r'+1}_{n})\), достаточно разложить ряд \eqref{eq:8} до первых \(p=2r'-2\) 
+			\(O(h^{r'+1}_{n})\), достаточно разложить ряд \eqref{eq:118} до первых \(p=2r'-2\) 
 			слагаемых.
-			\item<2-> Первые три слагаемые ряда \eqref{eq:8}
+			\item<2-> Первые три слагаемые ряда \eqref{eq:118}
 			\begin{flalign*}
 				\Omega_{1}(t,t_{0})&=\int_{t_{0}}^{t} \dd t_{1} A_{1},\\
 				\Omega_{2}(t,t_{0})&=\frac{1}{2}\int_{t_{0}}^{t}\dd
@@ -254,7 +255,7 @@
 		\begin{itemize}
 			\item<1-> Функция профиля плотности среды для солнечной модели
 			\begin{equation}
-				\label{eq:9}
+				\label{eq:119}
 				v(r)=\gamma\exp^{-\eta\xi(r)}, \qquad \xi(r)=\frac{r}{R_{0}},
 				\quad \gamma=6,5956\cdot10^{4}, \quad \eta=10,54.
 			\end{equation}
@@ -269,17 +270,17 @@
 			\item<3-> В численном анализе опираемся на относительную величину отклонения 
 			вероятности перехода
 			\begin{equation}
-				\label{eq:10}
+				\label{eq:1110}
 				\eta=\frac{\Prob_{f}-\Prob_{0}}{\Prob_{0}}.
 			\end{equation}
 			\item<4-> Вариация углов
 			\begin{equation}
-				\label{eq:11}
+				\label{eq:1111}
 				\sin{\theta_{f}}=f\cdot \sin{\theta_{0}},\quad f\in \left[ 0,9;1,1\right] 
 			\end{equation}
 			\item<5-> вариация параметров плотности среды
 			\begin{equation}
-				\label{eq:12}
+				\label{eq:1112}
 				par_{f}=f\cdot par_{0},\quad f\in \left[ 0,9;1,1\right] 
 			\end{equation}
 		\end{itemize}
@@ -291,7 +292,7 @@
 			\centering%
 			\includegraphics[scale=0.6]{sun-out-par1-e-mu_0,5}
 			\caption{График вариации параметра \(\gamma\) по каналу \(e-\mu\)}
-			\label{fig:1}
+			\label{fig:111}
 		\end{figure}	
 	\end{frame}
 	
@@ -301,7 +302,7 @@
 			\centering%
 			\includegraphics[scale=0.6]{sun-out-par1-mu-mu_0,5}
 			\caption{График вариации параметра \(\gamma\) по каналу \(\mu-\mu\)}
-			\label{fig:2}
+			\label{fig:112}
 		\end{figure}	
 	\end{frame}
 	
@@ -311,7 +312,7 @@
 			\centering%
 			\includegraphics[scale=0.6]{sun-out-ang12-e-mu_0,5}
 			\caption{График вариации угла \(s_{12}\) по каналу	\(e-\mu\)}
-			\label{fig:3}
+			\label{fig:113}
 		\end{figure}
 	\end{frame}
 	
@@ -321,18 +322,18 @@
 			\centering%
 			\includegraphics[scale=0.6]{sun-out-ang12-mu-mu_0,5}
 			\caption{График вариации угла \(s_{12}\) по каналу	\(\mu-\mu\)}
-			\label{fig:4}
+			\label{fig:114}
 		\end{figure}
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Заключение}
 		\begin{itemize}
-			\item<1-> В работе представлены принципы, положенные в новое потенциальное 
+			\item<1-> Представлены принципы, положенные в новое потенциальное 
 			направление практического применения нейтрино --- нейтринной томографии 
 			объектов. Основой служит экспериментальный факт --- нейтринные осцилляции, 
 			которые усиливаются в среде.
-			\item<2-> В данной работе было рассмотрено как влияет на вероятности перехода 
+			\item<2-> Рассмотрено влияние на вероятности перехода 
 			нейтрино такие переменные как углы смешивания и параметры среды. Кроме этого 
 			были рассмотрены разные флейворы нейтрино. Для расчётов использовалась 
 			программа на основе разложения Магнуса приспособленная к данной задаче.
