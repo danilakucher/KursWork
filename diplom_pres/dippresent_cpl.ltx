@@ -252,22 +252,34 @@
 	\begin{frame}
 		\frametitle{Численные расчёты}
 		\begin{itemize}
-			\item<1-> В работе проводились численные расчёты с вариацией: \(\gamma\), \(\eta\), 
-			\(s_{12}\), \(s_{13}\).
-			\item<2-> В численном анализе опираемся на относительную величину отклонения 
-			вероятности перехода
+			\item<1-> Функция профиля плотности среды для солнечной модели
 			\begin{equation}
 				\label{eq:9}
-				\eta=\frac{\Prob_{f}-\Prob_{0}}{\Prob_{0}}.
+				v(r)=\gamma\exp^{-\eta\xi(r)}, \qquad \xi(r)=\frac{r}{R_{0}},
+				\quad \gamma=6,5956\cdot10^{4}, \quad \eta=10,54.
 			\end{equation}
-			\item<3-> Вариация углов
+			\item<2-> Современные значения углов смешивания
+			\begin{align*}
+				\sin^{2}{\theta_{12}}=0,307_{-0,012}^{+0,013}\\
+				\sin^{2}{\theta_{23}}=0,417_{-0,028}^{+0,025}\\
+				\sin^{2}{\theta_{13}}=0,0212\pm 0,0008
+			\end{align*} 
+			\item<2-> В работе проводились численные расчёты с вариацией: \(\gamma\), \(\eta\), 
+			\(s_{12}\), \(s_{13}\).
+			\item<3-> В численном анализе опираемся на относительную величину отклонения 
+			вероятности перехода
 			\begin{equation}
 				\label{eq:10}
-				\sin{\theta_{f}}=f\cdot \sin{\theta_{0}},\quad f\in \left[ 0,9;1,1\right] 
+				\eta=\frac{\Prob_{f}-\Prob_{0}}{\Prob_{0}}.
 			\end{equation}
-			\item<4-> вариация параметров плотности среды
+			\item<4-> Вариация углов
 			\begin{equation}
 				\label{eq:11}
+				\sin{\theta_{f}}=f\cdot \sin{\theta_{0}},\quad f\in \left[ 0,9;1,1\right] 
+			\end{equation}
+			\item<5-> вариация параметров плотности среды
+			\begin{equation}
+				\label{eq:12}
 				par_{f}=f\cdot par_{0},\quad f\in \left[ 0,9;1,1\right] 
 			\end{equation}
 		\end{itemize}
