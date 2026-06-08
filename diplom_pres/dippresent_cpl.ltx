@@ -65,10 +65,9 @@
 			среды на вероятности перехода нейтрино; 
 			\item<2-> Задачи работы:
 			\begin{itemize}
-				\item<3-> Разобрать феноменологическую теорию нейтринных осцилляций;
-				\item<4-> Провести численные расчёты вероятностей переходов при вариации 
+				\item<3-> Провести численные расчёты вероятностей переходов при вариации 
 				параметров профиля плотности среды и углов смешивания;
-				\item<5-> Проанализировать полученные данные и сделать вывод о степени 
+				\item<4-> Проанализировать полученные данные и сделать вывод о степени 
 				влияния вариации на значения вероятностей;
 			\end{itemize}
 		\end{itemize}
@@ -78,178 +77,218 @@
 		\frametitle{Введение}
 		\begin{itemize}
 			\item<1-> Нейтрино — это нейтральные частицы относящиеся классу лептонов;
-			\item<2-> В феноменологии выделяют два типа нейтрино: массивное и флейворное.
-			\item<3-> Три типа флейворных (\(\nu_{e}\), \(\nu_{\mu}\), \(\nu_{\tau}\))  и три типа 
-				массивных (\(\nu_{1}\), \(\nu_{2}\), \(\nu_{3}\)) состояний;
-				\item<4-> Самая необычная черта нейтрино — это их осцилляции —
-				периодические переходы между флейворами этих частиц;
-				\item<5-> Осцилляции нейтрино в веществе значительно отличается от осцилляций 
+			\item<2-> В феноменологии у нейтрино существует два представления: массивное и 
+			флейворное.
+			\item<3-> Флейворное нейтрино подразделяется на три типа: \(\nu_{e}\), \(\nu_{\mu}\), 
+			\(\nu_{\tau}\);
+			\item<4-> Самая необычная черта нейтрино;
+			\item<5-> Осцилляции нейтрино в веществе значительно отличается от осцилляций 
 				в вакууме и зависят от плотности среды;
-				\item<6-> Эффект осцилляций в веществе можно использовать для исследования 
+			\item<6-> Эффект осцилляций в веществе можно использовать для исследования 
 				внутреннего строения какого-либо объекта;
 		\end{itemize}
 	\end{frame}
 	
-	\begin{frame}
-		\frametitle{Осцилляции в вакууме}
-		\begin{itemize}
-			\item<1->Для нейтрино в массивном представлении справедливо уравнение 
-			Шредингера
-			\begin{equation}
-				\label{eq:111}
-				\imath\frac{\dd}{\dd t}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)}=
-				E_{i}\ket{\nu_{i}(t)},\quad E_{i}=\sqrt{|\Vect{p}|^{2}+m_{i}^{2}}.
-			\end{equation}
-			\item<2-> В ультрарелятивистском приближении
-			\begin{equation}
-				p_{i}=\sqrt{E^{2}-m_{i}^{2}}\approx E-\frac{m_{i}^{2}}{2E}.
-			\end{equation}
-			\item<3-> Выражение для эволюции без учёта общей фазы
-			\begin{equation}
-				\label{eq:112}
-				\ket{\nu_{i}(L)} = \exp^{-\imath \frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
-			\end{equation}
-		\end{itemize}
-	\end{frame}
+%	\begin{frame}
+%		\frametitle{Осцилляции в вакууме}
+%		\begin{itemize}
+%			\item<1->Для нейтрино в массивном представлении справедливо уравнение 
+%			Шредингера
+%			\begin{equation}
+%				\label{eq:111}
+%				\imath\frac{\dd}{\dd t}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)}=
+%				E_{i}\ket{\nu_{i}(t)},\quad E_{i}=\sqrt{|\Vect{p}|^{2}+m_{i}^{2}}.
+%			\end{equation}
+%			\item<2-> В ультрарелятивистском приближении
+%			\begin{equation}
+%				p_{i}=\sqrt{E^{2}-m_{i}^{2}}\approx E-\frac{m_{i}^{2}}{2E}.
+%			\end{equation}
+%			\item<3-> Выражение для эволюции без учёта общей фазы
+%			\begin{equation}
+%				\label{eq:112}
+%				\ket{\nu_{i}(L)} = \exp^{-\imath \frac{m_{i}^{2}}{2E}L}\ket{\nu_{i}(0)}.
+%			\end{equation}
+%		\end{itemize}
+%	\end{frame}
+%	
+%	\begin{frame}
+%		\frametitle{Осцилляции в вакууме}
+%		\begin{itemize}
+%			\item<1-> Это соотношение можно рассматривать как решение уравнения 
+%следующего 
+%			типа
+%			\begin{equation}
+%				\label{eq:113}
+%				\imath \frac{\dd}{\dd\xi} \ket{\nu(\xi)}=
+%				H_{\text{eff}}\ket{\nu(\xi)},\quad
+%				\ket{\nu(\xi)}=
+%				\begin{pmatrix}
+%					\ket{\nu_{1}(\xi)}\\
+%					\ket{\nu_{2}(\xi)}\\
+%					\ket{\nu_{3}(\xi)}
+%				\end{pmatrix},\quad
+%				H_{\text{eff}}=\frac{M^{2}}{2E}.
+%			\end{equation}
+%			\item<2-> Перепишем выражение \eqref{eq:112} в флейворном представлении, 
+%			используя 
+%			соотношение 
+%			\begin{equation}
+%				\label{eq:114}
+%				\ket{\nu_{\alpha}} = \sum_{i}U^{*}_{\alpha i}\ket{\nu_{i}},
+%			\end{equation}
+%			\item<3->где \(U\) --- это PMNS-матрица, с учётом \(\delta_{CP}=0\) она записывается так
+%			\begin{equation}
+%				U=
+%				\begin{pmatrix}
+%					c_{12}c_{13}&s_{12}c_{13}&s_{13}\\
+%					-s_{12}c_{23}-c_{12}s_{23}s_{13}&c_{12}c_{23}-s_{12}s_{23}s_{13}&s_{23}c_{13}\\
+%					s_{12}s_{23}-c_{12}c_{23}s_{13}&-c_{12}s_{23}-s_{12}c_{23}s_{13}&c_{23}c_{13}
+%				\end{pmatrix},
+%			\end{equation}
+%			где обозначения \(c_{ij}\) и \(s_{ij}\) это соответственно \(\cos\theta_{ij}\) и 
+%			\(\sin\theta_{ij}\), в свою очередь \(\theta_{ij}\) --- это углы смешивания.
+%			\item<4-> Вероятность перехода определяется так
+%			\begin{equation}
+%				P(\nu_{\alpha}\rightarrow\nu_{\beta})=|\langle\nu_{\beta}\ket{\nu_{\alpha}(L)}|^{2}.
+%			\end{equation} 
+%		\end{itemize}
+%	\end{frame}
+%	
+%	\begin{frame}
+%		\frametitle{Осцилляции в веществе}
+%		\begin{itemize}
+%			\item<1-> На осцилляцию нейтрино в веществе влияет МСВ-эффект --- эффект 
+%			возникающий при взаимодействии с частицами вещества (нуклоны, электроны).
+%			\item<2-> Оценки вкладов от упругого рассеяния нейтрино на частицах среды в 
+%			первом порядке
+%			\begin{align*}
+%				I(e-Z^{0})=1,\\
+%				I(e-W^{\pm})\approx 0,77,\\
+%				I(d_{i}-Z^{0})\approx 0,31,\\
+%				I(u_{i}-Z^{0})\approx 0,16,\\
+%			\end{align*}
+%			\item<3-> МСВ-эффект можно учесть, введя добавку в эффективный гамильтониан 
+%			распространения в пространстве. 
+%			\item<4-> Сама добавка получена с использованием эффективной теории Ферми, 
+%			поэтому имеется ограничение на энергии рассматриваемых нейтрино \(E\ll M_{W}\).
+%		\end{itemize}
+%	\end{frame}
+%	
+%	\begin{frame}
+%		\frametitle{Осцилляции в веществе}
+%		\begin{itemize}
+%			\item<1-> Итоговое уравнение на амплитуды перехода массивных состояний
+%			\begin{equation}
+%				\label{eq:115}
+%				\imath\frac{\dd\Psi(r)}{\dd r}=H(r)\Psi(r),
+%				\qquad
+%				H(r)=H_{0}+v(r)W, 
+%			\end{equation} 
+%			где \(H_{0}=\diag(0,\frac{\Delta m^{2}_{21}}{2E},\frac{\Delta m^{2}_{31}}{2E})\), 
+%			\(W=U^{\dagger}\diag(1,0,0)U\), \(\nu(r)\) --- функция профиля плотности.
+%			\item<2-> Средняя вероятность перехода
+%			\begin{equation}
+%				\label{eq:116}
+%				\langle P_{\alpha\beta}\rangle=\langle P(\nu_{\alpha}\rightarrow\nu_{\beta}) 
+%				\rangle=\sum_{i}|U_{\beta i}|^{2}\rho_{i}, \quad \rho_{i}=|A_{i}|^{2}.
+%			\end{equation}
+%			\item<3-> Для случая перехода в электронное состояние 
+%			\begin{equation}
+%				\langle 
+%				
+%P(\nu_{\alpha}\rightarrow\nu_{e})\rangle=c_{12}^2c_{13}^{2}\rho_{1}+s_{12}^{2}c_{13}^{2}\rho_{2}+s_{13}^{2}\rho_{3},
+%				\quad \rho_{i}=\abs{A_{i}}^{2};
+%			\end{equation}
+%		\end{itemize}
+%	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Осцилляции в вакууме}
-		\begin{itemize}
-			\item<1-> Это соотношение можно рассматривать как решение уравнения следующего 
-			типа
-			\begin{equation}
-				\label{eq:113}
-				\imath \frac{\dd}{\dd\xi} \ket{\nu(\xi)}=
-				H_{\text{eff}}\ket{\nu(\xi)},\quad
-				\ket{\nu(\xi)}=
-				\begin{pmatrix}
-					\ket{\nu_{1}(\xi)}\\
-					\ket{\nu_{2}(\xi)}\\
-					\ket{\nu_{3}(\xi)}
-				\end{pmatrix},\quad
-				H_{\text{eff}}=\frac{M^{2}}{2E}.
-			\end{equation}
-			\item<2-> Перепишем выражение \eqref{eq:112} в флейворном представлении, 
-			используя 
-			соотношение 
-			\begin{equation}
-				\label{eq:114}
-				\ket{\nu_{\alpha}} = \sum_{i}U^{*}_{\alpha i}\ket{\nu_{i}},
-			\end{equation}
-			\item<3->где \(U\) --- это PMNS-матрица, с учётом \(\delta_{CP}=0\) она записывается так
-			\begin{equation}
-				U=
-				\begin{pmatrix}
-					c_{12}c_{13}&s_{12}c_{13}&s_{13}\\
-					-s_{12}c_{23}-c_{12}s_{23}s_{13}&c_{12}c_{23}-s_{12}s_{23}s_{13}&s_{23}c_{13}\\
-					s_{12}s_{23}-c_{12}c_{23}s_{13}&-c_{12}s_{23}-s_{12}c_{23}s_{13}&c_{23}c_{13}
-				\end{pmatrix},
-			\end{equation}
-			где обозначения \(c_{ij}\) и \(s_{ij}\) это соответственно \(\cos\theta_{ij}\) и 
-			\(\sin\theta_{ij}\), в свою очередь \(\theta_{ij}\) --- это углы смешивания.
-			\item<4-> Вероятность перехода определяется так
-			\begin{equation}
-				P(\nu_{\alpha}\rightarrow\nu_{\beta})=|\langle\nu_{\beta}\ket{\nu_{\alpha}(L)}|^{2}.
-			\end{equation} 
-		\end{itemize}
+				\frametitle{Осцилляции в веществе}
+				\begin{itemize}
+						\item<1-> Уравнение на амплитуды перехода массивных состояний
+						\begin{equation}
+								\label{eq:115}
+								\imath\frac{\dd\Psi(r)}{\dd r}=H(r)\Psi(r),
+								\qquad
+								H(r)=H_{0}+v(r)W, 
+							\end{equation} 
+						где \(v(r)\) --- функция профиля плотности,
+						\item<2->\begin{equation*}
+							H_{0}=\frac{a}{E}
+							\begin{pmatrix}
+								0&0&0\\
+								0&b&0\\
+								0&0&1\\
+							\end{pmatrix}, \quad a=4,35196\cdot10^{6}, \quad b=0,030554,
+						\end{equation*}
+						\item<3->\begin{equation*}
+							W=
+							\begin{pmatrix}
+								c_{13}^{2}c_{12}^{2}&c_{12}s_{12}c_{13}^{2}&c_{12}c_{13}s_{13}\\
+								c_{12}s_{12}c_{13}^{2}&s_{12}^{2}c_{13}^{2}&s_{12}c_{13}s_{13}\\
+								c_{12}s_{13}c_{13}&s_{12}c_{13}s_{13}&s_{13}^{2}
+							\end{pmatrix},
+						\end{equation*}
+						\(c_{ij}\) и \(s_{ij}\) это соответственно \(\cos\theta_{ij}\) и 
+						\(\sin\theta_{ij}\), в свою очередь \(\theta_{ij}\) --- это углы смешивания.
+						\item<4-> Средняя вероятность перехода
+						\begin{equation}
+								\label{eq:116}
+								\langle P_{\alpha\beta}\rangle=\langle P(\nu_{\alpha}\rightarrow\nu_{\beta}) 
+								\rangle=\sum_{i}|U_{\beta i}|^{2}\rho_{i}, \quad \rho_{i}=|\Psi_{i}|^{2}.
+							\end{equation}
+				\end{itemize}
 	\end{frame}
 	
-	\begin{frame}
-		\frametitle{Осцилляции в веществе}
-		\begin{itemize}
-			\item<1-> На осцилляцию нейтрино в веществе влияет МСВ-эффект --- эффект 
-			возникающий при взаимодействии с частицами вещества (нуклоны, электроны).
-			\item<2-> Оценки вкладов от упругого рассеяния нейтрино на частицах среды в 
-			первом порядке
-			\begin{align*}
-				I(e-Z^{0})=1,\\
-				I(e-W^{\pm})\approx 0,77,\\
-				I(d_{i}-Z^{0})\approx 0,31,\\
-				I(u_{i}-Z^{0})\approx 0,16,\\
-			\end{align*}
-			\item<3-> МСВ-эффект можно учесть, введя добавку в эффективный гамильтониан 
-			распространения в пространстве. 
-			\item<4-> Сама добавка получена с использованием эффективной теории Ферми, 
-			поэтому имеется ограничение на энергии рассматриваемых нейтрино \(E\ll M_{W}\).
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Осцилляции в веществе}
-		\begin{itemize}
-			\item<1-> Итоговое уравнение на амплитуды перехода массивных состояний
-			\begin{equation}
-				\label{eq:115}
-				\imath\frac{\dd\Psi(r)}{\dd r}=H(r)\Psi(r),
-				\qquad
-				H(r)=H_{0}+v(r)W, 
-			\end{equation} 
-			где \(H_{0}=\diag(0,\frac{\Delta m^{2}_{21}}{2E},\frac{\Delta m^{2}_{31}}{2E})\), 
-			\(W=U^{\dagger}\diag(1,0,0)U\), \(\nu(r)\) --- функция профиля плотности.
-			\item<2-> Средняя вероятность перехода
-			\begin{equation}
-				\label{eq:116}
-				\langle P_{\alpha\beta}\rangle=\langle P(\nu_{\alpha}\rightarrow\nu_{\beta}) 
-				\rangle=\sum_{i}|U_{\beta i}|^{2}\rho_{i}, \quad \rho_{i}=|A_{i}|^{2}.
-			\end{equation}
-			\item<3-> Для случая перехода в электронное состояние 
-			\begin{equation}
-				\langle 
-				P(\nu_{\alpha}\rightarrow\nu_{e})\rangle=c_{12}^2c_{13}^{2}\rho_{1}+s_{12}^{2}c_{13}^{2}\rho_{2}+s_{13}^{2}\rho_{3},
-				\quad \rho_{i}=\abs{A_{i}}^{2};
-			\end{equation}
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Метод Магнуса}
-		\begin{itemize}
-			\item<1-> Общий вид матричного дифференциального уравнения
-			\begin{equation}\label{eq:117}
-				\frac{\dd}{\dd t}Y(t)=A(t)Y(t), \qquad A \in C^{n\times n}, \quad Y\in C^{n},
-			\end{equation}
-			с начальным условием \(Y(t_{0})=Y_{0}\).
-			\item<2-> Поиск решения вида 
-			\begin{equation}
-				Y(t)=\exp^{\Omega(t,t_{0})}Y_{0}, \qquad \Omega(t,t_{0})\in C^{n\times n}, \quad
-				\Omega(t_{0},t_{0})=0.
-			\end{equation}
-			\item<3-> \(\Omega(t,t_{0})\) выражается так
-			\begin{equation}
-				\label{eq:118}
-				\Omega(t,t_{0})=\sum_{k=1}^{\infty}\Omega_{k}(t,t_{0}).
-			\end{equation}
-			\item<4-> решение в точке \(t_{n+1}\) 
-			\begin{equation}
-				Y(t_{n+1})=\exp^{\Omega(t_{n}+h_{n},t_{n})}Y(t_{n}),
-			\end{equation}
-			где \(h_{n}\) --- шаг интегрирования.
-			\item<5-> Решение в конечной точке интервала 
-			\begin{equation}
-				Y(t_{f})=\prod^{N-1}_{n=0}\exp^{\Omega(t_{n};h_{n})}Y(t_{0}), \qquad
-				\Omega(t_{n};h_{n})\equiv\Omega(t_{n}+h_{n},t_{n}).
-			\end{equation}
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Метод Магнуса}
-		\begin{itemize}
-			\item<1-> Для получения решения \(Y(t_{n}+h_{n})\) с точностью до до 
-			\(O(h^{r'+1}_{n})\), достаточно разложить ряд \eqref{eq:118} до первых \(p=2r'-2\) 
-			слагаемых.
-			\item<2-> Первые три слагаемые ряда \eqref{eq:118}
-			\begin{flalign*}
-				\Omega_{1}(t,t_{0})&=\int_{t_{0}}^{t} \dd t_{1} A_{1},\\
-				\Omega_{2}(t,t_{0})&=\frac{1}{2}\int_{t_{0}}^{t}\dd
-				t_{1}\int_{t_{0}}^{t_{1}}\dd t_{2}[A_{1},\,A_{2}],\\
-				\Omega_{3}(t,t_{0})&=\frac{1}{6}\int_{t_{0}}^{t}\dd
-				t_{1}\int_{t_{0}}^{t_{1}}\dd
-				t_{2}\int_{t_{0}}^{t_{2}}\Big\{\big[A_{1},\,[A_{2},\,A_{3}]\big] +
-				\big[[A_{1},\,A_{2}],\,A_{3}\big]\Big\}.
-			\end{flalign*}
-		\end{itemize}
-	\end{frame}
+%	\begin{frame}
+%		\frametitle{Метод Магнуса}
+%		\begin{itemize}
+%			\item<1-> Общий вид матричного дифференциального уравнения
+%			\begin{equation}\label{eq:117}
+%				\frac{\dd}{\dd t}Y(t)=A(t)Y(t), \qquad A \in C^{n\times n}, \quad Y\in C^{n},
+%			\end{equation}
+%			с начальным условием \(Y(t_{0})=Y_{0}\).
+%			\item<2-> Поиск решения вида 
+%			\begin{equation}
+%				Y(t)=\exp^{\Omega(t,t_{0})}Y_{0}, \qquad \Omega(t,t_{0})\in C^{n\times n}, \quad
+%				\Omega(t_{0},t_{0})=0.
+%			\end{equation}
+%			\item<3-> \(\Omega(t,t_{0})\) выражается так
+%			\begin{equation}
+%				\label{eq:118}
+%				\Omega(t,t_{0})=\sum_{k=1}^{\infty}\Omega_{k}(t,t_{0}).
+%			\end{equation}
+%			\item<4-> решение в точке \(t_{n+1}\) 
+%			\begin{equation}
+%				Y(t_{n+1})=\exp^{\Omega(t_{n}+h_{n},t_{n})}Y(t_{n}),
+%			\end{equation}
+%			где \(h_{n}\) --- шаг интегрирования.
+%			\item<5-> Решение в конечной точке интервала 
+%			\begin{equation}
+%				Y(t_{f})=\prod^{N-1}_{n=0}\exp^{\Omega(t_{n};h_{n})}Y(t_{0}), \qquad
+%				\Omega(t_{n};h_{n})\equiv\Omega(t_{n}+h_{n},t_{n}).
+%			\end{equation}
+%		\end{itemize}
+%	\end{frame}
+%	
+%	\begin{frame}
+%		\frametitle{Метод Магнуса}
+%		\begin{itemize}
+%			\item<1-> Для получения решения \(Y(t_{n}+h_{n})\) с точностью до до 
+%			\(O(h^{r'+1}_{n})\), достаточно разложить ряд \eqref{eq:118} до первых \(p=2r'-2\) 
+%			слагаемых.
+%			\item<2-> Первые три слагаемые ряда \eqref{eq:118}
+%			\begin{flalign*}
+%				\Omega_{1}(t,t_{0})&=\int_{t_{0}}^{t} \dd t_{1} A_{1},\\
+%				\Omega_{2}(t,t_{0})&=\frac{1}{2}\int_{t_{0}}^{t}\dd
+%				t_{1}\int_{t_{0}}^{t_{1}}\dd t_{2}[A_{1},\,A_{2}],\\
+%				\Omega_{3}(t,t_{0})&=\frac{1}{6}\int_{t_{0}}^{t}\dd
+%				t_{1}\int_{t_{0}}^{t_{1}}\dd
+%				t_{2}\int_{t_{0}}^{t_{2}}\Big\{\big[A_{1},\,[A_{2},\,A_{3}]\big] +
+%				\big[[A_{1},\,A_{2}],\,A_{3}\big]\Big\}.
+%			\end{flalign*}
+%		\end{itemize}
+%	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Численные расчёты}
