@@ -1,15 +1,14 @@
 \section{Код для анализа и визуализации данных}
 \label{app:code-python}
 
-Численный анализ и построения графиков было автоматизировано с помощью кодов на
-языке программирования python. В кодах использовались пакеты numpy и matplotlib,
-сами коды представлены ниже.
-\subsection*{Код для построения температурного и контурного графиков для случая 
-вариации углов смешивания}
+Численный анализ и построения графиков было автоматизировано с помощью кода на
+языке программирования python. В коде использовались пакеты numpy и matplotlib,
+сами код представлен ниже.
+
 При обработке запуске сценария нужно перейти в каталог с сохранёнными данными и
 запустить сценарий как
 \begin{minted}{bash}
-	./PATH/TO/THE/SCRIPT/plot-varang-flat.py *.dat
+	./PATH/TO/THE/SCRIPT/plot-vars.py *.dat
 \end{minted}
 Предполагается, что все входные данные имеют одинаковый формат:
 \begin{verbatim}
@@ -17,22 +16,7 @@
 \end{verbatim}
 Необходимыми являются второй, третий и пятый столбцы.
 
-\inputminted[linenos,breaklines,fontsize=\footnotesize]{python}{../magexp/playground/plot/plot-varang-flat.py}
-\subsection*{Код для построения температурного и контурного графиков для случая 
-вариации параметров профиля плотности}
-Как и в предыдущем случае сначала необходимо перейти в каталог с сохранёнными 
-данными и запустить сценарий как
-\begin{minted}{bash}
-	./PATH/TO/THE/SCRIPT/plot-dnsvar-flat.py *.dat
-\end{minted}
-Все входные данные должны иметь следующий формат:
-\begin{verbatim}
-	END ENERGY PROBABILITY MIXING_PARAMETR FACTOR
-\end{verbatim}
-Необходимыми являются второй, третий и пятый столбцы.
-
-
-\inputminted[linenos,breaklines,fontsize=\footnotesize]{python}{../magexp/playground/plot/plot-dnsvar-flat.py}
+\inputminted[linenos,breaklines,fontsize=\scriptsize]{python}{../magexp/playground/plot/plot-vars.py}
 
 %\textattachfile{../magexp/playground/plot/plot-varang-flat.py}{Код сценария в
 %	виде файла (только для электронной версии документа).}

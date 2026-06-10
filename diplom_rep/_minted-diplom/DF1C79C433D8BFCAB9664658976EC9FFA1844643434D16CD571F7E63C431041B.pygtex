@@ -1,0 +1,62 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}                           \PYGZhy{}\PYGZhy{}\PYGZhy{} SUN model \PYGZhy{}\PYGZhy{}\PYGZhy{}                                \PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{n+nv}{a}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}
+\PYG{n+nv}{b}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.0}
+
+\PYG{n+nv}{E}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.0}
+
+\PYG{n+nv}{tol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1e\PYGZhy{}3}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} dh = 1e\PYGZhy{}2}
+
+\PYG{n+nv}{model}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}sun\PYGZsq{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{} This is defautl values}
+\PYG{n+nv}{s12}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mf}{0.308}\PYG{p}{)}
+\PYG{n+nv}{s13}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mf}{0.0234}\PYG{p}{)}
+\PYG{n+nv}{s23}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mf}{0.437}\PYG{p}{)}
+
+\PYG{n+nv}{c12}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nv}{s12}\PYG{o}{*}\PYG{n+nv}{s12}\PYG{p}{)}
+\PYG{n+nv}{c13}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nv}{s13}\PYG{o}{*}\PYG{n+nv}{s13}\PYG{p}{)}
+\PYG{n+nv}{c23}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nv}{s23}\PYG{o}{*}\PYG{n+nv}{s23}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{} The initial value is calculated in \PYGZdq{}main\PYGZdq{} program using above mixing angles,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{} but if one needs to pass other value, one must set it here.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} psi0 = \PYGZob{} \PYGZob{} c12*c13, 0. \PYGZcb{} , \PYGZob{} s12*c13, 0. \PYGZcb{} , \PYGZob{} s13, 0. \PYGZcb{} \PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{} Why not local? Because we might want to change these parameters on command}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{} line.}
+\PYG{n+nv}{par1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{65956.0}
+\PYG{n+nv}{par2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{10.54}
+
+\PYG{n+nv}{R}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.696}
+\PYG{n+nv}{L}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{150.0}
+
+\PYG{n+nv}{thetaMax}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.asin}\PYG{p}{(}\PYG{n+nv}{R}\PYG{o}{/}\PYG{n+nv}{L}\PYG{p}{)}
+\PYG{n+nv}{thetaMin}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{o}{*}\PYG{n+nv}{thetaMax}\PYG{+w}{   }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} NB: technically, it is math.asin(1/10*R/L)}
+\PYG{n+nv}{xtheta}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}
+
+\PYG{k+kr}{function}\PYG{+w}{ }\PYG{n+nf}{theta}\PYG{p}{()}
+\PYG{+w}{  }\PYG{k+kr}{return}\PYG{+w}{ }\PYG{n+nv}{thetaMin}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nv}{xtheta}\PYG{o}{*}\PYG{p}{(}\PYG{n+nv}{thetaMax}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nv}{thetaMin}\PYG{p}{)}
+\PYG{k+kr}{end}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} NB: x in [0;1]}
+\PYG{k+kr}{function}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n+nv}{x}\PYG{p}{)}
+\PYG{+w}{  }\PYG{k+kr}{return}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mf}{1.}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{4.}\PYG{o}{*}\PYG{n+nv}{x}\PYG{o}{*}\PYG{p}{(}\PYG{l+m+mf}{1.}\PYG{o}{\PYGZhy{}}\PYG{n+nv}{x}\PYG{p}{)}\PYG{o}{*}\PYG{n+nb}{math.cos}\PYG{p}{(}\PYG{n+nf}{theta}\PYG{p}{())}\PYG{o}{*}\PYG{n+nb}{math.cos}\PYG{p}{(}\PYG{n+nf}{theta}\PYG{p}{()))}
+\PYG{k+kr}{end}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} NB: x in [0.1;1]}
+\PYG{k+kr}{function}\PYG{+w}{ }\PYG{n+nf}{dense}\PYG{p}{(}\PYG{n+nv}{x}\PYG{p}{)}
+\PYG{+w}{  }\PYG{k+kr}{return}\PYG{+w}{ }\PYG{n+nv}{par1}\PYG{o}{*}\PYG{n+nb}{math.exp}\PYG{p}{(}\PYG{n+nv}{par2}\PYG{o}{*}\PYG{n+nv}{x}\PYG{p}{)}
+\PYG{k+kr}{end}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} NB: though it would seem to be more simple to change \PYGZsq{}a\PYGZsq{} above, a=0.0, it}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}     wouldn\PYGZsq{}t work: the program itself has builtin limitation: a\PYGZgt{}=0.1. All}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}     other interval must be mapped to [0.1;1.0].}
+\PYG{k+kr}{function}\PYG{+w}{ }\PYG{n+nf}{dns}\PYG{p}{(}\PYG{n+nv}{x}\PYG{p}{)}
+\PYG{+w}{  }\PYG{k+kr}{return}\PYG{+w}{ }\PYG{n+nf}{dense}\PYG{p}{(}\PYG{n+nf}{dist}\PYG{p}{((}\PYG{n+nv}{x}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mf}{0.9}\PYG{p}{))}
+\PYG{k+kr}{end}
+
+\PYG{n+nv}{density}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nv}{dns}
+\end{Verbatim}

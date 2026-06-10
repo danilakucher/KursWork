@@ -1,0 +1,328 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/python}
+
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Plot \PYGZdq{}heatmap\PYGZdq{} figures for our data.}
+
+\PYG{l+s+sd}{It is assumed that script is run in a directory containing *.dat file with}
+\PYG{l+s+sd}{specific names:}
+\PYG{l+s+sd}{  MODEL\PYGZus{}BORN\PYGZus{}PARAM\PYGZus{}idNUM.dat}
+\PYG{l+s+sd}{where MODEL is either \PYGZsq{}sun\PYGZsq{}, \PYGZsq{}sn\PYGZsq{} or \PYGZsq{}earth\PYGZsq{}. The BORN is either \PYGZsq{}in\PYGZsq{} (inside)}
+\PYG{l+s+sd}{or \PYGZsq{}out\PYGZsq{} (outside, pass through regime), the PARAM is either \PYGZsq{}s12\PYGZsq{}, \PYGZsq{}s13\PYGZsq{},}
+\PYG{l+s+sd}{\PYGZsq{}par1\PYGZsq{} or \PYGZsq{}par2\PYGZsq{} (may be more), the NUM is serial number (beginning from 0).}
+
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{sys}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{matplotlib.pyplot}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{plt}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{pathlib}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{Path}
+
+
+\PYG{n}{DIRSTRUCT}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}MODEL\PYGZus{}BORN\PYGZus{}PARAM/NexNf=XxY/EE1\PYGZus{}E2/TRANS[/FRAC if BORN=\PYGZsq{}out\PYGZsq{}]/\PYGZdq{}}
+\PYG{n}{FILENAME\PYGZus{}TMPL}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}MODEL\PYGZus{}BORN\PYGZus{}PARAM\PYGZus{}idID.dat\PYGZdq{}}
+\PYG{n}{TRANSITIONS} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}e\PYGZhy{}e\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}e\PYGZhy{}mu\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}mu\PYGZhy{}e\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}mu\PYGZhy{}mu\PYGZdq{}}\PYG{p}{\PYGZcb{}}
+\PYG{n}{TRANS\PYGZus{}LABELS} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}e\PYGZhy{}e\PYGZdq{}} \PYG{p}{:}   \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(\PYGZbs{}Prob\PYGZus{}\PYGZob{}\PYGZbs{}mathrm}\PYG{l+s+si}{\PYGZob{}e\PYGZcb{}}\PYG{l+s+s2}{\PYGZbs{}mathrm}\PYG{l+s+si}{\PYGZob{}e\PYGZcb{}}\PYG{l+s+s2}{\PYGZcb{}\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}e\PYGZhy{}mu\PYGZdq{}} \PYG{p}{:}  \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(\PYGZbs{}Prob\PYGZus{}\PYGZob{}\PYGZbs{}mathrm}\PYG{l+s+si}{\PYGZob{}e\PYGZcb{}}\PYG{l+s+s2}{\PYGZbs{}mgrm\PYGZob{}\PYGZbs{}mu\PYGZcb{}\PYGZcb{}\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}mu\PYGZhy{}e\PYGZdq{}} \PYG{p}{:}  \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(\PYGZbs{}Prob\PYGZus{}\PYGZob{}\PYGZbs{}mgrm\PYGZob{}\PYGZbs{}mu\PYGZcb{}\PYGZbs{}mathrm}\PYG{l+s+si}{\PYGZob{}e\PYGZcb{}}\PYG{l+s+s2}{\PYGZcb{}\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}mu\PYGZhy{}mu\PYGZdq{}} \PYG{p}{:} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(\PYGZbs{}Prob\PYGZus{}\PYGZob{}\PYGZbs{}mgrm\PYGZob{}\PYGZbs{}mu\PYGZcb{}\PYGZbs{}mgrm\PYGZob{}\PYGZbs{}mu\PYGZcb{}\PYGZcb{}\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{PARAM\PYGZus{}LABELS} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}s12\PYGZdq{}}\PYG{p}{:}  \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(\PYGZbs{}sin\PYGZob{}\PYGZbs{}theta\PYGZus{}}\PYG{l+s+si}{\PYGZob{}12\PYGZcb{}}\PYG{l+s+s2}{\PYGZcb{}\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}s13\PYGZdq{}}\PYG{p}{:}  \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(\PYGZbs{}sin\PYGZob{}\PYGZbs{}theta\PYGZus{}}\PYG{l+s+si}{\PYGZob{}13\PYGZcb{}}\PYG{l+s+s2}{\PYGZcb{}\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}par1\PYGZdq{}}\PYG{p}{:} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(A\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}par2\PYGZdq{}}\PYG{p}{:} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(\PYGZbs{}alpha\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{VARY\PYGZus{}LABELS} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}s12\PYGZdq{}}\PYG{p}{:}  \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(f\PYGZbs{}cdot\PYGZbs{}sin\PYGZob{}\PYGZbs{}theta\PYGZus{}}\PYG{l+s+si}{\PYGZob{}12\PYGZcb{}}\PYG{l+s+s2}{\PYGZcb{}\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}s13\PYGZdq{}}\PYG{p}{:}  \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(f\PYGZbs{}cdot\PYGZbs{}sin\PYGZob{}\PYGZbs{}theta\PYGZus{}}\PYG{l+s+si}{\PYGZob{}13\PYGZcb{}}\PYG{l+s+s2}{\PYGZcb{}\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}par1\PYGZdq{}}\PYG{p}{:} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(f\PYGZbs{}cdot A\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}par2\PYGZdq{}}\PYG{p}{:} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(f\PYGZbs{}cdot\PYGZbs{}alpha\PYGZbs{})\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{c+c1}{\PYGZsh{} Use by default the real tex!}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}text.usetex\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{k+kc}{True}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}text.latex.preamble\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}
+  \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}usepackage[conf=matplotlib]\PYGZob{}isu\PYGZhy{}th3\PYGZcb{}\PYGZdq{}}
+\PYG{p}{)}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{midPointsExtra}\PYG{p}{(}\PYG{n}{points}\PYG{p}{):}
+\PYG{+w}{  }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{  Returns the array of middle points for possible uneven segmented array}
+\PYG{l+s+sd}{  including edge points.}
+
+\PYG{l+s+sd}{  The first and last points are taken on half length of first and last segments}
+\PYG{l+s+sd}{  distance from left and right edge.}
+
+\PYG{l+s+sd}{  Thus, we presume that the `points` array is SORTED (ordered).}
+\PYG{l+s+sd}{  \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+  \PYG{n}{res} \PYG{o}{=} \PYG{p}{[]}
+  \PYG{n}{dlt} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+  \PYG{n}{res}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{dlt}\PYG{p}{)}
+
+  \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{points}\PYG{p}{)):}
+    \PYG{n}{dlt} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}
+    \PYG{n}{res}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dlt}\PYG{p}{)}
+
+  \PYG{n}{dlt} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{])}
+  \PYG{n}{res}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{dlt}\PYG{p}{)}
+
+  \PYG{k}{return} \PYG{n}{res}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{plotDataCF}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{figname}\PYG{p}{,} \PYG{n}{xlab}\PYG{p}{,} \PYG{n}{ylab}\PYG{p}{,} \PYG{n}{title}\PYG{p}{):}
+\PYG{+w}{  }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{  Plot z (relative difference) as function of log(x) and y with color filled}
+\PYG{l+s+sd}{  regions and contours.}
+\PYG{l+s+sd}{  \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+  \PYG{n}{mx} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{z}\PYG{p}{)}
+  \PYG{n}{mn} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{z}\PYG{p}{)}
+
+  \PYG{k}{if} \PYG{n}{mn} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+    \PYG{n}{mn} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{mn}
+
+  \PYG{k}{if} \PYG{n}{mn} \PYG{o}{\PYGZgt{}} \PYG{n}{mx}\PYG{p}{:}
+    \PYG{n}{mx} \PYG{o}{=} \PYG{n}{mn}
+
+  \PYG{n}{fig}\PYG{p}{,} \PYG{n}{ax} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplots}\PYG{p}{(}\PYG{n}{layout}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}constrained\PYGZsq{}}\PYG{p}{)}
+
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}title}\PYG{p}{(}\PYG{n}{title}\PYG{p}{)}
+
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{contour}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{levels}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,} \PYG{n}{linewidths}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{n}{colors}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{)}
+  \PYG{c+c1}{\PYGZsh{} \PYGZsh{}\PYGZsh{}\PYGZsh{} Symmetric values for vmin/vmax draw 0 by \PYGZdq{}neutral\PYGZdq{} (white) color}
+  \PYG{n}{cntr} \PYG{o}{=} \PYG{n}{ax}\PYG{o}{.}\PYG{n}{contourf}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{levels}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,} \PYG{n}{cmap}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}RdBu\PYGZus{}r\PYGZsq{}}\PYG{p}{,} \PYG{n}{vmin} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{mx}\PYG{p}{,} \PYG{n}{vmax} \PYG{o}{=} \PYG{n}{mx}\PYG{p}{)}
+
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}xscale}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}log\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlabel}\PYG{p}{(}\PYG{n}{xlab}\PYG{p}{)}
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}ylabel}\PYG{p}{(}\PYG{n}{ylab}\PYG{p}{)}
+  \PYG{c+c1}{\PYGZsh{}  ax.grid(True)}
+
+  \PYG{n}{fig}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{(}\PYG{n}{cntr}\PYG{p}{,} \PYG{n}{label} \PYG{o}{=} \PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZbs{}(\PYGZbs{}eta\PYGZbs{})\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{fig}\PYG{o}{.}\PYG{n}{align\PYGZus{}labels}\PYG{p}{()}
+
+  \PYG{n}{fig}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{figname}\PYG{p}{)}
+
+  \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{plotDataHM}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{figname}\PYG{p}{,} \PYG{n}{xlab}\PYG{p}{,} \PYG{n}{ylab}\PYG{p}{,} \PYG{n}{title}\PYG{p}{):}
+\PYG{+w}{  }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{  Plot z (relative difference) as function of x and y as \PYGZdq{}heatmap\PYGZdq{}.}
+\PYG{l+s+sd}{  \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+  \PYG{n}{mx} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{z}\PYG{p}{)}
+  \PYG{n}{mn} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{z}\PYG{p}{)}
+
+  \PYG{k}{if} \PYG{n}{mn} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+    \PYG{n}{mn} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{mn}
+
+  \PYG{k}{if} \PYG{n}{mn} \PYG{o}{\PYGZgt{}} \PYG{n}{mx}\PYG{p}{:}
+    \PYG{n}{mx} \PYG{o}{=} \PYG{n}{mn}
+
+  \PYG{n}{fig}\PYG{p}{,} \PYG{n}{ax} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplots}\PYG{p}{(}\PYG{n}{layout}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}constrained\PYGZsq{}}\PYG{p}{)}
+
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}title}\PYG{p}{(}\PYG{n}{title}\PYG{p}{)}
+
+  \PYG{c+c1}{\PYGZsh{} \PYGZsh{}\PYGZsh{}\PYGZsh{} Symmetric values for vmin/vmax draw 0 by \PYGZdq{}neutral\PYGZdq{} (white) color}
+  \PYG{n}{pcm} \PYG{o}{=} \PYG{n}{ax}\PYG{o}{.}\PYG{n}{pcolormesh}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{,} \PYG{n}{cmap}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}RdBu\PYGZus{}r\PYGZsq{}}\PYG{p}{,} \PYG{n}{vmin} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{mx}\PYG{p}{,} \PYG{n}{vmax} \PYG{o}{=} \PYG{n}{mx}\PYG{p}{)}
+
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlim}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{x}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{x}\PYG{p}{))}
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}ylim}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{y}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{y}\PYG{p}{))}
+
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}xscale}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}log\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}xlabel}\PYG{p}{(}\PYG{n}{xlab}\PYG{p}{,} \PYG{n}{size}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}large\PYGZdq{}}\PYG{p}{)}
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{set\PYGZus{}ylabel}\PYG{p}{(}\PYG{n}{ylab}\PYG{p}{,} \PYG{n}{size}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}large\PYGZdq{}}\PYG{p}{)}
+  \PYG{n}{ax}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{k+kc}{True}\PYG{p}{)}
+
+  \PYG{n}{fig}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{(}\PYG{n}{pcm}\PYG{p}{,} \PYG{n}{label} \PYG{o}{=} \PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZbs{}(\PYGZbs{}eta\PYGZbs{})\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{fig}\PYG{o}{.}\PYG{n}{align\PYGZus{}labels}\PYG{p}{()}
+
+  \PYG{n}{fig}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{figname}\PYG{p}{)}
+
+  \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{checkDirStruct}\PYG{p}{():}
+\PYG{+w}{  }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{  Check directory structure. It must follow the one described above.}
+\PYG{l+s+sd}{  \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+
+  \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{safelySplit}\PYG{p}{(}\PYG{n}{par}\PYG{p}{):}
+    \PYG{k}{try}\PYG{p}{:}
+      \PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c} \PYG{o}{=} \PYG{n}{par}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZsq{}}\PYG{p}{)}
+      \PYG{k}{return} \PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}
+    \PYG{k}{except} \PYG{n+ne}{ValueError}\PYG{p}{:}
+      \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[ERROR] incorrect directory structure: top level: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{lv5}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}, but it must be of form \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{DIRSTRUCT}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}.\PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{11}\PYG{p}{)}
+
+
+  \PYG{n}{trans} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+  \PYG{n}{xfrac} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.0}
+  \PYG{n}{model} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+  \PYG{n}{born} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+  \PYG{n}{param} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+
+  \PYG{n}{cwd} \PYG{o}{=} \PYG{n}{Path}\PYG{o}{.}\PYG{n}{cwd}\PYG{p}{()}
+  \PYG{n}{lvls} \PYG{o}{=} \PYG{n}{cwd}\PYG{o}{.}\PYG{n}{parts}
+
+  \PYG{n}{lv1} \PYG{o}{=} \PYG{n}{lvls}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+  \PYG{n}{lv2} \PYG{o}{=} \PYG{n}{lvls}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}
+  \PYG{c+c1}{\PYGZsh{}  lv3 = lvls[\PYGZhy{}3]}
+  \PYG{n}{lv4} \PYG{o}{=} \PYG{n}{lvls}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{]}
+  \PYG{n}{lv5} \PYG{o}{=} \PYG{n}{lvls}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5}\PYG{p}{]}
+
+  \PYG{n}{sg} \PYG{o}{=} \PYG{n}{lv1}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+  \PYG{k}{match} \PYG{n}{sg}\PYG{p}{:}
+    \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}0\PYGZsq{}} \PYG{o}{|} \PYG{l+s+s1}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{:}
+      \PYG{n}{xfrac} \PYG{o}{=} \PYG{n}{lv1}
+      \PYG{n}{trans} \PYG{o}{=} \PYG{n}{lv2}
+      \PYG{n}{model}\PYG{p}{,} \PYG{n}{born}\PYG{p}{,} \PYG{n}{param} \PYG{o}{=} \PYG{n}{safelySplit}\PYG{p}{(}\PYG{n}{lv5}\PYG{p}{)}
+    \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}e\PYGZsq{}} \PYG{o}{|} \PYG{l+s+s1}{\PYGZsq{}m\PYGZsq{}} \PYG{o}{|} \PYG{l+s+s1}{\PYGZsq{}t\PYGZsq{}}\PYG{p}{:}
+      \PYG{n}{trans} \PYG{o}{=} \PYG{n}{lv1}
+      \PYG{n}{model}\PYG{p}{,} \PYG{n}{born}\PYG{p}{,} \PYG{n}{param} \PYG{o}{=} \PYG{n}{safelySplit}\PYG{p}{(}\PYG{n}{lv4}\PYG{p}{)}
+    \PYG{k}{case}\PYG{+w}{ }\PYG{k}{\PYGZus{}}\PYG{p}{:}
+      \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[ERROR] wrong work directory, it must be last part of \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{DIRSTRUCT}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}, but the current directory name is \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{lv1}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}.\PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{)}
+
+
+  \PYG{k}{match} \PYG{n}{trans}\PYG{p}{:}
+    \PYG{k}{case} \PYG{l+s+s2}{\PYGZdq{}e\PYGZhy{}e\PYGZdq{}} \PYG{o}{|} \PYG{l+s+s2}{\PYGZdq{}e\PYGZhy{}mu\PYGZdq{}} \PYG{o}{|} \PYG{l+s+s2}{\PYGZdq{}mu\PYGZhy{}e\PYGZdq{}} \PYG{o}{|} \PYG{l+s+s2}{\PYGZdq{}mu\PYGZhy{}mu\PYGZdq{}}\PYG{p}{:}
+      \PYG{k}{pass}
+    \PYG{k}{case}\PYG{+w}{ }\PYG{k}{\PYGZus{}}\PYG{p}{:}
+      \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[ERROR] wrong TRANS part: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{trans}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}, it must be one of \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{TRANSITIONS}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}.\PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{13}\PYG{p}{)}
+
+  \PYG{k}{match} \PYG{n}{model}\PYG{p}{:}
+    \PYG{k}{case} \PYG{l+s+s2}{\PYGZdq{}sun\PYGZdq{}} \PYG{o}{|} \PYG{l+s+s2}{\PYGZdq{}sn\PYGZdq{}} \PYG{o}{|} \PYG{l+s+s2}{\PYGZdq{}earth\PYGZdq{}}\PYG{p}{:}
+      \PYG{k}{pass}
+    \PYG{k}{case}\PYG{+w}{ }\PYG{k}{\PYGZus{}}\PYG{p}{:}
+      \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[ERROR] unsupported model: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{model}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}.\PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{14}\PYG{p}{)}
+
+  \PYG{k}{match} \PYG{n}{born}\PYG{p}{:}
+    \PYG{k}{case} \PYG{l+s+s2}{\PYGZdq{}in\PYGZdq{}} \PYG{o}{|} \PYG{l+s+s2}{\PYGZdq{}out\PYGZdq{}}\PYG{p}{:}
+      \PYG{k}{pass}
+    \PYG{k}{case}\PYG{+w}{ }\PYG{k}{\PYGZus{}}\PYG{p}{:}
+      \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[ERROR] unsupported \PYGZsq{}born\PYGZsq{} mode: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{born}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}, must be either \PYGZsq{}in\PYGZsq{} or \PYGZsq{}out\PYGZsq{}.\PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{15}\PYG{p}{)}
+
+  \PYG{k}{if} \PYG{n}{xfrac} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.0} \PYG{o+ow}{and} \PYG{n}{born} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}in\PYGZsq{}}\PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[ERROR] contradictory combination of \PYGZsq{}born\PYGZsq{} (}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{born}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{) and theta fraction part (}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{xfrac}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{), for \PYGZsq{}in\PYGZsq{} mode there musn\PYGZsq{}t be fraction part!\PYGZdq{}}\PYG{p}{)}
+    \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{16}\PYG{p}{)}
+
+
+  \PYG{k}{return} \PYG{n}{model}\PYG{p}{,} \PYG{n}{born}\PYG{p}{,} \PYG{n}{param}\PYG{p}{,} \PYG{n}{trans}\PYG{p}{,} \PYG{n}{xfrac}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{getFiles}\PYG{p}{(}\PYG{n}{model}\PYG{p}{,} \PYG{n}{born}\PYG{p}{,} \PYG{n}{param}\PYG{p}{):}
+\PYG{+w}{  }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{  Get list of files in current directory by a pattern.}
+\PYG{l+s+sd}{  \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+  \PYG{n}{pth} \PYG{o}{=} \PYG{n}{Path}\PYG{o}{.}\PYG{n}{cwd}\PYG{p}{()}
+  \PYG{n}{fls} \PYG{o}{=} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{pth}\PYG{o}{.}\PYG{n}{glob}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{model}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZus{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{born}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZus{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{param}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZus{}id*.dat\PYGZdq{}}\PYG{p}{))}
+  \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{fls}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[ERROR] current directory (\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{pth}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}) doesn\PYGZsq{}t contain necessary data files (\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{model}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZus{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{born}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZus{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{param}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZus{}id*.dat\PYGZsq{}).\PYGZdq{}}\PYG{p}{)}
+    \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{17}\PYG{p}{)}
+
+  \PYG{k}{return} \PYG{n}{fls}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{prepareData}\PYG{p}{(}\PYG{n}{files}\PYG{p}{):}
+\PYG{+w}{  }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{  Prepare data read from files.}
+\PYG{l+s+sd}{  \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+  \PYG{n}{e} \PYG{o}{=} \PYG{p}{[]}
+  \PYG{n}{probs} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+  \PYG{n}{fk} \PYG{o}{=} \PYG{p}{[]}
+
+  \PYG{k}{for} \PYG{n}{nm}\PYG{p}{,} \PYG{n}{itm} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{files}\PYG{p}{):}
+    \PYG{k}{try}\PYG{p}{:}
+      \PYG{n}{\PYGZus{}}\PYG{p}{,} \PYG{n}{e}\PYG{p}{,} \PYG{n}{p}\PYG{p}{,} \PYG{n}{\PYGZus{}}\PYG{p}{,} \PYG{n}{f} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{loadtxt}\PYG{p}{(}\PYG{n}{itm}\PYG{p}{,} \PYG{n}{unpack}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} ValueError, if there are less or more than 5 columns.}
+    \PYG{k}{except} \PYG{n+ne}{ValueError} \PYG{k}{as} \PYG{n}{err}\PYG{p}{:}
+      \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[ERROR] wrong data format: there must be 5 columns, read: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{err}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}.\PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+    \PYG{n}{probs} \PYG{o}{|=} \PYG{p}{\PYGZob{}}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}k}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{n}{p}\PYG{p}{\PYGZcb{}}
+    \PYG{n}{fk}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+
+  \PYG{n}{nx} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{e}\PYG{p}{)}
+  \PYG{n}{ny} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{fk}\PYG{p}{)}
+
+  \PYG{n}{fk}\PYG{o}{.}\PYG{n}{sort}\PYG{p}{()}
+  \PYG{n}{prb} \PYG{o}{=} \PYG{p}{[]}
+  \PYG{k}{for} \PYG{n}{ff} \PYG{o+ow}{in} \PYG{n}{fk}\PYG{p}{:}
+    \PYG{n}{prb}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{probs}\PYG{p}{[}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}k}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{ff}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{])}
+
+  \PYG{n}{midl} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{((}\PYG{n}{ny} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}
+  \PYG{n}{p0} \PYG{o}{=} \PYG{n}{prb}\PYG{p}{[}\PYG{n}{midl}\PYG{p}{]}
+
+  \PYG{n}{zz} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{empty}\PYG{p}{((}\PYG{n}{ny}\PYG{p}{,}\PYG{n}{nx}\PYG{p}{))}
+
+  \PYG{n}{xx} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{midPointsExtra}\PYG{p}{(}\PYG{n}{e}\PYG{p}{))}
+  \PYG{n}{yy} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{midPointsExtra}\PYG{p}{(}\PYG{n}{fk}\PYG{p}{))}
+
+  \PYG{k}{for} \PYG{n}{j}\PYG{p}{,} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{fk}\PYG{p}{):}
+    \PYG{n}{p} \PYG{o}{=} \PYG{n}{prb}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}
+    \PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{e}\PYG{p}{):}
+      \PYG{n}{zz}\PYG{p}{[}\PYG{n}{j}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{p0}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}\PYG{o}{/}\PYG{n}{p0}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+
+  \PYG{n}{zz} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{zz}\PYG{p}{)}
+
+  \PYG{k}{return} \PYG{n}{e}\PYG{p}{,} \PYG{n}{fk}\PYG{p}{,} \PYG{n}{xx}\PYG{p}{,} \PYG{n}{yy}\PYG{p}{,} \PYG{n}{zz}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{args}\PYG{p}{):}
+\PYG{+w}{  }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{  Process command line argument (currently none), parse current directory file}
+\PYG{l+s+sd}{  names.}
+
+
+\PYG{l+s+sd}{  We use trick with dictionary (f\PYGZdq{}k\PYGZob{}\PYGZcb{}\PYGZdq{} part) to make sure that we get correct}
+\PYG{l+s+sd}{  data after sorting factors array. That\PYGZsq{}s where we form keys using factor}
+\PYG{l+s+sd}{  number and use them later to form new array with correct order (the same as}
+\PYG{l+s+sd}{  sorted array of factors).}
+\PYG{l+s+sd}{  \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+  \PYG{n}{model}\PYG{p}{,} \PYG{n}{born}\PYG{p}{,} \PYG{n}{param}\PYG{p}{,} \PYG{n}{trans}\PYG{p}{,} \PYG{n}{xfrac} \PYG{o}{=} \PYG{n}{checkDirStruct}\PYG{p}{()}
+
+  \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}[INFO] MODEL: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{model}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}, BORN: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{born}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{, PARAM: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{param}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}, TRANSITION: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{trans}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}, XFRAC: \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{xfrac}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{}\PYGZdq{}}\PYG{p}{)}
+
+  \PYG{n}{datfs} \PYG{o}{=} \PYG{n}{getFiles}\PYG{p}{(}\PYG{n}{model}\PYG{p}{,} \PYG{n}{born}\PYG{p}{,} \PYG{n}{param}\PYG{p}{)}
+
+  \PYG{n}{e}\PYG{p}{,} \PYG{n}{fk}\PYG{p}{,} \PYG{n}{xx}\PYG{p}{,} \PYG{n}{yy}\PYG{p}{,} \PYG{n}{zz} \PYG{o}{=} \PYG{n}{prepareData}\PYG{p}{(}\PYG{n}{datfs}\PYG{p}{)}
+
+  \PYG{n}{fg1} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{model}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZhy{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{born}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZhy{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{param}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{.pdf\PYGZdq{}}
+  \PYG{n}{fg2} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{model}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZhy{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{born}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZhy{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{param}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZhy{}contour.pdf\PYGZdq{}}
+
+  \PYG{k}{match} \PYG{p}{(}\PYG{n}{born}\PYG{p}{,} \PYG{n}{param}\PYG{p}{):}
+    \PYG{k}{case} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}in\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}s12\PYGZdq{}}\PYG{p}{)} \PYG{o}{|} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}in\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}s13\PYGZdq{}}\PYG{p}{)} \PYG{o}{|} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}in\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}par1\PYGZdq{}}\PYG{p}{)} \PYG{o}{|} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}in\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}par2\PYGZdq{}}\PYG{p}{):}
+      \PYG{n}{tit} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Relative }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{TRANS\PYGZus{}LABELS}\PYG{p}{[}\PYG{n}{trans}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ variation for \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{model}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{} model (born inside)}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{+} \PYGZbs{}
+        \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Varying }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{PARAM\PYGZus{}LABELS}\PYG{p}{[}\PYG{n}{param}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ as }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{VARY\PYGZus{}LABELS}\PYG{p}{[}\PYG{n}{param}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+    \PYG{k}{case} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}out\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}s12\PYGZdq{}}\PYG{p}{)} \PYG{o}{|} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}out\PYGZdq{}} \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}s13\PYGZdq{}}\PYG{p}{)} \PYG{o}{|} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}out\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}par1\PYGZdq{}}\PYG{p}{)} \PYG{o}{|} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}out\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}par2\PYGZdq{}}\PYG{p}{):}
+      \PYG{n}{tit} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Relative }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{TRANS\PYGZus{}LABELS}\PYG{p}{[}\PYG{n}{trans}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ variation for \PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{model}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{} model (passed through by }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{xfrac}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ angle)}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{+} \PYGZbs{}
+        \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Varying }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{PARAM\PYGZus{}LABELS}\PYG{p}{[}\PYG{n}{param}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ as }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{VARY\PYGZus{}LABELS}\PYG{p}{[}\PYG{n}{param}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+    \PYG{k}{case}\PYG{+w}{ }\PYG{k}{\PYGZus{}}\PYG{p}{:}
+      \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Unsupported combination \PYGZsq{}born\PYGZsq{}\PYGZhy{}\PYGZsq{}parameter\PYGZsq{}: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{born}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZhy{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{param}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+  \PYG{n}{plotDataHM}\PYG{p}{(}\PYG{n}{xx}\PYG{p}{,} \PYG{n}{yy}\PYG{p}{,} \PYG{n}{zz}\PYG{p}{,} \PYG{n}{fg1}\PYG{p}{,} \PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZbs{}(E\PYGZbs{})\PYGZsq{}}\PYG{p}{,} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(f\PYGZbs{})\PYGZdq{}}\PYG{p}{,} \PYG{n}{tit}\PYG{p}{)}
+  \PYG{n}{plotDataCF}\PYG{p}{(}\PYG{n}{e}\PYG{p}{,} \PYG{n}{fk}\PYG{p}{,} \PYG{n}{zz}\PYG{p}{,} \PYG{n}{fg2}\PYG{p}{,} \PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZbs{}(E\PYGZbs{})\PYGZsq{}}\PYG{p}{,} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}(f\PYGZbs{})\PYGZdq{}}\PYG{p}{,} \PYG{n}{tit}\PYG{p}{)}
+
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZdq{}}\PYG{p}{:}
+  \PYG{k}{try}\PYG{p}{:}
+    \PYG{n}{main}\PYG{p}{(}\PYG{n}{sys}\PYG{o}{.}\PYG{n}{argv}\PYG{p}{)}
+  \PYG{k}{except} \PYG{n+ne}{KeyboardInterrupt}\PYG{p}{:}
+    \PYG{n}{sys}\PYG{o}{.}\PYG{n}{exit}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Interrupted by user\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} vim: fdm=indent sw=2 ts=2 et:}
+\end{Verbatim}

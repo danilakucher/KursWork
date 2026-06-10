@@ -9,7 +9,8 @@
 Для автоматизации получения необходимых данных от программы численного решения
 уравнения осцилляции мы использовали сценарии, приведённые ниже.
 
-\subsection*{Сценарий для случая вариации параметра профиля плотности среды}
+Сценарий для случая вариации параметра профиля плотности среды:
+
 Необходимые пояснения к нему:
 \begin{itemize}[noitemsep]
 	\item первый аргумент задаёт канал перехода нейтрино;
@@ -21,16 +22,19 @@
 	\item четвёртый аргумент задаёт место рождения нейтрино (in --- внутри Солнца, out --- вне 
 	Солнца);
 	\item пятый аргумент задаёт параметр для вариации (par1 --- вариация параметра 
-	\(\gamma\), par2 --- вариация параметра \(\eta\) (см. формулу \eqref{eq:22}));
+	\(A\), par2 --- вариация параметра \(\alpha\) (см. формулу \eqref{eq:22}));
 	\item шестой аргумент задаёт значение параметра зенитного угла (см. формулу 
 	\eqref{eq:24});
 	\item в выходной файл записывались только: конечная расчётная точка уравнения,
 	энергия, вероятность выживания, текущее значение параметра и фактора вариации \(f\).
 \end{itemize}
 
-\inputminted[linenos,breaklines,fontsize=\footnotesize]{bash}{../run-dens.sh}
+\inputminted[linenos,breaklines,fontsize=\scriptsize]{bash}{../run-dens.sh}
 
-\subsection*{Сценарий для случая вариации углов смешивания}
+\newpage
+
+Сценарий для случая вариации углов смешивания:
+
 Необходимые пояснения к нему:
 \begin{itemize}[noitemsep]
 	\item первый аргумент задаёт канал перехода нейтрино;
@@ -49,19 +53,20 @@
 	\(f\).
 \end{itemize}
 
-\inputminted[linenos,breaklines,fontsize=\footnotesize]{bash}{../run-ang.sh}
+\inputminted[linenos,breaklines,fontsize=\scriptsize]{bash}{../run-ang.sh}
 
-\subsection*{Вспомогательные файлы для программы счёта}
+\newpage
+
 Управляющие файлы для программы счёта:
 \begin{itemize}
 	\item модель для случая нейтрино, рождённого вне Солнца
-	\inputminted[linenos,breaklines,fontsize=\footnotesize]{lua}{../magexp/bin/sun-out.lua}
+	\inputminted[linenos,breaklines,fontsize=\scriptsize]{lua}{../magexp/bin/sun-out.lua}
 	\item задание начального условия (пример приведён для случая электронного нейтрино на 
 	краю среды)
-	\inputminted[linenos,breaklines,fontsize=\footnotesize]{lua}{../magexp/bin/e-ic.lua}
+	\inputminted[linenos,breaklines,fontsize=\scriptsize]{lua}{../magexp/bin/e-ic.lua}
 	\item вычисление вероятности перехода (пример приведён для перехода в мюонное 
 	нейтрино)
-	\inputminted[linenos,breaklines,fontsize=\footnotesize]{lua}{../magexp/bin/prob-e-mu.lua}
+	\inputminted[linenos,breaklines,fontsize=\scriptsize]{lua}{../magexp/bin/prob-e-mu.lua}
 	Формулы, использующиеся в программах для задания начального условия и вычисления 
 	вероятности перехода приведены в разделе 2.2.
 \end{itemize}

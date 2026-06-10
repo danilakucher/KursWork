@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{	}./PATH/TO/THE/SCRIPT/plot\PYGZhy{}vars.py\PYG{+w}{ }*.dat
+\end{Verbatim}

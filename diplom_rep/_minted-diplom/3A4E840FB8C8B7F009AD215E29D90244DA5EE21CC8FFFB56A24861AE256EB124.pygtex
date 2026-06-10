@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Initial condition.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Considering a case when there is an electron neutrino at inital point.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} It might be born there or simply we start at point with such particle.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} This file must be loaded AFTER the \PYGZdq{}main\PYGZdq{} (model) one.}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} NB: we consider the case of CP conservation, otherwise there will be CP}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}     violation phase, but it is cumbersome to write it in current notation,}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}     where table contains two element tables, which representing real and}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}     imaginary parts.}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} The sXY parameters either set in \PYGZdq{}main\PYGZdq{} (model) file, or set in command line.}
+\PYG{n+nv}{c12}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nv}{s12}\PYG{o}{*}\PYG{n+nv}{s12}\PYG{p}{)}
+\PYG{n+nv}{c13}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nv}{s13}\PYG{o}{*}\PYG{n+nv}{s13}\PYG{p}{)}
+\PYG{n+nv}{c23}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nv}{s23}\PYG{o}{*}\PYG{n+nv}{s23}\PYG{p}{)}
+
+\PYG{n+nv}{psi0}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nv}{c12}\PYG{o}{*}\PYG{n+nv}{c13}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nv}{s12}\PYG{o}{*}\PYG{n+nv}{c13}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nv}{s13}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
