@@ -25,6 +25,7 @@
 \usepackage{minted}
 \usepackage{float}
 
+
 \usepackage[bibstyle=gost-numeric,citestyle=numeric-comp, sorting=none]{biblatex}
 
 \usepackage{hyperref}
@@ -51,7 +52,8 @@
 \DeclarePairedDelimiter{\ket}{|}{\rangle}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiterX{\commut}[2]{[}{]}{#1,#2}
-
+\titleformat{\subsection}[block]{\filcenter}{\thesubsection}{0.5em}{}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
 \titlespacing{\section}{\parindent}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 \fancypagestyle{plain}{%
@@ -135,7 +137,7 @@
 		\begin{minipage}{92mm}
 			Кафедра теоретической физики\\
 			Допускается к защите\\
-			И.о. зав. кафедрой\\
+			Зав. кафедрой\\
 			Доцент, к.ф.-м.н.\underline{\hspace{30mm}} Ловцов С.В.\\
 			\hspace*{40mm}<<\underline{\hspace{8mm}}>>\underline{\hspace{22mm}}2026г.
 		\end{minipage}
@@ -164,11 +166,11 @@
 			\underline{\hspace{30mm}}/Фролова А.С./\\
 			\hspace*{5mm}(подпись)
 		\end{minipage}
-		\begin{minipage}{70mm}
+		\begin{minipage}{75mm}
 			Студент 4 курса очного отделения,\\
 			Группа 01411-ДБ\\
-			\underline{\hspace{30mm}}Кучеров Д.А.\\
-			\hspace*{5mm}(подпись)\\
+			\underline{\hspace{20mm}}Кучеров Даниил Андреевич\\
+			\hspace*{1mm}(подпись)\\
 			Руководитель: к.ф.-м.н., доцент\\
 			\underline{\hspace{30mm}}Ломов В.П.\\
 			\hspace*{5mm}(подпись)
@@ -197,14 +199,19 @@
 
 \input{intro.ltx}
 
+\newpage
 \input{sec1.ltx}
 
+\newpage
 \input{sec2.ltx}
 
+\newpage
 \input{sec3.ltx}
 
+\newpage
 \input{sec4.ltx}
 
+\newpage
 \input{sec5.ltx}
 
 \newpage
