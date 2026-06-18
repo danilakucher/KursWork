@@ -1,0 +1,60 @@
+<@@pygmented@display@0
+,lang=nb
+  In[1]:= Y = 6.5956*10^4
+  X = 10.54
+  v[x_] := Y Exp[-X x]
+  t = 1
+  a = 4.35196*10^6
+  b = 0.03055
+    H0 = a/t ( {
+  	{0, 0, 0},
+  	{0, b, 0},
+  	{0, 0, 1}
+  } )
+  s12 = Sqrt[0.308]
+  s13 = Sqrt[0.0234]
+  c12 = Sqrt[1 - s12^2]
+  c13 = Sqrt[1 - s13^2]
+  W = ( {
+  	{c13^2*c12^2, c12*s12*c13^2, c12*c13*s13},
+  	{c12*s12*c13^2, s12^2*c13^2, s12*c13*s13},
+  	{c12*s13*c13, s12*c13*s13, s13^2}
+  } )
+  f[x_] := {f1[x], f2[x], f3[x]}
+  s3 = NDSolve[{I*f'[x] == (H0 + v[x] W) . f[x], f1[0.1] == c12*c13,
+  	f2[0.1] == s12*c13, f3[0.1] == s13}, {f1, f2, f3}, {x, 0.1, 0.5}]
+
+  psi4[y_] =
+  Evaluate[{f1[x], f2[x], f3[x]} /. s3] /. {x -> y} /. {w_} -> w
+
+  s4 = NDSolve[{I*f'[x] == (H0 + v[x] W) . f[x], f1[0.1] == c12*c13,
+  	f2[0.1] == s12*c13, f3[0.1] == s13}, {f1, f2, f3}, {x, 0.1, 1}]
+
+  psi5[y_] =
+  Evaluate[{f1[x], f2[x], f3[x]} /. s4] /. {x -> y} /. {w_} -> w
+
+  tab12 = Table[{x, Re[psi4[x][[1]]], Im[psi4[x][[1]]],
+  	Re[psi4[x][[2]]], Im[psi4[x][[2]]], Re[psi4[x][[3]]],
+  	Im[psi4[x][[3]]], Arg[psi4[x][[1]]], Arg[psi4[x][[2]]],
+  	Arg[psi4[x][[3]]], Abs[psi4[x][[1]]]^2, Abs[psi4[x][[2]]]^2,
+  	Abs[psi4[x][[3]]]^2,
+  	Abs[psi4[x][[1]]]^2 + Abs[psi4[x][[2]]]^2 + Abs[psi4[x][[3]]]^2 -
+  	1, c12^2 c13^2 Abs[psi4[x][[1]]]^2 +
+  	s12^2 c13^2 Abs[psi4[x][[2]]]^2 + s13^2 Abs[psi4[x][[3]]]^2}, {x,
+  	0.101, 0.5, 0.001}];
+
+  Export["Mathpsi4.dat", tab12, "Table"]
+
+  tab13 = Table[{x, Re[psi5[x][[1]]], Im[psi5[x][[1]]],
+  	Re[psi5[x][[2]]], Im[psi5[x][[2]]], Re[psi5[x][[3]]],
+  	Im[psi5[x][[3]]], Arg[psi5[x][[1]]], Arg[psi5[x][[2]]],
+  	Arg[psi5[x][[3]]], Abs[psi5[x][[1]]]^2, Abs[psi5[x][[2]]]^2,
+  	Abs[psi5[x][[3]]]^2,
+  	Abs[psi5[x][[1]]]^2 + Abs[psi5[x][[2]]]^2 + Abs[psi5[x][[3]]]^2 -
+  	1, c12^2 c13^2 Abs[psi5[x][[1]]]^2 +
+  	s12^2 c13^2 Abs[psi5[x][[2]]]^2 + s13^2 Abs[psi5[x][[3]]]^2}, {x,
+  	0.101, 1, 0.001}];
+
+  Export["Mathpsi5.dat", tab13, "Table"]
+
+>@@pygmented@display@0

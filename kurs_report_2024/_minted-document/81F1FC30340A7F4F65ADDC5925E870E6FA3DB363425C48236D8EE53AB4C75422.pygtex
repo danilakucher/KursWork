@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n}{tol} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}3}
+  \PYG{n}{model} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}sun\PYGZdq{}}
+  \PYG{n}{E} \PYG{o}{=} \PYG{l+m+mf}{1e0}
+  \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mf}{0.1}
+  \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mf}{1.0}
+  \PYG{n}{s12} \PYG{o}{=} \PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mf}{0.308}\PYG{p}{)}
+  \PYG{n}{c12} \PYG{o}{=} \PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{s12}\PYG{o}{*}\PYG{n}{s12}\PYG{p}{)}
+  \PYG{n}{s13} \PYG{o}{=} \PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mf}{0.0234}\PYG{p}{)}
+  \PYG{n}{c13} \PYG{o}{=} \PYG{n+nb}{math.sqrt}\PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{s13}\PYG{o}{*}\PYG{n}{s13}\PYG{p}{)}
+  \PYG{n}{psi0} \PYG{o}{=} \PYG{p}{\PYGZob{}} \PYG{p}{\PYGZob{}}\PYG{n}{c12}\PYG{o}{*}\PYG{n}{c13}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},} \PYG{p}{\PYGZob{}}\PYG{n}{s12}\PYG{o}{*}\PYG{n}{c13}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{},} \PYG{p}{\PYGZob{}}\PYG{n}{s13}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{o}{(}\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{    }\PYG{n+nb}{export}\PYG{+w}{ }\PYG{n+nv}{LC\PYGZus{}NUMERIC}\PYG{o}{=}en\PYGZus{}US.UTF\PYGZhy{}8\PYG{p}{;}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }b\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{k}{\PYGZdl{}(}seq\PYG{+w}{ }\PYG{l+m}{0}.101\PYG{+w}{ }1e\PYGZhy{}3\PYG{+w}{ }\PYG{l+m}{1}\PYG{k}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{    }\PYG{k}{do}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{      }./m4\PYGZhy{}tol\PYG{+w}{ }\PYGZhy{}c\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}b=}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{b}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYGZgt{}\PYG{+w}{ }data\PYGZus{}10.dat\PYG{p}{;}\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{    }\PYG{k}{done}\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{  }\PYG{o}{)}
+\PYG{+w}{  }sed\PYG{+w}{ }\PYGZhy{}i\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}/\PYGZca{}\PYGZsh{}/d\PYGZsq{}}\PYG{+w}{ }data\PYGZus{}10.dat
+\end{Verbatim}

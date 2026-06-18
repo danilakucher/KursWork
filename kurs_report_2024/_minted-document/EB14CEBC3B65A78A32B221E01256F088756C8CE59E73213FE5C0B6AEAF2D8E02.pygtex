@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{draw1b}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{,} \PYG{n}{c21}\PYG{p}{,} \PYG{n}{labx}\PYG{o}{=}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}\PYGZbs{}xi\PYGZdl{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{laby}\PYG{o}{=}\PYG{n}{labs}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}c1\PYGZsq{}}\PYG{p}{],} \PYG{n}{title}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Контроль magexp\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{draw1b}\PYG{p}{(}\PYG{n}{p2}\PYG{p}{,}  \PYG{n}{c2}\PYG{p}{,} \PYG{n}{labx}\PYG{o}{=}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}\PYGZbs{}xi\PYGZdl{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{laby}\PYG{o}{=}\PYG{n}{labs}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}c1\PYGZsq{}}\PYG{p}{],} \PYG{n}{title}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Контроль Mathematica\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}
